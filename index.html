@@ -1,0 +1,378 @@
+cd ~/alpharbet
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpharbet — The A–Z of drugs, made to stick</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #10192E;
+    --ink-soft: #1B2740;
+    --paper: #F3EFE6;
+    --paper-dim: #E7E1D2;
+    --amber: #E8A33D;
+    --amber-deep: #C87F1F;
+    --teal: #5FC8BA;
+    --white: #FDFCF9;
+    --line: rgba(243,239,230,0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+  .index-strip {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(16,25,46,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .index-strip-inner {
+    max-width: 1100px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem;
+    color: var(--white); white-space: nowrap;
+  }
+  .wordmark sup { font-size: 0.5em; color: var(--amber); }
+  .az-row { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .az-row::-webkit-scrollbar { display: none; }
+  .az-row span {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+    color: rgba(243,239,230,0.32); width: 18px; text-align: center; flex-shrink: 0;
+  }
+  .az-row span.lit { color: var(--amber); }
+  .nav-cta {
+    background: var(--amber); color: var(--ink); font-weight: 600; font-size: 0.85rem;
+    padding: 9px 18px; border-radius: 3px; text-decoration: none; white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--white); }
+  .hero {
+    padding: 88px 0 100px; display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px; align-items: center;
+  }
+  .eyebrow-line {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+    color: var(--teal); margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(2.4rem, 4.2vw, 3.6rem); line-height: 1.08; margin-bottom: 26px; }
+  .hero-sub { font-size: 1.12rem; color: rgba(243,239,230,0.78); max-width: 46ch; margin-bottom: 34px; }
+  .hero-form { display: flex; gap: 10px; max-width: 440px; margin-bottom: 14px; }
+  .hero-form input {
+    flex: 1; background: var(--ink-soft); border: 1px solid var(--line); border-radius: 3px;
+    padding: 14px 16px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem;
+  }
+  .hero-form input::placeholder { color: rgba(243,239,230,0.4); }
+  .hero-form input:focus { outline: none; border-color: var(--amber); }
+  .btn-primary {
+    background: var(--amber); color: var(--ink); border: none; border-radius: 3px;
+    padding: 14px 22px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: background 0.15s ease, transform 0.1s ease;
+  }
+  .btn-primary:hover { background: #F3B25A; }
+  .btn-primary:active { transform: scale(0.98); }
+  .form-note { font-size: 0.82rem; color: rgba(243,239,230,0.45); }
+  .form-success {
+    display: none; background: rgba(95,200,186,0.12); border: 1px solid rgba(95,200,186,0.35);
+    color: var(--teal); padding: 14px 16px; border-radius: 3px; font-size: 0.92rem; max-width: 440px;
+  }
+  .card-mock {
+    background: var(--paper); color: var(--ink); border-radius: 6px; padding: 30px 28px 26px;
+    position: relative; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5); transform: rotate(1.2deg);
+  }
+  .card-tab {
+    position: absolute; top: -14px; left: 28px; background: var(--amber); color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 500;
+    padding: 5px 10px; border-radius: 3px;
+  }
+  .card-mock .letter {
+    font-family: 'Fraunces', serif; font-size: 0.85rem; color: var(--amber-deep);
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .card-mock h3 { color: var(--ink); font-size: 1.55rem; margin-bottom: 3px; }
+  .card-mock .practical-name { font-size: 0.92rem; color: rgba(16,25,46,0.55); margin-bottom: 18px; }
+  .structure-box {
+    background: var(--ink); border-radius: 4px; height: 130px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+  }
+  .card-mock .formula {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem; color: rgba(16,25,46,0.7);
+    margin-bottom: 18px; letter-spacing: 0.02em;
+  }
+  .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .card-tags span {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; background: var(--paper-dim);
+    padding: 5px 9px; border-radius: 3px; color: rgba(16,25,46,0.65);
+  }
+  section { padding: 90px 0; }
+  .section-head { max-width: 62ch; margin-bottom: 54px; }
+  .section-head .eyebrow-line { margin-bottom: 14px; }
+  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 16px; }
+  .section-head p { color: rgba(243,239,230,0.72); font-size: 1.02rem; }
+  .divider { border: none; border-top: 1px solid var(--line); }
+  .game-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  }
+  .game-card { background: var(--ink); padding: 34px 28px; }
+  .game-card .g-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--teal); margin-bottom: 16px;
+  }
+  .game-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+  .game-card p { color: rgba(243,239,230,0.68); font-size: 0.94rem; }
+  .inside-list { display: flex; flex-direction: column; }
+  .inside-row {
+    display: grid; grid-template-columns: 44px 1fr 1.4fr; gap: 24px;
+    padding: 24px 0; border-top: 1px solid var(--line); align-items: baseline;
+  }
+  .inside-row:last-child { border-bottom: 1px solid var(--line); }
+  .inside-row .idx { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.3rem; color: var(--amber); }
+  .inside-row h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.12rem; color: var(--white); }
+  .inside-row p { color: rgba(243,239,230,0.68); font-size: 0.95rem; }
+  .audience-band {
+    background: var(--paper); color: var(--ink); border-radius: 8px; padding: 56px 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .audience-band h2 { color: var(--ink); }
+  .audience-band .eyebrow-line { color: var(--amber-deep); }
+  .audience-band p { color: rgba(16,25,46,0.7); }
+  .audience-list { list-style: none; }
+  .audience-list li {
+    padding: 14px 0; border-top: 1px solid rgba(16,25,46,0.12); font-size: 0.98rem;
+    display: flex; gap: 14px;
+  }
+  .audience-list li:last-child { border-bottom: 1px solid rgba(16,25,46,0.12); }
+  .audience-list .mark {
+    font-family: 'IBM Plex Mono', monospace; color: var(--amber-deep); font-size: 0.85rem;
+    flex-shrink: 0; padding-top: 2px;
+  }
+  .final-cta { text-align: center; padding: 100px 0 110px; }
+  .final-cta h2 { font-size: clamp(2rem, 4vw, 2.8rem); max-width: 18ch; margin: 0 auto 20px; }
+  .final-cta p { color: rgba(243,239,230,0.7); max-width: 48ch; margin: 0 auto 36px; }
+  .final-cta .hero-form { margin: 0 auto 14px; }
+  .final-cta .form-note { max-width: 440px; margin: 0 auto; }
+  .final-cta .form-success { margin: 0 auto; }
+  footer {
+    border-top: 1px solid var(--line); padding: 32px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(243,239,230,0.4); font-size: 0.85rem;
+  }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; }
+    .card-mock { transform: none; max-width: 420px; }
+    .game-grid { grid-template-columns: 1fr; }
+    .audience-band { grid-template-columns: 1fr; padding: 40px 28px; }
+    .inside-row { grid-template-columns: 30px 1fr; }
+    .inside-row p { grid-column: 1 / -1; }
+    .index-strip-inner { flex-wrap: wrap; }
+    .hero-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="index-strip">
+  <div class="index-strip-inner">
+    <div class="wordmark">Alpharbet<sup>®</sup></div>
+    <div class="az-row" id="azRow"></div>
+    <a href="#join" class="nav-cta">Join the waitlist</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow-line mono">Pharmacology, from A to Z</div>
+      <h1>Every drug has a story. We turn it into one you'll actually remember.</h1>
+      <p class="hero-sub">Alpharbet is an interactive index of drugs and compounds — real structures, real data, real history — built around games instead of flashcards. Made for the people who have to know this cold.</p>
+      <form class="hero-form" id="waitlistForm">
+        <input type="email" id="emailInput" placeholder="you@school.edu" required>
+        <button type="submit" class="btn-primary">Join waitlist</button>
+      </form>
+      <div class="form-success" id="formSuccess">You're on the list. We'll email you when early access opens.</div>
+      <div class="form-note" id="formNote">Free while in beta. No spam, unsubscribe anytime.</div>
+    </div>
+
+    <div class="card-mock">
+      <div class="card-tab">Aa</div>
+      <div class="letter">A</div>
+      <h3>Amoxicillin</h3>
+      <div class="practical-name">Amoxil · Trimox — aminopenicillin antibiotic</div>
+      <div class="structure-box">
+        <svg width="150" height="90" viewBox="0 0 150 90" fill="none">
+          <circle cx="30" cy="45" r="7" stroke="#5FC8BA" stroke-width="2"/>
+          <circle cx="60" cy="25" r="7" stroke="#E8A33D" stroke-width="2"/>
+          <circle cx="60" cy="65" r="7" stroke="#E8A33D" stroke-width="2"/>
+          <circle cx="95" cy="45" r="7" stroke="#5FC8BA" stroke-width="2"/>
+          <circle cx="125" cy="20" r="7" stroke="#F3EFE6" stroke-width="2"/>
+          <circle cx="125" cy="70" r="7" stroke="#F3EFE6" stroke-width="2"/>
+          <line x1="37" y1="45" x2="53" y2="28" stroke="#F3EFE6" stroke-width="1.5"/>
+          <line x1="37" y1="45" x2="53" y2="62" stroke="#F3EFE6" stroke-width="1.5"/>
+          <line x1="67" y1="25" x2="88" y2="42" stroke="#F3EFE6" stroke-width="1.5"/>
+          <line x1="67" y1="65" x2="88" y2="48" stroke="#F3EFE6" stroke-width="1.5"/>
+          <line x1="102" y1="42" x2="118" y2="24" stroke="#F3EFE6" stroke-width="1.5"/>
+          <line x1="102" y1="48" x2="118" y2="66" stroke="#F3EFE6" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="formula mono">C₁₆H₁₉N₃O₅S</div>
+      <div class="card-tags">
+        <span>Penicillin class</span>
+        <span>Discovered 1970s</span>
+        <span>Interactive 3D</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="inside">
+    <div class="section-head">
+      <div class="eyebrow-line mono">What's in every entry</div>
+      <h2>One index. Six ways to actually learn it.</h2>
+      <p>Every compound in Alpharbet gets the same full treatment — so studying one drug looks the same as studying the next.</p>
+    </div>
+    <div class="inside-list">
+      <div class="inside-row">
+        <div class="idx">01</div>
+        <h4>Names, chemical and practical</h4>
+        <p>The formal name next to what it's actually called on the shelf and in the ward.</p>
+      </div>
+      <div class="inside-row">
+        <div class="idx">02</div>
+        <h4>Interactive 3D structure</h4>
+        <p>Rotate the molecule. Watch it change across different states, not just a flat diagram.</p>
+      </div>
+      <div class="inside-row">
+        <div class="idx">03</div>
+        <h4>Chemical data, animated</h4>
+        <p>Formula and key data brought to life with short animations instead of a static table.</p>
+      </div>
+      <div class="inside-row">
+        <div class="idx">04</div>
+        <h4>How it works in the body</h4>
+        <p>Mechanism of action and pathway, shown step by step rather than buried in a paragraph.</p>
+      </div>
+      <div class="inside-row">
+        <div class="idx">05</div>
+        <h4>History and discovery</h4>
+        <p>Where it came from, who found it, and how its use has changed — then versus now.</p>
+      </div>
+      <div class="inside-row">
+        <div class="idx">06</div>
+        <h4>Hazards and usage notes</h4>
+        <p>What to watch for, plainly stated, in the same place as everything else.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="games">
+    <div class="section-head">
+      <div class="eyebrow-line mono">Study through play</div>
+      <h2>Games built around how drugs actually behave.</h2>
+      <p>No new rules to learn — familiar games, restrung around pharmacology instead of chance.</p>
+    </div>
+    <div class="game-grid">
+      <div class="game-card">
+        <div class="g-label mono">GAME 01</div>
+        <h3>Pool</h3>
+        <p>Line up the shot: match a drug to the receptor it targets and watch the interaction play out on the table.</p>
+      </div>
+      <div class="game-card">
+        <div class="g-label mono">GAME 02</div>
+        <h3>Solitaire</h3>
+        <p>Sort compounds into sequence — by molar mass, by class, by potency — to clear the board.</p>
+      </div>
+      <div class="game-card">
+        <div class="g-label mono">GAME 03</div>
+        <h3>Poker</h3>
+        <p>You're dealt a hand of drug profiles. Read their properties, build the strongest hand, beat the table.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="audience">
+    <div class="audience-band">
+      <div>
+        <div class="eyebrow-line mono">Who it's for</div>
+        <h2>Built first for the people who have to know this cold.</h2>
+        <p>Pharmacology is memorization-heavy by nature. Alpharbet starts with the students carrying the heaviest load of it.</p>
+      </div>
+      <ul class="audience-list">
+        <li><span class="mark mono">→</span> Pharmacy students prepping for board exams</li>
+        <li><span class="mark mono">→</span> Nursing students learning drug classes and interactions</li>
+        <li><span class="mark mono">→</span> Pre-med and med students building a foundation early</li>
+        <li><span class="mark mono">→</span> Anyone who's tried flashcards and wants something that sticks</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="final-cta" id="join">
+    <div class="eyebrow-line mono" style="justify-content:center; display:flex;">Early access</div>
+    <h2>Be one of the first through the index.</h2>
+    <p>We're building the first 26 entries now. Join the waitlist and we'll bring you in as soon as it's ready to study from.</p>
+    <form class="hero-form" id="waitlistForm2">
+      <input type="email" id="emailInput2" placeholder="you@school.edu" required>
+      <button type="submit" class="btn-primary">Join waitlist</button>
+    </form>
+    <div class="form-success" id="formSuccess2">You're on the list. We'll email you when early access opens.</div>
+    <div class="form-note" id="formNote2">Free while in beta. No spam, unsubscribe anytime.</div>
+  </section>
+
+  <footer>
+    <div>Alpharbet® — built one entry at a time.</div>
+    <div>A–Z, from Amoxicillin to Zolpidem.</div>
+  </footer>
+
+</div>
+
+<script>
+  const azRow = document.getElementById('azRow');
+  const litLetters = ['A','B'];
+  for (let i = 65; i <= 90; i++) {
+    const letter = String.fromCharCode(i);
+    const span = document.createElement('span');
+    span.textContent = letter;
+    if (litLetters.includes(letter)) span.classList.add('lit');
+    azRow.appendChild(span);
+  }
+  function handleWaitlist(formId, inputId, successId, noteId) {
+    const form = document.getElementById(formId);
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById(inputId).value;
+      console.log('Waitlist signup (not yet connected to a backend):', email);
+      form.style.display = 'none';
+      document.getElementById(noteId).style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+    });
+  }
+  handleWaitlist('waitlistForm', 'emailInput', 'formSuccess', 'formNote');
+  handleWaitlist('waitlistForm2', 'emailInput2', 'formSuccess2', 'formNote2');
+</script>
+
+</body>
+</html>
