@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
+    // 3Dmol.js ships no official TypeScript types, so this stays untyped.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     $3Dmol: any;
   }
 }

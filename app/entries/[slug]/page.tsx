@@ -36,7 +36,7 @@ export default async function EntryPage({
             <div className="eyebrow-line mono">Interactive structure</div>
             <MoleculeViewer cid={drug.cid} slug={drug.slug} name={drug.name} />
             <div className="formula mono entry-formula">
-              {drug.formula} · {drug.molecularWeight}
+              {drug.formula} · {drug.molecularWeightLabel}
             </div>
           </section>
 
@@ -61,12 +61,12 @@ export default async function EntryPage({
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Test what you know</div>
             <p>Think you&apos;ve got {drug.name} down cold?</p>
-            <span className="btn-primary btn-disabled">Play Solitaire — coming soon</span>
+            <Link href="/games/solitaire" className="btn-primary btn-link">Play Solitaire</Link>
           </div>
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Market view</div>
             <p>See how {drug.name}&apos;s pricing has shifted over time.</p>
-            <span className="btn-primary btn-disabled">View trends — coming soon</span>
+            <Link href={`/trends?drug=${drug.slug}`} className="btn-primary btn-link">View trends</Link>
           </div>
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Find it nearby</div>

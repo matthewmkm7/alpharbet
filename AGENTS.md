@@ -21,10 +21,12 @@ An A–Z reference site for drugs/pharmaceutical compounds, aimed first at pharm
 - 3D molecule rendering: 3Dmol.js or NGL Viewer (not yet chosen — evaluate both before committing, ask founder which to proceed with rather than picking silently)
 
 ## Design system (carry this into every page)
-- Colors: ink navy `#10192E` (background), parchment `#F3EFE6` (cards), amber `#E8A33D` (primary accent), teal `#5FC8BA` (secondary/data accent), off-white `#FDFCF9`
-- Headline font: Fraunces (serif). Body font: Inter (sans). Data/formulas: IBM Plex Mono — used functionally for real chemical notation, not decoration.
-- Structural motif: an A–Z index strip as the persistent nav element (see existing landing page for the pattern)
-- Existing landing page lives at `index.html` in this repo — treat its look and copy voice as the reference standard for new pages
+- Colors: cream `#FAF3E3` (background, light mode) / near-black `#14120F` (background, dark mode), white/dark-elevated cards, orange `#FF6B35` + magenta `#E8437A` (primary gradient accent, light mode), green `#3F8F5B` (secondary/data accent) — full tokens live in `app/globals.css` under `:root` and `:root[data-theme="dark"]`
+- Headline font: Space Grotesk (blocky/technical, "lab" feel). Body font: Inter (sans). Data/formulas: IBM Plex Mono — used functionally for real chemical notation, not decoration.
+- Wordmark "alPHARbet" — the "PHAR" is always the gradient-accented part; it's orange/magenta in light mode and purple/green (`--wordmark-grad-a` / `--wordmark-grad-b`) in dark mode
+- No hero/marketing sections, no waitlist form — the site is deliberately minimal: a persistent slim `site-header` (logo, nav, search icon, theme toggle) plus content, page by page
+- Global search lives in a translucent centered overlay panel (`site-header.tsx`), not a separate browse page
+- Existing landing page lives at `index.html` in this repo — treat its copy voice as the reference standard, but note the actual live design in `app/globals.css` is what to match, since it has since evolved past that file's original look
 
 ## Content structure — every drug entry needs
 1. Name (chemical name + practical/brand name)
