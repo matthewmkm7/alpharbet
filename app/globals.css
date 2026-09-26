@@ -50,6 +50,13 @@ h1, h2, h3, .display {
 a { color: inherit; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
 
+.molecule-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .phar-gradient {
   background: linear-gradient(100deg, var(--wordmark-grad-a), var(--wordmark-grad-b));
   -webkit-background-clip: text;

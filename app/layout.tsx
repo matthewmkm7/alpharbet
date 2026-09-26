@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteHeader from "./site-header";
+import MoleculeBackground from "./molecule-background";
 
 export const metadata: Metadata = {
   title: "Alpharbet — The A–Z of drugs, made to stick",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body>
+        <MoleculeBackground />
         <SiteHeader />
         {children}
       </body>
