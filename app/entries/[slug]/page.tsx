@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { drugs, getDrugBySlug } from "@/data/drugs";
 import MoleculeViewer from "./molecule-viewer";
+import ChemDataPanel from "./chem-data-panel";
 
 export function generateStaticParams() {
   return drugs.map((d) => ({ slug: d.slug }));
@@ -39,6 +40,8 @@ export default async function EntryPage({
               {drug.formula} · {drug.molecularWeightLabel}
             </div>
           </section>
+
+          <ChemDataPanel drug={drug} />
 
           <section className="entry-block">
             <div className="eyebrow-line mono">How it works in the body</div>
