@@ -62,6 +62,16 @@ export const categoryDrivers: Record<DrugCategory, string> = {
   Benzodiazepine: "A mature, mostly generic class — pricing is relatively flat and driven by manufacturing costs.",
   Antidepressant: "Long-established generics keep this class affordable; newer extended-release versions cost more.",
   Statin: "One of the clearest examples of patent expiry driving prices down as generics enter the market.",
+  "ACE Inhibitor": "A long-generic class — among the cheapest options for treating high blood pressure.",
+  "Beta Blocker": "Decades off-patent; consistently one of the least expensive cardiovascular drug classes.",
+  Anticoagulant: "Split between cheap, established warfarin and pricier newer options like apixaban that skip routine blood monitoring.",
+  PPI: "Heavy OTC and generic competition keeps this class inexpensive despite huge prescription volumes.",
+  Antihistamine: "Widely available over the counter; some of the least expensive drugs on this site.",
+  Antipsychotic: "Newer ('atypical') options can cost more than older generics, largely due to patent status.",
+  Corticosteroid: "Long-generic and inexpensive, though potency (not price) varies a lot within the class.",
+  Antiviral: "Pricing varies widely — some antivirals are cheap generics, others remain costly and brand-only.",
+  Diuretic: "Among the oldest and cheapest drug classes still in wide clinical use.",
+  Bronchodilator: "Inhaler pricing has drawn public scrutiny in recent years despite the drugs themselves being long-generic.",
 };
 
 export const sources: Source[] = [

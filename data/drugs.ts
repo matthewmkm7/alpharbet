@@ -7,7 +7,17 @@ export type DrugCategory =
   | "Hormone"
   | "Benzodiazepine"
   | "Antidepressant"
-  | "Statin";
+  | "Statin"
+  | "ACE Inhibitor"
+  | "Beta Blocker"
+  | "Anticoagulant"
+  | "PPI"
+  | "Antihistamine"
+  | "Antipsychotic"
+  | "Corticosteroid"
+  | "Antiviral"
+  | "Diuretic"
+  | "Bronchodilator";
 
 export type DrugEntry = {
   slug: string;
@@ -368,6 +378,386 @@ export const drugs: DrugEntry[] = [
       "One of the earliest statins to demonstrate a clear survival benefit in large clinical trials, helping establish cholesterol-lowering drugs as a mainstay of heart disease prevention.",
     hazards:
       "Same muscle-related and liver-monitoring concerns as other statins, with a particularly notable interaction risk when combined with grapefruit juice.",
+  },
+  {
+    slug: "lisinopril",
+    letter: "L",
+    name: "Lisinopril",
+    practicalName: "Zestril · Prinivil",
+    drugClass: "ACE inhibitor",
+    category: "ACE Inhibitor",
+    cid: 5362119,
+    formula: "C21H31N3O5",
+    molecularWeight: 405.49,
+    molecularWeightLabel: "405.49 g/mol",
+    discovered: "Developed by Merck; FDA approved 1987",
+    mechanism:
+      "Blocks the angiotensin-converting enzyme (ACE) that produces angiotensin II, a hormone that narrows blood vessels. With less angiotensin II around, vessels relax and blood pressure drops.",
+    history:
+      "Part of the ACE inhibitor class that followed captopril, the first drug of its kind, lisinopril became a first-line treatment for high blood pressure and heart failure because it only needs to be taken once a day.",
+    hazards:
+      "Can cause a persistent dry cough in some patients. Carries a rare but serious risk of angioedema (rapid tissue swelling). Not recommended during pregnancy due to risk to fetal development.",
+  },
+  {
+    slug: "enalapril",
+    letter: "E",
+    name: "Enalapril",
+    practicalName: "Vasotec",
+    drugClass: "ACE inhibitor",
+    category: "ACE Inhibitor",
+    cid: 5388962,
+    formula: "C20H28N2O5",
+    molecularWeight: 376.45,
+    molecularWeightLabel: "376.45 g/mol",
+    discovered: "Developed by Merck; FDA approved 1985",
+    mechanism:
+      "A prodrug that the liver converts into enalaprilat, the active form that blocks ACE the same way lisinopril does, reducing angiotensin II and relaxing blood vessels.",
+    history:
+      "One of the earliest ACE inhibitors to reach the market, enalapril helped establish the class as a mainstay for hypertension and heart failure treatment through the 1980s.",
+    hazards:
+      "Shares the dry cough and angioedema risks common to ACE inhibitors. Requires kidney-function monitoring, particularly when starting treatment.",
+  },
+  {
+    slug: "metoprolol",
+    letter: "M",
+    name: "Metoprolol",
+    practicalName: "Lopressor · Toprol-XL",
+    drugClass: "Beta blocker",
+    category: "Beta Blocker",
+    cid: 4171,
+    formula: "C15H25NO3",
+    molecularWeight: 267.36,
+    molecularWeightLabel: "267.36 g/mol",
+    discovered: "Developed by Hässle (Sweden, later AstraZeneca); approved 1978",
+    mechanism:
+      "Selectively blocks beta-1 adrenergic receptors, mainly found in the heart, reducing heart rate and the force of each contraction — lowering blood pressure and the heart's workload.",
+    history:
+      "Metoprolol's selectivity for heart-specific beta-1 receptors, rather than the beta-2 receptors found in the lungs, made it a safer option than earlier beta blockers for patients with respiratory conditions like asthma.",
+    hazards:
+      "Can cause fatigue and slow heart rate (bradycardia). Stopping abruptly after long-term use can trigger a rebound spike in heart rate and blood pressure, so tapering is important.",
+  },
+  {
+    slug: "propranolol",
+    letter: "P",
+    name: "Propranolol",
+    practicalName: "Inderal",
+    drugClass: "Beta blocker",
+    category: "Beta Blocker",
+    cid: 4946,
+    formula: "C16H21NO2",
+    molecularWeight: 259.34,
+    molecularWeightLabel: "259.34 g/mol",
+    discovered: "Developed 1964 by Sir James Black; approved 1967",
+    mechanism:
+      "Blocks both beta-1 and beta-2 adrenergic receptors non-selectively, reducing heart rate and blood pressure while also affecting the lungs and blood vessels elsewhere in the body.",
+    history:
+      "The first successful beta blocker ever developed, propranolol's invention is considered one of the most significant contributions to cardiovascular medicine — its creator, James Black, later won a Nobel Prize partly for this work.",
+    hazards:
+      "Because it isn't heart-selective, it can worsen asthma and other breathing conditions. Also masks the warning signs of low blood sugar in people with diabetes.",
+  },
+  {
+    slug: "warfarin",
+    letter: "W",
+    name: "Warfarin",
+    practicalName: "Coumadin",
+    drugClass: "Anticoagulant",
+    category: "Anticoagulant",
+    cid: 6691,
+    formula: "C19H16O4",
+    molecularWeight: 308.33,
+    molecularWeightLabel: "308.33 g/mol",
+    discovered: "Discovered 1948 at the Wisconsin Alumni Research Foundation; approved for medical use 1954",
+    mechanism:
+      "Blocks an enzyme the liver needs to recycle vitamin K, which in turn is required to produce several blood-clotting factors. Less active vitamin K means a slower, more controlled clotting response.",
+    history:
+      "Originally developed and sold as a rat poison, warfarin was found to be safely dosable in humans and became the dominant oral anticoagulant for over 50 years, despite requiring regular blood tests to keep its effect in a safe range.",
+    hazards:
+      "Narrow therapeutic window — too little fails to prevent clots, too much causes dangerous bleeding. Interacts with a huge range of foods and other medications, especially anything affecting vitamin K intake.",
+  },
+  {
+    slug: "apixaban",
+    letter: "A",
+    name: "Apixaban",
+    practicalName: "Eliquis",
+    drugClass: "Anticoagulant",
+    category: "Anticoagulant",
+    cid: 10182969,
+    formula: "C25H25N5O4",
+    molecularWeight: 459.5,
+    molecularWeightLabel: "459.5 g/mol",
+    discovered: "Developed by Bristol-Myers Squibb and Pfizer; FDA approved 2012",
+    mechanism:
+      "Directly inhibits Factor Xa, a specific clotting-cascade enzyme, rather than acting broadly on vitamin K like warfarin — giving it a more predictable effect without routine blood monitoring.",
+    history:
+      "Part of a newer generation of anticoagulants designed to sidestep warfarin's monitoring requirements and unpredictable food interactions, apixaban has become one of the most widely prescribed blood thinners.",
+    hazards:
+      "Still carries a real bleeding risk, including rare but serious internal bleeding. Unlike warfarin, it has no simple at-home test to check its blood level.",
+  },
+  {
+    slug: "omeprazole",
+    letter: "O",
+    name: "Omeprazole",
+    practicalName: "Prilosec",
+    drugClass: "Proton pump inhibitor",
+    category: "PPI",
+    cid: 4594,
+    formula: "C17H19N3O3S",
+    molecularWeight: 345.42,
+    molecularWeightLabel: "345.42 g/mol",
+    discovered: "Developed by AB Hässle (Sweden); FDA approved 1989",
+    mechanism:
+      "Irreversibly blocks the proton pump in stomach lining cells that produces gastric acid, cutting acid output more completely and for longer than older acid-reducing drugs.",
+    history:
+      "The first proton pump inhibitor to reach the market, omeprazole transformed treatment of ulcers and acid reflux and became one of the best-selling drugs in the world through the 1990s and 2000s.",
+    hazards:
+      "Long-term use is associated with reduced absorption of vitamin B12, magnesium, and calcium, and a modestly increased risk of certain infections and bone fractures.",
+  },
+  {
+    slug: "esomeprazole",
+    letter: "E",
+    name: "Esomeprazole",
+    practicalName: "Nexium",
+    drugClass: "Proton pump inhibitor",
+    category: "PPI",
+    cid: 9579578,
+    formula: "C17H19N3O3S",
+    molecularWeight: 345.42,
+    molecularWeightLabel: "345.42 g/mol",
+    discovered: "Developed by AstraZeneca; FDA approved 2001",
+    mechanism:
+      "Works identically to omeprazole — it's actually the single active mirror-image molecule (isomer) that omeprazole is a 50/50 mixture of, isolated for slightly more consistent absorption.",
+    history:
+      "Esomeprazole was developed largely as omeprazole's patent protection was expiring, a common pharmaceutical strategy of refining an existing drug into a new patentable version — sometimes called an 'evergreening' drug.",
+    hazards:
+      "Shares the same long-term nutrient-absorption and infection-risk concerns as omeprazole and other proton pump inhibitors.",
+  },
+  {
+    slug: "loratadine",
+    letter: "L",
+    name: "Loratadine",
+    practicalName: "Claritin",
+    drugClass: "Antihistamine",
+    category: "Antihistamine",
+    cid: 3957,
+    formula: "C22H23ClN2O2",
+    molecularWeight: 382.88,
+    molecularWeightLabel: "382.88 g/mol",
+    discovered: "Developed by Schering-Plough; FDA approved 1993",
+    mechanism:
+      "Blocks H1 histamine receptors, preventing histamine — released during an allergic reaction — from triggering the sneezing, itching, and swelling of typical allergy symptoms.",
+    history:
+      "Designed specifically to cross into the brain far less than older antihistamines like diphenhydramine, loratadine helped define the 'non-drowsy' generation of allergy medication.",
+    hazards:
+      "Generally well-tolerated. Rare side effects include headache and dry mouth; drowsiness is much less common than with first-generation antihistamines.",
+  },
+  {
+    slug: "diphenhydramine",
+    letter: "D",
+    name: "Diphenhydramine",
+    practicalName: "Benadryl",
+    drugClass: "Antihistamine",
+    category: "Antihistamine",
+    cid: 3100,
+    formula: "C17H21NO",
+    molecularWeight: 255.35,
+    molecularWeightLabel: "255.35 g/mol",
+    discovered: "Discovered 1943 by George Rieveschl; approved for medical use 1946",
+    mechanism:
+      "Blocks H1 histamine receptors like loratadine, but crosses easily into the brain, where it also blocks other signaling pathways — which is why it causes noticeable drowsiness.",
+    history:
+      "One of the first antihistamines ever developed, diphenhydramine's sedating side effect was so pronounced that it was later repurposed and marketed separately as an over-the-counter sleep aid.",
+    hazards:
+      "Causes significant drowsiness and impaired coordination — a real concern for driving or operating machinery. Older adults are especially sensitive to its effects on memory and confusion.",
+  },
+  {
+    slug: "risperidone",
+    letter: "R",
+    name: "Risperidone",
+    practicalName: "Risperdal",
+    drugClass: "Antipsychotic",
+    category: "Antipsychotic",
+    cid: 5073,
+    formula: "C23H27FN4O2",
+    molecularWeight: 410.49,
+    molecularWeightLabel: "410.49 g/mol",
+    discovered: "Developed by Janssen Pharmaceutica; FDA approved 1993",
+    mechanism:
+      "Blocks both dopamine and serotonin receptors in the brain, a combination that helps manage symptoms of schizophrenia and bipolar disorder with a somewhat different side-effect profile than older antipsychotics.",
+    history:
+      "Part of the 'atypical' or second-generation antipsychotics that emerged from research trying to reduce the movement-related side effects common with earlier drugs in the class.",
+    hazards:
+      "Can cause weight gain and metabolic changes like elevated blood sugar. Still carries some risk of movement disorders, though generally less than first-generation antipsychotics.",
+  },
+  {
+    slug: "haloperidol",
+    letter: "H",
+    name: "Haloperidol",
+    practicalName: "Haldol",
+    drugClass: "Antipsychotic",
+    category: "Antipsychotic",
+    cid: 3559,
+    formula: "C21H23ClFNO2",
+    molecularWeight: 375.86,
+    molecularWeightLabel: "375.86 g/mol",
+    discovered: "Discovered 1958 by Paul Janssen; approved for medical use in the early 1960s",
+    mechanism:
+      "Strongly blocks dopamine receptors in the brain, reducing the excess dopamine signaling linked to hallucinations and delusions in conditions like schizophrenia.",
+    history:
+      "One of the earliest and most widely used first-generation ('typical') antipsychotics, haloperidol remains in use today, particularly in acute settings, despite newer alternatives.",
+    hazards:
+      "Higher risk of movement-related side effects (tremor, rigidity) than newer antipsychotics, including a rare but serious risk of persistent involuntary movements with long-term use.",
+  },
+  {
+    slug: "prednisone",
+    letter: "P",
+    name: "Prednisone",
+    practicalName: "Deltasone",
+    drugClass: "Corticosteroid",
+    category: "Corticosteroid",
+    cid: 5865,
+    formula: "C21H26O5",
+    molecularWeight: 358.43,
+    molecularWeightLabel: "358.43 g/mol",
+    discovered: "Developed by Schering Corporation; approved for medical use 1955",
+    mechanism:
+      "A synthetic version of cortisol that the liver converts into its active form, prednisolone. It broadly suppresses the immune system and reduces inflammation across the body.",
+    history:
+      "Following the discovery of cortisone's anti-inflammatory effects in the late 1940s, prednisone was developed as a more potent, longer-acting synthetic alternative and became a cornerstone treatment for autoimmune and inflammatory conditions.",
+    hazards:
+      "Long-term use is linked to bone density loss, weight gain, elevated blood sugar, and increased infection risk. Must typically be tapered off gradually rather than stopped abruptly.",
+  },
+  {
+    slug: "dexamethasone",
+    letter: "D",
+    name: "Dexamethasone",
+    practicalName: "Decadron",
+    drugClass: "Corticosteroid",
+    category: "Corticosteroid",
+    cid: 5743,
+    formula: "C22H29FO5",
+    molecularWeight: 392.46,
+    molecularWeightLabel: "392.46 g/mol",
+    discovered: "Developed by Merck; approved for medical use 1958",
+    mechanism:
+      "Works like prednisone but is significantly more potent gram-for-gram and longer-lasting, making it useful in situations needing a strong, sustained anti-inflammatory effect.",
+    history:
+      "Gained global public attention during the COVID-19 pandemic when a large UK trial found it reduced deaths in critically ill, oxygen-dependent patients — one of the first treatments shown to do so.",
+    hazards:
+      "Shares the same long-term risks as other corticosteroids — bone loss, elevated blood sugar, and immune suppression — often at lower doses than prednisone due to its higher potency.",
+  },
+  {
+    slug: "oseltamivir",
+    letter: "O",
+    name: "Oseltamivir",
+    practicalName: "Tamiflu",
+    drugClass: "Antiviral",
+    category: "Antiviral",
+    cid: 65028,
+    formula: "C16H28N2O4",
+    molecularWeight: 312.4,
+    molecularWeightLabel: "312.4 g/mol",
+    discovered: "Developed by Gilead Sciences, licensed to Roche; FDA approved 1999",
+    mechanism:
+      "Blocks neuraminidase, an enzyme the influenza virus needs to break free from infected cells and spread further through the body — slowing the infection rather than clearing it instantly.",
+    history:
+      "Originally synthesized from shikimic acid extracted from Chinese star anise, oseltamivir became a globally stockpiled antiviral during pandemic flu preparedness efforts in the 2000s.",
+    hazards:
+      "Most effective when started within the first two days of symptoms. Common side effects include nausea; rare neuropsychiatric effects have been reported, mostly in children.",
+  },
+  {
+    slug: "acyclovir",
+    letter: "A",
+    name: "Acyclovir",
+    practicalName: "Zovirax",
+    drugClass: "Antiviral",
+    category: "Antiviral",
+    cid: 2022,
+    formula: "C8H11N5O3",
+    molecularWeight: 225.2,
+    molecularWeightLabel: "225.2 g/mol",
+    discovered: "Discovered in the 1970s by Gertrude Elion; FDA approved 1982",
+    mechanism:
+      "Gets converted into its active form only inside cells infected by herpesviruses, where it then blocks the viral enzyme needed to copy the virus's DNA — largely sparing healthy, uninfected cells.",
+    history:
+      "Its selective activity against infected cells was considered a landmark in antiviral design, and its discoverer, Gertrude Elion, later won the Nobel Prize in Physiology or Medicine partly for this work.",
+    hazards:
+      "Generally well-tolerated; can occasionally affect kidney function, especially at high doses or in patients with existing kidney impairment.",
+  },
+  {
+    slug: "hydrochlorothiazide",
+    letter: "H",
+    name: "Hydrochlorothiazide",
+    practicalName: "Microzide",
+    drugClass: "Thiazide diuretic",
+    category: "Diuretic",
+    cid: 3639,
+    formula: "C7H8ClN3O4S2",
+    molecularWeight: 297.74,
+    molecularWeightLabel: "297.74 g/mol",
+    discovered: "Developed by Merck; approved for medical use 1959",
+    mechanism:
+      "Blocks sodium reabsorption in the kidneys, causing more sodium — and the water that follows it — to be excreted in urine, which lowers blood volume and blood pressure.",
+    history:
+      "One of the first practical oral diuretics, hydrochlorothiazide became a foundational blood pressure medication and remains one of the most commonly prescribed drugs in the world today.",
+    hazards:
+      "Can cause electrolyte imbalances, particularly low potassium and sodium. Increases sensitivity to sunlight and can raise blood sugar and uric acid levels.",
+  },
+  {
+    slug: "furosemide",
+    letter: "F",
+    name: "Furosemide",
+    practicalName: "Lasix",
+    drugClass: "Loop diuretic",
+    category: "Diuretic",
+    cid: 3440,
+    formula: "C12H11ClN2O5S",
+    molecularWeight: 330.74,
+    molecularWeightLabel: "330.74 g/mol",
+    discovered: "Developed by Hoechst AG; approved for medical use 1966",
+    mechanism:
+      "Blocks sodium and chloride reabsorption in the loop of Henle, a section of the kidney's filtering system, producing a much stronger and faster diuretic effect than thiazides like hydrochlorothiazide.",
+    history:
+      "Its rapid, powerful effect made furosemide the go-to diuretic for emergency fluid overload situations, such as acute heart failure, where a slower-acting thiazide wouldn't act quickly enough.",
+    hazards:
+      "Can cause significant electrolyte loss and dehydration if not monitored. Rapid fluid loss can also affect blood pressure and kidney function.",
+  },
+  {
+    slug: "albuterol",
+    letter: "A",
+    name: "Albuterol",
+    practicalName: "Salbutamol · Ventolin",
+    drugClass: "Short-acting beta-2 agonist",
+    category: "Bronchodilator",
+    cid: 2083,
+    formula: "C13H21NO3",
+    molecularWeight: 239.31,
+    molecularWeightLabel: "239.31 g/mol",
+    discovered: "Developed in the UK; approved for use 1968",
+    mechanism:
+      "Activates beta-2 adrenergic receptors in the smooth muscle lining the airways, causing them to relax and open up — providing fast relief during an asthma flare-up or bronchospasm.",
+    history:
+      "Its selectivity for beta-2 (airway) receptors over beta-1 (heart) receptors made it a much safer rescue inhaler than earlier bronchodilators, which often caused unwanted heart-racing side effects.",
+    hazards:
+      "Overuse can cause tremor, rapid heartbeat, and jitteriness. Relying on it too frequently is generally a sign that a person's underlying asthma isn't well controlled.",
+  },
+  {
+    slug: "salmeterol",
+    letter: "S",
+    name: "Salmeterol",
+    practicalName: "Serevent",
+    drugClass: "Long-acting beta-2 agonist",
+    category: "Bronchodilator",
+    cid: 5152,
+    formula: "C25H37NO4",
+    molecularWeight: 415.57,
+    molecularWeightLabel: "415.57 g/mol",
+    discovered: "Developed by Allen & Hanburys (GlaxoSmithKline); approved for use 1994",
+    mechanism:
+      "Activates the same beta-2 receptors as albuterol, but its longer molecular tail anchors it in the airway tissue, giving it an effect that lasts around 12 hours instead of a few.",
+    history:
+      "Designed for long-term asthma and COPD control rather than emergency relief, salmeterol is typically paired with an inhaled corticosteroid rather than used as a standalone rescue inhaler.",
+    hazards:
+      "Carries a boxed warning against use as a standalone asthma treatment, since long-acting beta agonists used alone have been linked to an increased risk of severe asthma episodes.",
   },
 
 ];
