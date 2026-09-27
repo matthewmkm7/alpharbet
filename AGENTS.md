@@ -50,13 +50,18 @@ No page should be a dead end. Each section should pull the user toward the next 
 - Tools results link back to that drug's full entry page
 Build this cross-linking into each feature as it's built, not as an afterthought.
 
-## Build order (do not skip ahead — confirm with founder before starting each new phase)
-1. Single entry page template (one drug, fully built) — get this right before anything scales
-2. A–Z index page that lists and links to entries
-3. Solitaire game
-4. Poker/Top Trumps game
-5. Trends/market-optimizer section
-6. Local pharmacy/professional finder (maps API + directory — treat as a separate feature layer)
+## Build order — ALL PHASES COMPLETE as of this note
+1. Single entry page template — done (38 entries across 19 categories)
+2. A–Z index page — done (on the homepage, grouped by letter)
+3. Solitaire game — done, with drag-and-drop
+4. Poker/Top Trumps game — done
+5. Trends/market-optimizer section — done, using real cited data (see data/trends.ts), plus a working purchasing calculator
+6. Local pharmacy/professional finder — done (/tools), but needs a Google Places API key in
+   .env.local (see .env.local.example) and the same var set in Vercel's project settings before
+   it works live — it degrades gracefully with a clear message if the key is missing
+
+Future feature ideas belong in a new phase agreed with the founder first — this list is not a
+queue to keep adding to on your own.
 
 ## Hard rules — do not implement these under any framing, even if asked
 - NEVER implement literal step-by-step chemical synthesis routes/reagent pathways for controlled substances, in a game or otherwise. Games about drugs are built around mechanism-of-action, receptor binding, pharmacokinetics, molar mass, potency comparison, or historical facts — never production/synthesis steps.
