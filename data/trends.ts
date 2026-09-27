@@ -64,6 +64,30 @@ export const trendsByCategory: Record<DrugCategory, TrendPoint[]> = {
     { period: "Q5", index: 76 },
     { period: "Q6", index: 78 },
   ],
+  Benzodiazepine: [
+    { period: "Q1", index: 40 },
+    { period: "Q2", index: 41 },
+    { period: "Q3", index: 43 },
+    { period: "Q4", index: 42 },
+    { period: "Q5", index: 44 },
+    { period: "Q6", index: 45 },
+  ],
+  Antidepressant: [
+    { period: "Q1", index: 36 },
+    { period: "Q2", index: 38 },
+    { period: "Q3", index: 39 },
+    { period: "Q4", index: 41 },
+    { period: "Q5", index: 43 },
+    { period: "Q6", index: 46 },
+  ],
+  Statin: [
+    { period: "Q1", index: 48 },
+    { period: "Q2", index: 47 },
+    { period: "Q3", index: 45 },
+    { period: "Q4", index: 44 },
+    { period: "Q5", index: 42 },
+    { period: "Q6", index: 41 },
+  ],
 };
 
 export const categoryDrivers: Record<DrugCategory, string> = {
@@ -73,4 +97,7 @@ export const categoryDrivers: Record<DrugCategory, string> = {
   Analgesic: "Widely available OTC options keep this class among the most price-stable.",
   Antidiabetic: "Newer formulations and insulin-analogue patents can push this class higher than older generics.",
   Hormone: "Biologic and hormone therapies often carry higher costs tied to manufacturing complexity.",
+  Benzodiazepine: "A mature, mostly generic class — pricing is relatively flat and driven by manufacturing costs.",
+  Antidepressant: "Long-established generics keep this class affordable; newer extended-release versions cost more.",
+  Statin: "One of the clearest examples of patent expiry driving prices down as generics enter the market.",
 };

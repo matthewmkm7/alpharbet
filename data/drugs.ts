@@ -4,7 +4,10 @@ export type DrugCategory =
   | "Antibiotic"
   | "Analgesic"
   | "Antidiabetic"
-  | "Hormone";
+  | "Hormone"
+  | "Benzodiazepine"
+  | "Antidepressant"
+  | "Statin";
 
 export type DrugEntry = {
   slug: string;
@@ -252,6 +255,121 @@ export const drugs: DrugEntry[] = [
     hazards:
       "Overdose causes hypoglycemia, which can be life-threatening if untreated. Injection sites can develop lipodystrophy (fat tissue changes) with repeated use in the same spot.",
   },
+  {
+    slug: "diazepam",
+    letter: "D",
+    name: "Diazepam",
+    practicalName: "Valium",
+    drugClass: "Benzodiazepine",
+    category: "Benzodiazepine",
+    cid: 3016,
+    formula: "C16H13ClN2O",
+    molecularWeight: 284.74,
+    molecularWeightLabel: "284.74 g/mol",
+    discovered: "Synthesized 1959 by Leo Sternbach at Hoffmann-La Roche; approved 1963",
+    mechanism:
+      "Enhances the effect of GABA, the brain's main calming neurotransmitter, by binding a site on the GABA-A receptor. This makes the receptor more responsive, producing sedation, muscle relaxation, and reduced anxiety.",
+    history:
+      "Diazepam followed close behind the first benzodiazepine, chlordiazepoxide, and quickly became one of the best-selling drugs of the 20th century as safer alternative to older sedatives like barbiturates.",
+    hazards:
+      "Long-term use carries a real risk of physical dependence and difficult withdrawal. Combining it with alcohol or opioids significantly increases the risk of dangerous respiratory depression.",
+  },
+  {
+    slug: "lorazepam",
+    letter: "L",
+    name: "Lorazepam",
+    practicalName: "Ativan",
+    drugClass: "Benzodiazepine",
+    category: "Benzodiazepine",
+    cid: 3958,
+    formula: "C15H10Cl2N2O2",
+    molecularWeight: 321.16,
+    molecularWeightLabel: "321.16 g/mol",
+    discovered: "Developed 1971 by Wyeth; approved for use in 1977",
+    mechanism:
+      "Works the same way as diazepam — boosting GABA-A receptor activity — but is metabolized more simply by the liver, which makes its effects more predictable in patients with liver impairment.",
+    history:
+      "Became a preferred option in hospital settings partly because its straightforward metabolism means it interacts with fewer other medications than older benzodiazepines.",
+    hazards:
+      "Shares the dependence and withdrawal risks common to the benzodiazepine class. Sedation and memory impairment are more pronounced at higher doses.",
+  },
+  {
+    slug: "sertraline",
+    letter: "S",
+    name: "Sertraline",
+    practicalName: "Zoloft",
+    drugClass: "SSRI antidepressant",
+    category: "Antidepressant",
+    cid: 68617,
+    formula: "C17H17Cl2N",
+    molecularWeight: 306.23,
+    molecularWeightLabel: "306.23 g/mol",
+    discovered: "Developed by Pfizer; FDA approved 1991",
+    mechanism:
+      "Blocks the reuptake transporter for serotonin, leaving more of it available in the synapse between neurons. The mood-related effects build gradually as the brain adapts, typically over several weeks.",
+    history:
+      "Part of the wave of SSRIs that reshaped depression treatment starting in the late 1980s, offering a notably safer overdose profile than the older tricyclic antidepressants they largely replaced.",
+    hazards:
+      "Common side effects include nausea and sexual dysfunction. Carries an FDA boxed warning for increased suicidal thinking in young people during early treatment. Abruptly stopping can cause withdrawal-like symptoms.",
+  },
+  {
+    slug: "fluoxetine",
+    letter: "F",
+    name: "Fluoxetine",
+    practicalName: "Prozac",
+    drugClass: "SSRI antidepressant",
+    category: "Antidepressant",
+    cid: 3386,
+    formula: "C17H18F3NO",
+    molecularWeight: 309.33,
+    molecularWeightLabel: "309.33 g/mol",
+    discovered: "Developed by Eli Lilly; FDA approved 1987",
+    mechanism:
+      "Like sertraline, blocks serotonin reuptake — but its very long half-life means it clears the body slowly, which can soften withdrawal effects when treatment stops.",
+    history:
+      "The first SSRI to reach the US market, fluoxetine's arrival is widely credited with normalizing depression treatment and dramatically expanding how many people sought care for it.",
+    hazards:
+      "Same boxed warning as other SSRIs for suicidal thinking in younger patients. Its long half-life means side effects can persist for weeks after stopping.",
+  },
+  {
+    slug: "atorvastatin",
+    letter: "A",
+    name: "Atorvastatin",
+    practicalName: "Lipitor",
+    drugClass: "Statin",
+    category: "Statin",
+    cid: 60823,
+    formula: "C33H35FN2O5",
+    molecularWeight: 558.64,
+    molecularWeightLabel: "558.64 g/mol",
+    discovered: "Developed by Warner-Lambert (later Pfizer); FDA approved 1996",
+    mechanism:
+      "Blocks HMG-CoA reductase, the liver enzyme that controls the rate-limiting step of cholesterol production, which in turn prompts liver cells to pull more LDL cholesterol out of the bloodstream.",
+    history:
+      "Went on to become the best-selling drug in pharmaceutical history for a period, on the strength of large trials showing it reduced heart attacks and strokes in a wide range of patients.",
+    hazards:
+      "Can cause muscle pain and, rarely, serious muscle breakdown (rhabdomyolysis). Requires liver-function monitoring, and interacts with several other common medications.",
+  },
+  {
+    slug: "simvastatin",
+    letter: "S",
+    name: "Simvastatin",
+    practicalName: "Zocor",
+    drugClass: "Statin",
+    category: "Statin",
+    cid: 54454,
+    formula: "C25H38O5",
+    molecularWeight: 418.57,
+    molecularWeightLabel: "418.57 g/mol",
+    discovered: "Developed by Merck; FDA approved 1991",
+    mechanism:
+      "Works the same way as atorvastatin, inhibiting HMG-CoA reductase, but is given as an inactive prodrug that the liver converts into its active form after absorption.",
+    history:
+      "One of the earliest statins to demonstrate a clear survival benefit in large clinical trials, helping establish cholesterol-lowering drugs as a mainstay of heart disease prevention.",
+    hazards:
+      "Same muscle-related and liver-monitoring concerns as other statins, with a particularly notable interaction risk when combined with grapefruit juice.",
+  },
+
 ];
 
 export function getDrugBySlug(slug: string) {

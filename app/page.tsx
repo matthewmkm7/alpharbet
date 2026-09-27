@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { drugs } from "@/data/drugs";
 
 const GAMES = [
   {
@@ -13,14 +14,20 @@ const GAMES = [
   },
 ];
 
-const AUDIENCE = [
-  "Pharmacy students prepping for board exams",
-  "Nursing students learning drug classes and interactions",
-  "Pre-med and med students building a foundation early",
-  "Anyone who's tried flashcards and wants something that sticks",
-];
+// Group entries by their starting letter for the index below.
+function groupByLetter() {
+  const groups = new Map<string, typeof drugs>();
+  for (const drug of [...drugs].sort((a, b) => a.name.localeCompare(b.name))) {
+    const group = groups.get(drug.letter) ?? [];
+    group.push(drug);
+    groups.set(drug.letter, group);
+  }
+  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
+}
 
 export default function Home() {
+  const letterGroups = groupByLetter();
+
   return (
     <div className="wrap">
       <section className="page-intro">
@@ -44,7 +51,6 @@ export default function Home() {
         <div className="section-head">
           <div className="eyebrow-line mono">Study through play</div>
           <h2>Games built around how drugs actually behave.</h2>
-          <p>No new rules to learn — familiar games, restrung around pharmacology instead of chance.</p>
         </div>
         <div className="game-grid">
           {GAMES.map((game) => (
@@ -59,29 +65,30 @@ export default function Home() {
 
       <hr className="divider" />
 
-      <section id="audience">
-        <div className="audience-band">
-          <div>
-            <div className="eyebrow-line mono">Who it&apos;s for</div>
-            <h2>Built first for the people who have to know this cold.</h2>
-            <p>
-              Pharmacology is memorization-heavy by nature. Alpharbet starts with the students
-              carrying the heaviest load of it.
-            </p>
-          </div>
-          <ul className="audience-list">
-            {AUDIENCE.map((item) => (
-              <li key={item}>
-                <span className="mark mono">→</span> {item}
-              </li>
-            ))}
-          </ul>
+      <section id="index">
+        <div className="section-head">
+          <div className="eyebrow-line mono">The index</div>
+          <h2>{drugs.length} entries and counting.</h2>
+        </div>
+        <div className="index-grid">
+          {letterGroups.map(([letter, group]) => (
+            <div className="index-letter-group" key={letter}>
+              <div className="index-letter mono">{letter}</div>
+              <ul>
+                {group.map((drug) => (
+                  <li key={drug.slug}>
+                    <Link href={`/entries/${drug.slug}`}>{drug.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
       <footer>
-        <div>Alpharbet® — built one entry at a time.</div>
-        <div>A–Z, from Amoxicillin onward.</div>
+        <div>Alpharbet</div>
+        <div>{drugs.length} entries, A–Z</div>
       </footer>
     </div>
   );

@@ -173,25 +173,28 @@ section { padding: 60px 0; }
 .game-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
 .game-card p { color: var(--text-dim); font-size: 0.94rem; }
 
-/* ---------- Audience band ---------- */
-.audience-band {
-  background: var(--bg-elevated); color: var(--text); border-radius: 8px; padding: 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-  border: 1px solid var(--line);
+/* ---------- A-Z index ---------- */
+.index-grid {
+  columns: 5 200px;
+  column-gap: 32px;
 }
-.audience-band h2 { color: var(--text); }
-.audience-band .eyebrow-line { color: var(--accent-green); }
-.audience-band p { color: var(--text-dim); }
-.audience-list { list-style: none; }
-.audience-list li {
-  padding: 14px 0; border-top: 1px solid var(--line); font-size: 0.96rem;
-  display: flex; gap: 14px;
+.index-letter-group {
+  break-inside: avoid;
+  margin-bottom: 26px;
 }
-.audience-list li:last-child { border-bottom: 1px solid var(--line); }
-.audience-list .mark {
-  font-family: 'IBM Plex Mono', monospace; color: var(--accent-magenta); font-size: 0.85rem;
-  flex-shrink: 0; padding-top: 2px;
+.index-letter {
+  color: var(--accent-magenta);
+  font-size: 0.82rem;
+  margin-bottom: 8px;
 }
+.index-letter-group ul { list-style: none; }
+.index-letter-group li { margin-bottom: 6px; }
+.index-letter-group a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.index-letter-group a:hover { color: var(--accent-green); }
 
 footer {
   border-top: 1px solid var(--line); padding: 32px 0;
@@ -276,6 +279,9 @@ footer a:hover { color: var(--text); }
 .category-badge.cat-stimulant { background: #3F6FB3; }
 .category-badge.cat-antibiotic { background: #2E9E8F; }
 .category-badge.cat-analgesic { background: #C98A2E; }
+.category-badge.cat-benzodiazepine { background: #7A5FA6; }
+.category-badge.cat-antidepressant { background: #4E8F8A; }
+.category-badge.cat-statin { background: #A6673F; }
 
 .solitaire-cards { display: flex; flex-direction: column; gap: 10px; }
 .solitaire-cards-sorted { margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); }
@@ -335,7 +341,7 @@ footer a:hover { color: var(--text); }
 
 @media (max-width: 860px) {
   .game-grid { grid-template-columns: 1fr; }
-  .audience-band { grid-template-columns: 1fr; padding: 32px 24px; }
+  .index-grid { columns: 2 160px; }
   .entry-grid { grid-template-columns: 1fr; }
   .entry-side { position: static; }
   .site-nav { display: none; }

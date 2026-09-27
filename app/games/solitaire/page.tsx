@@ -14,7 +14,15 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 // Only categories with enough cards to make sorting meaningful become lanes.
-const LANE_CATEGORIES: DrugCategory[] = ["Opioid", "Stimulant", "Antibiotic", "Analgesic"];
+const LANE_CATEGORIES: DrugCategory[] = [
+  "Opioid",
+  "Stimulant",
+  "Antibiotic",
+  "Analgesic",
+  "Benzodiazepine",
+  "Antidepressant",
+  "Statin",
+];
 
 type LaneState = {
   category: DrugCategory;
