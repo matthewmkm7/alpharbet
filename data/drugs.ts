@@ -765,3 +765,9 @@ export const drugs: DrugEntry[] = [
 export function getDrugBySlug(slug: string) {
   return drugs.find((d) => d.slug === slug);
 }
+
+// Turns "ACE Inhibitor" into "ace-inhibitor" so it can be used as a CSS class
+// suffix (category-badge.cat-ace-inhibitor) without hand-slugging every name.
+export function categorySlug(category: DrugCategory): string {
+  return category.toLowerCase().replace(/\s+/g, "-");
+}

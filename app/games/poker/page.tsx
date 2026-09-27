@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { drugs, type DrugEntry } from "@/data/drugs";
+import { drugs, categorySlug, type DrugEntry } from "@/data/drugs";
 
 type Stat = "weight" | "age";
 
@@ -36,6 +36,32 @@ function dealDecks() {
   const shuffled = shuffle(drugs);
   const mid = Math.ceil(shuffled.length / 2);
   return { player: shuffled.slice(0, mid), computer: shuffled.slice(mid) };
+}
+
+// A small fanned stack of card-backs standing in for "cards remaining" —
+// caps at 4 layers so a deck of 19 doesn't turn into a wall of divs.
+function DeckStack({ count, label }: { count: number; label: string }) {
+  const layers = Math.max(1, Math.min(4, count));
+  return (
+    <div className="deck-stack" aria-label={`${label}: ${count} cards`}>
+      <div className="deck-stack-cards" style={{ "--layers": layers } as React.CSSProperties}>
+        {Array.from({ length: layers }).map((_, i) => (
+          <div key={i} className="deck-stack-card" style={{ "--i": i } as React.CSSProperties} />
+        ))}
+      </div>
+      <div className="deck-stack-count mono">{count}</div>
+      <div className="deck-stack-label mono">{label}</div>
+    </div>
+  );
+}
+
+function CardBack() {
+  return (
+    <div className="poker-card-back">
+      <div className="poker-card-back-pattern" />
+      <span className="poker-card-back-mark mono">A</span>
+    </div>
+  );
 }
 
 type RoundResult = {
@@ -105,46 +131,61 @@ export default function PokerPage() {
           Pick a stat from your top card. Highest value wins both cards. No betting, no bluffing —
           just the numbers, and a fact about whichever drug comes out on top.
         </p>
-        {!gameOver && (
-          <div className="solitaire-status mono">
-            Round {round} · You hold {decks.player.length} · Opponent holds {decks.computer.length}
-          </div>
-        )}
       </div>
 
       {!gameOver && playerCard && computerCard && (
-        <div className="wrap poker-arena">
-          <div className="poker-face-off">
-            <div className="poker-slot">
-              <div className="poker-slot-label mono">Your card</div>
-              <div className="poker-card">
-                <span className="solitaire-card-name">{playerCard.name}</span>
-                <span className="solitaire-card-class mono">{playerCard.drugClass}</span>
-                <div className="poker-stats">
-                  {(Object.keys(STAT_LABELS) as Stat[]).map((stat) => (
-                    <button
-                      key={stat}
-                      type="button"
-                      className="poker-stat-btn"
-                      disabled={!!result}
-                      onClick={() => playStat(stat)}
-                    >
-                      <span>{STAT_LABELS[stat]}</span>
-                      <span className="mono">{statValue(playerCard, stat).toFixed(stat === "weight" ? 1 : 0)}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+        <div className="poker-table-wrap">
+          <div className="poker-table">
+            <div className="poker-decks-row">
+              <DeckStack count={decks.player.length} label="You" />
+              <div className="poker-round-badge mono">Round {round}</div>
+              <DeckStack count={decks.computer.length} label="Opponent" />
             </div>
 
-            <div className="poker-vs mono">VS</div>
+            <div className="poker-face-off">
+              <div className="poker-slot">
+                <div className="poker-slot-label mono">Your card</div>
+                <div
+                  className={`poker-card${
+                    result ? (result.winner === "player" ? " is-winner" : result.winner === "computer" ? " is-loser" : "") : ""
+                  }`}
+                >
+                  <span className={`category-badge cat-${categorySlug(playerCard.category)}`}>
+                    {playerCard.category}
+                  </span>
+                  <span className="solitaire-card-name poker-card-name">{playerCard.name}</span>
+                  <span className="solitaire-card-class mono">{playerCard.drugClass}</span>
+                  <div className="poker-stats">
+                    {(Object.keys(STAT_LABELS) as Stat[]).map((stat) => (
+                      <button
+                        key={stat}
+                        type="button"
+                        className={`poker-stat-btn${result?.stat === stat ? " is-battled" : ""}`}
+                        disabled={!!result}
+                        onClick={() => playStat(stat)}
+                      >
+                        <span>{STAT_LABELS[stat]}</span>
+                        <span className="mono">{statValue(playerCard, stat).toFixed(stat === "weight" ? 1 : 0)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-            <div className="poker-slot">
-              <div className="poker-slot-label mono">Opponent&apos;s card</div>
-              <div className={`poker-card${result ? "" : " is-hidden"}`}>
+              <div className="poker-vs mono">VS</div>
+
+              <div className="poker-slot">
+                <div className="poker-slot-label mono">Opponent&apos;s card</div>
                 {result ? (
-                  <>
-                    <span className="solitaire-card-name">{computerCard.name}</span>
+                  <div
+                    className={`poker-card poker-flip-in${
+                      result.winner === "computer" ? " is-winner" : result.winner === "player" ? " is-loser" : ""
+                    }`}
+                  >
+                    <span className={`category-badge cat-${categorySlug(computerCard.category)}`}>
+                      {computerCard.category}
+                    </span>
+                    <span className="solitaire-card-name poker-card-name">{computerCard.name}</span>
                     <span className="solitaire-card-class mono">{computerCard.drugClass}</span>
                     <div className="poker-stats">
                       {(Object.keys(STAT_LABELS) as Stat[]).map((stat) => (
@@ -154,31 +195,33 @@ export default function PokerPage() {
                         </div>
                       ))}
                     </div>
-                  </>
+                  </div>
                 ) : (
-                  <div className="poker-card-back mono">face down</div>
+                  <div className="poker-card is-hidden">
+                    <CardBack />
+                  </div>
                 )}
               </div>
             </div>
-          </div>
 
-          {result && (
-            <div className="poker-result">
-              <div className="poker-result-headline">
-                {result.winner === "tie"
-                  ? "Tie — both cards return to their decks."
-                  : result.winner === "player"
-                    ? "You win this round."
-                    : "Opponent wins this round."}
+            {result && (
+              <div className="poker-result">
+                <div className={`poker-result-headline${result.winner !== "tie" ? ` is-${result.winner}` : ""}`}>
+                  {result.winner === "tie"
+                    ? "Tie — both cards return to their decks."
+                    : result.winner === "player"
+                      ? "You win this round."
+                      : "Opponent wins this round."}
+                </div>
+                <p className="poker-fact">
+                  <span className="eyebrow-line mono">Reveal</span> {result.fact}
+                </p>
+                <button type="button" className="btn-primary" onClick={nextRound}>
+                  Next round
+                </button>
               </div>
-              <p className="poker-fact">
-                <span className="eyebrow-line mono">Reveal</span> {result.fact}
-              </p>
-              <button type="button" className="btn-primary" onClick={nextRound}>
-                Next round
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
 

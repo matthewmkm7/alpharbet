@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { drugs, type DrugEntry, type DrugCategory } from "@/data/drugs";
+import { drugs, categorySlug, type DrugEntry, type DrugCategory } from "@/data/drugs";
 
 function shuffle<T>(arr: T[]): T[] {
   const copy = [...arr];
@@ -136,7 +136,7 @@ export default function SolitairePage() {
                 onDrop={(e) => handleDropOnLane(e, lane.category)}
               >
                 <div className="solitaire-lane-header">
-                  <span className={`category-badge cat-${lane.category.toLowerCase()}`}>
+                  <span className={`category-badge cat-${categorySlug(lane.category)}`}>
                     {lane.category}
                   </span>
                   <span className="solitaire-lane-count mono">
@@ -164,12 +164,12 @@ export default function SolitairePage() {
                 </div>
 
                 {lane.sorted.length > 0 && (
-                  <div className="solitaire-cards solitaire-cards-sorted">
-                    {lane.sorted.map((drug) => (
+                  <div className="solitaire-cards-sorted">
+                    {lane.sorted.map((drug, i) => (
                       <div key={drug.slug} className="solitaire-sorted-card">
+                        <span className="solitaire-sorted-index mono">{i + 1}</span>
                         <span className="solitaire-card-name">{drug.name}</span>
                         <span className="solitaire-card-class mono">{drug.molecularWeightLabel}</span>
-                        <span className="solitaire-fact">{drug.history.split(".")[0]}.</span>
                       </div>
                     ))}
                   </div>
