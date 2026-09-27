@@ -3,47 +3,12 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { drugs, type DrugEntry } from "@/data/drugs";
-import { trendsByCategory, categoryDrivers, ILLUSTRATIVE_NOTE } from "@/data/trends";
-
-function TrendChart({ points }: { points: { period: string; index: number }[] }) {
-  const width = 560;
-  const height = 200;
-  const pad = 28;
-  const max = 100;
-
-  const stepX = (width - pad * 2) / (points.length - 1);
-  const coords = points.map((p, i) => ({
-    x: pad + i * stepX,
-    y: height - pad - (p.index / max) * (height - pad * 2),
-  }));
-  const path = coords.map((c, i) => `${i === 0 ? "M" : "L"}${c.x.toFixed(1)},${c.y.toFixed(1)}`).join(" ");
-
-  return (
-    <svg viewBox={`0 0 ${width} ${height}`} width="100%" height={height} role="img" aria-label="Illustrative price index trend">
-      {/* baseline grid */}
-      {[0, 25, 50, 75, 100].map((mark) => {
-        const y = height - pad - (mark / max) * (height - pad * 2);
-        return (
-          <line key={mark} x1={pad} y1={y} x2={width - pad} y2={y} stroke="var(--line)" strokeWidth={1} />
-        );
-      })}
-      <path d={path} fill="none" stroke="var(--accent-green)" strokeWidth={2.5} />
-      {coords.map((c, i) => (
-        <circle key={i} cx={c.x} cy={c.y} r={4} fill="var(--accent-magenta)" />
-      ))}
-      {points.map((p, i) => (
-        <text key={p.period} x={coords[i].x} y={height - 6} fontSize={11} textAnchor="middle" fill="var(--text-faint)">
-          {p.period}
-        </text>
-      ))}
-    </svg>
-  );
-}
+import { macroStats, spotlightFacts, categoryDrivers, sources } from "@/data/trends";
 
 export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
   const [slug, setSlug] = useState(initialSlug);
   const drug = useMemo<DrugEntry>(() => drugs.find((d) => d.slug === slug) ?? drugs[0], [slug]);
-  const points = trendsByCategory[drug.category];
+  const spotlight = spotlightFacts[drug.slug];
 
   // Purchasing efficiency calculator — real arithmetic on whatever the user enters.
   const [packagePrice, setPackagePrice] = useState("20");
@@ -61,8 +26,23 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
     <div className="trends-page">
       <div className="wrap">
         <div className="eyebrow-line mono">Trends</div>
-        <h1>Pricing trends by drug class.</h1>
-        <p className="trends-note mono">{ILLUSTRATIVE_NOTE}</p>
+        <h1>What's actually happening with drug prices.</h1>
+        <p className="trends-note mono">
+          Real, cited figures — not invented numbers.{" "}
+          <a href={sources[0].url} target="_blank" rel="noreferrer">
+            Source: {sources[0].title}
+          </a>
+        </p>
+
+        <div className="trends-stat-grid">
+          {macroStats.map((stat) => (
+            <div className="trends-stat-tile" key={stat.label}>
+              <div className="trends-stat-value mono">{stat.value}</div>
+              <div className="trends-stat-label">{stat.label}</div>
+              <div className="trends-stat-note">{stat.note}</div>
+            </div>
+          ))}
+        </div>
 
         <div className="trends-chart-card">
           <label className="mono" style={{ display: "block", marginBottom: 14, fontSize: "0.82rem" }}>
@@ -79,10 +59,17 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
               ))}
             </select>
           </label>
-          <TrendChart points={points} />
-          <p style={{ color: "var(--text-dim)", fontSize: "0.9rem", marginTop: 10 }}>
-            {categoryDrivers[drug.category]}
-          </p>
+
+          {spotlight ? (
+            <div className="trends-spotlight">
+              <p>{spotlight.fact}</p>
+              <a href={spotlight.source.url} target="_blank" rel="noreferrer" className="mono">
+                Source: {spotlight.source.title}
+              </a>
+            </div>
+          ) : (
+            <p style={{ color: "var(--text-dim)", fontSize: "0.95rem" }}>{categoryDrivers[drug.category]}</p>
+          )}
         </div>
 
         <div className="trends-calc-card">
@@ -113,6 +100,19 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           <div className="eyebrow-line mono">Find it nearby</div>
           <p>Locate pharmacies and professionals near you.</p>
           <span className="btn-primary btn-disabled">Find nearby — coming soon</span>
+        </div>
+
+        <div className="trends-sources">
+          <div className="eyebrow-line mono">Sources</div>
+          <ul>
+            {sources.map((s) => (
+              <li key={s.url}>
+                <a href={s.url} target="_blank" rel="noreferrer">
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <p style={{ marginTop: 28 }}>

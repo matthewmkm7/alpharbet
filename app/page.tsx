@@ -6,11 +6,13 @@ const GAMES = [
     label: "GAME 01",
     title: "Solitaire",
     body: "Sort compounds into sequence — by molar mass, by class, by potency — to clear the board.",
+    href: "/games/solitaire",
   },
   {
     label: "GAME 02",
     title: "Poker",
-    body: "Compare drug stat-cards head to head — potency, molar mass, discovery era — and see what each reveal teaches you.",
+    body: "Compare drug stat-cards head to head — molecular weight, years on the market — and see what each reveal teaches you.",
+    href: "/games/poker",
   },
 ];
 
@@ -54,11 +56,11 @@ export default function Home() {
         </div>
         <div className="game-grid">
           {GAMES.map((game) => (
-            <div className="game-card" key={game.label}>
+            <Link href={game.href} className="game-card" key={game.label}>
               <div className="g-label mono">{game.label}</div>
               <h3>{game.title}</h3>
               <p>{game.body}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

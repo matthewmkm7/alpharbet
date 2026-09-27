@@ -166,7 +166,8 @@ section { padding: 60px 0; }
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
   background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
 }
-.game-card { background: var(--bg-elevated); padding: 34px 28px; }
+.game-card { background: var(--bg-elevated); padding: 34px 28px; display: block; text-decoration: none; color: inherit; transition: background 0.15s ease; }
+.game-card:hover { background: var(--bg); }
 .game-card .g-label {
   font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--accent-green); margin-bottom: 16px;
 }
@@ -320,6 +321,45 @@ footer a:hover { color: var(--text); }
   75% { transform: translateX(4px); }
 }
 
+/* ---------- Poker (Top Trumps-style) ---------- */
+.poker-page { padding: 48px 0 100px; }
+.poker-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
+.poker-arena { margin-top: 32px; }
+.poker-face-off {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.poker-slot { display: flex; flex-direction: column; gap: 10px; }
+.poker-slot-label { color: var(--text-faint); font-size: 0.78rem; }
+.poker-vs { color: var(--text-faint); font-size: 1.4rem; align-self: center; margin-top: 40px; }
+.poker-card {
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 10px;
+  padding: 20px; min-height: 180px;
+}
+.poker-card.is-hidden { display: flex; align-items: center; justify-content: center; }
+.poker-card-back { color: var(--text-faint); }
+.poker-stats { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.poker-stat-btn {
+  all: unset; cursor: pointer; display: flex; justify-content: space-between; gap: 12px;
+  padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; font-size: 0.9rem;
+  color: var(--text); transition: border-color 0.15s ease, background 0.15s ease;
+}
+.poker-stat-btn:hover:not(:disabled) { border-color: var(--accent-green); background: var(--bg); }
+.poker-stat-btn:disabled { cursor: default; opacity: 0.6; }
+.poker-stat-row {
+  display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 6px; font-size: 0.9rem; color: var(--text-dim);
+}
+.poker-stat-row.is-battled { border-color: var(--accent-magenta); color: var(--text); }
+.poker-result {
+  margin-top: 28px; padding: 24px; background: var(--bg-elevated); border: 1px solid var(--line);
+  border-radius: 10px; text-align: center;
+}
+.poker-result-headline { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
+.poker-fact { color: var(--text-dim); font-size: 0.94rem; margin-bottom: 18px; max-width: 62ch; margin-inline: auto; }
+
 /* ---------- Trends ---------- */
 .trends-page { padding: 48px 0 100px; }
 .trends-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
@@ -331,6 +371,26 @@ footer a:hover { color: var(--text); }
   background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 10px;
   padding: 28px; margin-bottom: 32px;
 }
+.trends-note a { color: var(--accent-green); }
+.trends-stat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+  margin-bottom: 32px;
+}
+.trends-stat-tile { background: var(--bg-elevated); padding: 24px 20px; }
+.trends-stat-value { font-size: 1.8rem; color: var(--accent-green); margin-bottom: 8px; }
+.trends-stat-label { font-size: 0.88rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
+.trends-stat-note { font-size: 0.8rem; color: var(--text-faint); }
+.trends-spotlight {
+  border-left: 2px solid var(--accent-magenta); padding-left: 16px; margin-top: 6px;
+}
+.trends-spotlight p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px; }
+.trends-spotlight a { color: var(--accent-green); font-size: 0.78rem; }
+.trends-sources { margin-top: 8px; margin-bottom: 24px; }
+.trends-sources ul { list-style: none; margin-top: 10px; }
+.trends-sources li { margin-bottom: 6px; }
+.trends-sources a { color: var(--accent-green); font-size: 0.88rem; text-decoration: none; }
+.trends-sources a:hover { text-decoration: underline; }
 .trends-calc-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 20px 0; }
 .trends-calc-row label { display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: var(--text-dim); }
 .trends-calc-row input {
@@ -347,4 +407,5 @@ footer a:hover { color: var(--text); }
   .site-nav { display: none; }
   .solitaire-table { grid-template-columns: 1fr; padding: 20px 16px; }
   .page-intro-actions { flex-direction: column; }
+  .trends-stat-grid { grid-template-columns: 1fr; }
 }

@@ -1,93 +1,55 @@
 import type { DrugCategory } from "./drugs";
 
 /**
- * Illustrative pricing-trend data ONLY.
- *
- * These are sample index values (not real historical prices) used to show what
- * the Trends chart looks like before real pricing-source data is wired in.
- * Never present these numbers as actual market prices — see CLAUDE.md hard rules.
+ * Trends content. The macro stats and spotlight facts below are real, cited
+ * figures — not invented data. See CLAUDE.md hard rules: never present made-up
+ * numbers as real market data.
  */
-export type TrendPoint = {
-  period: string; // e.g. "Q1 2024"
-  index: number; // relative price index, illustrative only, 0-100 scale
+
+export type Source = { title: string; url: string };
+
+export type MacroStat = {
+  value: string;
+  label: string;
+  note: string;
 };
 
-export const ILLUSTRATIVE_NOTE =
-  "Illustrative sample data — not real historical pricing. Live market data isn't wired in yet.";
+export const macroStats: MacroStat[] = [
+  {
+    value: "−1.4%",
+    label: "Avg. brand-name drug price change, 2024",
+    note: "The first year-over-year decline in the report's 20-year history.",
+  },
+  {
+    value: "~$13,000",
+    label: "Avg. annual cost of a brand-name drug, 2024",
+    note: "Across the widely-used drugs the report tracks for older Americans.",
+  },
+  {
+    value: "3 in 4",
+    label: "Brand-name drugs that still rose in price in 2024",
+    note: "The average decline masks a lot of individual increases.",
+  },
+];
 
-export const trendsByCategory: Record<DrugCategory, TrendPoint[]> = {
-  Opioid: [
-    { period: "Q1", index: 58 },
-    { period: "Q2", index: 61 },
-    { period: "Q3", index: 64 },
-    { period: "Q4", index: 63 },
-    { period: "Q5", index: 67 },
-    { period: "Q6", index: 70 },
-  ],
-  Stimulant: [
-    { period: "Q1", index: 44 },
-    { period: "Q2", index: 47 },
-    { period: "Q3", index: 45 },
-    { period: "Q4", index: 50 },
-    { period: "Q5", index: 53 },
-    { period: "Q6", index: 55 },
-  ],
-  Antibiotic: [
-    { period: "Q1", index: 30 },
-    { period: "Q2", index: 29 },
-    { period: "Q3", index: 31 },
-    { period: "Q4", index: 33 },
-    { period: "Q5", index: 32 },
-    { period: "Q6", index: 34 },
-  ],
-  Analgesic: [
-    { period: "Q1", index: 22 },
-    { period: "Q2", index: 23 },
-    { period: "Q3", index: 24 },
-    { period: "Q4", index: 24 },
-    { period: "Q5", index: 26 },
-    { period: "Q6", index: 27 },
-  ],
-  Antidiabetic: [
-    { period: "Q1", index: 51 },
-    { period: "Q2", index: 54 },
-    { period: "Q3", index: 57 },
-    { period: "Q4", index: 60 },
-    { period: "Q5", index: 62 },
-    { period: "Q6", index: 65 },
-  ],
-  Hormone: [
-    { period: "Q1", index: 68 },
-    { period: "Q2", index: 70 },
-    { period: "Q3", index: 71 },
-    { period: "Q4", index: 74 },
-    { period: "Q5", index: 76 },
-    { period: "Q6", index: 78 },
-  ],
-  Benzodiazepine: [
-    { period: "Q1", index: 40 },
-    { period: "Q2", index: 41 },
-    { period: "Q3", index: 43 },
-    { period: "Q4", index: 42 },
-    { period: "Q5", index: 44 },
-    { period: "Q6", index: 45 },
-  ],
-  Antidepressant: [
-    { period: "Q1", index: 36 },
-    { period: "Q2", index: 38 },
-    { period: "Q3", index: 39 },
-    { period: "Q4", index: 41 },
-    { period: "Q5", index: 43 },
-    { period: "Q6", index: 46 },
-  ],
-  Statin: [
-    { period: "Q1", index: 48 },
-    { period: "Q2", index: 47 },
-    { period: "Q3", index: 45 },
-    { period: "Q4", index: 44 },
-    { period: "Q5", index: 42 },
-    { period: "Q6", index: 41 },
-  ],
+// Per-drug callouts, keyed by slug — used when the selected drug has a specific,
+// real, cited fact worth surfacing instead of just the category-level note.
+export const spotlightFacts: Record<string, { fact: string; source: Source }> = {
+  insulin: {
+    fact: "Insulin was one of the specific drug types credited with driving 2024's overall price decline, alongside asthma inhalers — after years of public and political pressure over insulin affordability.",
+    source: {
+      title: "AARP Rx Price Watch Report, 2026",
+      url: "https://www.aarp.org/press/releases/2026-02-12-rx-price-watch-report.html",
+    },
+  },
+  atorvastatin: {
+    fact: "Generic atorvastatin is widely available for around $4 a month under long-running pharmacy discount-generic programs — a direct result of patent expiry opening the drug up to heavy generic competition.",
+    source: { title: "GoodRx — Atorvastatin pricing", url: "https://www.goodrx.com/atorvastatin" },
+  },
+  simvastatin: {
+    fact: "Like atorvastatin, simvastatin has been off-patent for years and is commonly stocked in $4-generic pharmacy programs, making the statin class one of the cheapest drug categories on this site.",
+    source: { title: "GoodRx — statins pricing", url: "https://www.goodrx.com/classes/statins" },
+  },
 };
 
 export const categoryDrivers: Record<DrugCategory, string> = {
@@ -95,9 +57,17 @@ export const categoryDrivers: Record<DrugCategory, string> = {
   Stimulant: "Pricing here is sensitive to annual DEA production quotas, which cap total supply.",
   Antibiotic: "Generally low-cost and generic; prices move mostly with raw-material and manufacturing costs.",
   Analgesic: "Widely available OTC options keep this class among the most price-stable.",
-  Antidiabetic: "Newer formulations and insulin-analogue patents can push this class higher than older generics.",
+  Antidiabetic: "Insulin aside, older oral antidiabetics like metformin are long-generic and inexpensive.",
   Hormone: "Biologic and hormone therapies often carry higher costs tied to manufacturing complexity.",
   Benzodiazepine: "A mature, mostly generic class — pricing is relatively flat and driven by manufacturing costs.",
   Antidepressant: "Long-established generics keep this class affordable; newer extended-release versions cost more.",
   Statin: "One of the clearest examples of patent expiry driving prices down as generics enter the market.",
 };
+
+export const sources: Source[] = [
+  {
+    title: "AARP Rx Price Watch Report — Trends in Retail Prices of Brand-Name Prescription Drugs (2026)",
+    url: "https://www.aarp.org/press/releases/2026-02-12-rx-price-watch-report.html",
+  },
+  { title: "GoodRx — Atorvastatin pricing", url: "https://www.goodrx.com/atorvastatin" },
+];
