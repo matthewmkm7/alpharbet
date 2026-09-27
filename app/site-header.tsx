@@ -7,7 +7,9 @@ import { drugs } from "@/data/drugs";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/games/solitaire", label: "Solitaire" },
+  { href: "/games/poker", label: "Poker" },
   { href: "/trends", label: "Trends" },
+  { href: "/tools", label: "Tools" },
 ];
 
 export default function SiteHeader() {

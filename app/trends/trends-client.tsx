@@ -99,7 +99,7 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
         <div className="entry-side-card" style={{ maxWidth: 480 }}>
           <div className="eyebrow-line mono">Find it nearby</div>
           <p>Locate pharmacies and professionals near you.</p>
-          <span className="btn-primary btn-disabled">Find nearby — coming soon</span>
+          <Link href="/tools" className="btn-primary btn-link">Find nearby</Link>
         </div>
 
         <div className="trends-sources">

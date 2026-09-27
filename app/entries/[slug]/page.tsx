@@ -74,7 +74,7 @@ export default async function EntryPage({
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Find it nearby</div>
             <p>Locate pharmacies and professionals near you.</p>
-            <span className="btn-primary btn-disabled">Find nearby — coming soon</span>
+            <Link href="/tools" className="btn-primary btn-link">Find nearby</Link>
           </div>
         </aside>
       </div>

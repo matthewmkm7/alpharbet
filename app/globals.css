@@ -394,6 +394,22 @@ footer a:hover { color: var(--text); }
 .poker-result-headline { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
 .poker-fact { color: var(--text-dim); font-size: 0.94rem; margin-bottom: 18px; max-width: 62ch; margin-inline: auto; }
 
+/* ---------- Tools / pharmacy finder ---------- */
+.tools-page { padding: 48px 0 100px; }
+.tools-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
+.tools-error { color: var(--accent-magenta); margin-top: 16px; font-size: 0.92ren; }
+.tools-results { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+.tools-result-card {
+  display: block; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 8px;
+  padding: 16px 18px; text-decoration: none; color: var(--text); transition: border-color 0.15s ease;
+}
+.tools-result-card:hover { border-color: var(--accent-green); }
+.tools-result-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+.tools-result-address { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 8px; }
+.tools-result-meta { display: flex; gap: 14px; font-size: 0.78rem; color: var(--text-faint); }
+.tools-result-meta .is-open { color: var(--accent-green); }
+.tools-result-meta .is-closed { color: var(--accent-magenta); }
+
 /* ---------- Trends ---------- */
 .trends-page { padding: 48px 0 100px; }
 .trends-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
