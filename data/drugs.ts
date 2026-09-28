@@ -1159,6 +1159,329 @@ export const drugs: DrugEntry[] = [
     hazards:
       "Can cause a persistent dry cough and, rarely, a dangerous swelling reaction called angioedema. Not safe during pregnancy due to risk of fetal kidney damage.",
   },
+  {
+    slug: "hydromorphone",
+    letter: "H",
+    name: "Hydromorphone",
+    practicalName: "Dilaudid",
+    drugClass: "Semisynthetic opioid agonist",
+    category: "Opioid",
+    cid: 5284570,
+    formula: "C17H19NO3",
+    molecularWeight: 285.34,
+    molecularWeightLabel: "285.34 g/mol",
+    discovered: "First synthesized 1924 in Germany",
+    mechanism:
+      "Binds mu-opioid receptors in the brain and spinal cord, blocking pain-signal transmission. It's structurally close to morphine but around five times more potent by weight, a difference that matters for dosing precision.",
+    history:
+      "Developed as a more potent, faster-acting alternative to morphine, hydromorphone became a standard option for severe pain in hospital settings where rapid, controllable relief is needed.",
+    hazards:
+      "Its higher potency-per-milligram than morphine raises the risk of accidental overdose if doses are confused between the two. Carries the same dependence and respiratory-depression risks as other strong opioids.",
+  },
+  {
+    slug: "modafinil",
+    letter: "M",
+    name: "Modafinil",
+    practicalName: "Provigil",
+    drugClass: "Wakefulness-promoting agent",
+    category: "Stimulant",
+    cid: 4236,
+    formula: "C15H15NO2S",
+    molecularWeight: 273.35,
+    molecularWeightLabel: "273.35 g/mol",
+    discovered: "Developed in France in the 1970s-80s; FDA approved 1998",
+    mechanism:
+      "Weakly inhibits dopamine reuptake and activates orexin-producing neurons in the hypothalamus, both of which are involved in staying awake — though unlike classic stimulants, its exact full mechanism is still debated.",
+    history:
+      "Originally developed to treat narcolepsy, modafinil's comparatively mild side-effect profile next to amphetamine-type stimulants led to wider off-label use for shift-work sleep problems and occasional non-medical 'cognitive enhancement' use.",
+    hazards:
+      "Can cause insomnia, headache, and anxiety. Rare but serious skin reactions have been reported. Lower abuse potential than classic stimulants, but not risk-free with long-term use.",
+  },
+  {
+    slug: "dabigatran",
+    letter: "D",
+    name: "Dabigatran",
+    practicalName: "Pradaxa",
+    drugClass: "Direct thrombin inhibitor (DOAC)",
+    category: "Anticoagulant",
+    cid: 216210,
+    formula: "C25H30N6O3",
+    molecularWeight: 471.51,
+    molecularWeightLabel: "471.51 g/mol",
+    discovered: "Developed by Boehringer Ingelheim; FDA approved 2010",
+    mechanism:
+      "Directly binds and blocks thrombin, the enzyme that converts fibrinogen into the fibrin strands that form a blood clot's structural mesh. Blocking thrombin directly stops clot formation at one of its final steps.",
+    history:
+      "The first of the new oral anticoagulants to reach the U.S. market, dabigatran offered predictable dosing without warfarin's routine blood monitoring, and its reversal agent, approved years later, addressed one of the earliest DOACs' biggest early drawbacks.",
+    hazards:
+      "Bleeding is the primary risk, and effectiveness is highly sensitive to missed or doubled doses because of its short half-life. Requires dose adjustment in reduced kidney function, since it's cleared largely by the kidneys.",
+  },
+  {
+    slug: "bupropion",
+    letter: "B",
+    name: "Bupropion",
+    practicalName: "Wellbutrin · Zyban",
+    drugClass: "NDRI (norepinephrine-dopamine reuptake inhibitor)",
+    category: "Antidepressant",
+    cid: 444,
+    formula: "C13H18ClNO",
+    molecularWeight: 239.74,
+    molecularWeightLabel: "239.74 g/mol",
+    discovered: "Developed by Burroughs Wellcome; FDA approved 1985",
+    mechanism:
+      "Blocks reuptake of norepinephrine and dopamine, leaving more of both neurotransmitters active in the brain's reward and alertness circuits — a distinct mechanism from the serotonin-focused SSRIs that dominate antidepressant treatment.",
+    history:
+      "Bupropion's stimulating, non-sedating profile and lack of typical SSRI sexual side effects made it a popular alternative or add-on antidepressant, and its separate brand name Zyban repurposed it as a smoking-cessation aid.",
+    hazards:
+      "Lowers the seizure threshold, so it's avoided in patients with a seizure history or eating disorders. Can worsen anxiety or insomnia in some patients despite easing depression in others.",
+  },
+  {
+    slug: "fexofenadine",
+    letter: "F",
+    name: "Fexofenadine",
+    practicalName: "Allegra",
+    drugClass: "Second-generation antihistamine",
+    category: "Antihistamine",
+    cid: 3348,
+    formula: "C32H39NO4",
+    molecularWeight: 501.65,
+    molecularWeightLabel: "501.65 g/mol",
+    discovered: "Developed by Sanofi; FDA approved 1996",
+    mechanism:
+      "Blocks H1 histamine receptors outside the brain, preventing histamine from triggering allergy symptoms, while its large, charged structure keeps it from crossing into the brain in meaningful amounts.",
+    history:
+      "Developed as a metabolite of the earlier antihistamine terfenadine after terfenadine itself was pulled from the market over rare heart-rhythm risks, fexofenadine kept the allergy relief without that danger.",
+    hazards:
+      "Considered one of the least sedating antihistamines, though fruit juices (notably grapefruit, orange, and apple) can reduce its absorption and effectiveness if taken together.",
+  },
+  {
+    slug: "quetiapine",
+    letter: "Q",
+    name: "Quetiapine",
+    practicalName: "Seroquel",
+    drugClass: "Atypical (second-generation) antipsychotic",
+    category: "Antipsychotic",
+    cid: 5002,
+    formula: "C21H25N3O2S",
+    molecularWeight: 383.51,
+    molecularWeightLabel: "383.51 g/mol",
+    discovered: "Developed by AstraZeneca; FDA approved 1997",
+    mechanism:
+      "Blocks a broad range of receptors, most notably dopamine D2 and serotonin 5-HT2A, dampening the excess dopamine signaling linked to psychosis. Its strong antihistamine activity also produces a pronounced sedative effect at lower doses.",
+    history:
+      "Quetiapine's sedating properties at low doses led to widespread off-label use for insomnia and anxiety well beyond its original approval for schizophrenia and bipolar disorder.",
+    hazards:
+      "Associated with weight gain, drowsiness, and metabolic changes including increased diabetes risk. Carries the same boxed warning as other antipsychotics against use in dementia-related psychosis in older adults.",
+  },
+  {
+    slug: "tenofovir",
+    letter: "T",
+    name: "Tenofovir",
+    practicalName: "Viread (as disoproxil fumarate)",
+    drugClass: "Nucleotide reverse transcriptase inhibitor",
+    category: "Antiviral",
+    cid: 464205,
+    formula: "C9H14N5O4P",
+    molecularWeight: 287.21,
+    molecularWeightLabel: "287.21 g/mol",
+    discovered: "Developed by Gilead Sciences; FDA approved 2001",
+    mechanism:
+      "Mimics a natural building block of viral DNA. Once incorporated by HIV's reverse transcriptase enzyme into a growing DNA strand, it lacks the chemical group needed to attach the next building block, halting the chain.",
+    history:
+      "A cornerstone of modern HIV treatment and prevention, tenofovir-based combination pills became central to both daily antiretroviral therapy and PrEP (pre-exposure prophylaxis) regimens that reduce HIV transmission risk.",
+    hazards:
+      "Long-term use has been linked to reduced kidney function and bone mineral density loss in some patients, requiring periodic monitoring.",
+  },
+  {
+    slug: "clonazepam",
+    letter: "C",
+    name: "Clonazepam",
+    practicalName: "Klonopin",
+    drugClass: "Long-acting benzodiazepine",
+    category: "Benzodiazepine",
+    cid: 2802,
+    formula: "C15H10ClN3O3",
+    molecularWeight: 315.71,
+    molecularWeightLabel: "315.71 g/mol",
+    discovered: "Developed by Roche; FDA approved 1975",
+    mechanism:
+      "Enhances GABA's inhibitory effect at the GABA-A receptor, increasing chloride ion flow into neurons and calming excessive electrical activity — useful for both seizure control and anxiety.",
+    history:
+      "Approved initially as an anticonvulsant, clonazepam's long duration of action made it a common choice for panic disorder as well, distinguishing it from shorter-acting benzodiazepines like alprazolam.",
+    hazards:
+      "Shares the same dependence and withdrawal-seizure risks as other benzodiazepines, with a longer half-life that can lead to next-day grogginess and slower clearance from the body in older adults.",
+  },
+  {
+    slug: "carvedilol",
+    letter: "C",
+    name: "Carvedilol",
+    practicalName: "Coreg",
+    drugClass: "Combined alpha/beta blocker",
+    category: "Beta Blocker",
+    cid: 2585,
+    formula: "C24H26N2O4",
+    molecularWeight: 406.47,
+    molecularWeightLabel: "406.47 g/mol",
+    discovered: "Developed by Boehringer Mannheim; FDA approved 1995",
+    mechanism:
+      "Blocks both beta and alpha-1 adrenergic receptors. The beta-blockade slows heart rate and reduces its workload, while the added alpha-1 blockade relaxes blood vessels — a combination that made it useful in heart failure, where older beta blockers had been avoided.",
+    history:
+      "Carvedilol was part of a shift in the 1990s toward using beta blockers to treat heart failure itself, after earlier medical opinion held that slowing an already-struggling heart would make things worse.",
+    hazards:
+      "Can cause dizziness or low blood pressure, especially with the first dose. Should not be stopped abruptly, since sudden withdrawal can trigger rebound chest pain or blood pressure spikes.",
+  },
+  {
+    slug: "ipratropium",
+    letter: "I",
+    name: "Ipratropium",
+    practicalName: "Atrovent",
+    drugClass: "Short-acting anticholinergic bronchodilator",
+    category: "Bronchodilator",
+    cid: 657308,
+    formula: "C20H30BrNO3",
+    molecularWeight: 412.36,
+    molecularWeightLabel: "412.36 g/mol",
+    discovered: "Developed by Boehringer Ingelheim; introduced 1970s",
+    mechanism:
+      "Blocks acetylcholine's action on muscarinic receptors in airway smooth muscle. Acetylcholine normally signals the airway to constrict, so blocking it allows the muscle to relax and the airway to widen.",
+    history:
+      "Ipratropium worked through an entirely different receptor system than beta-agonist bronchodilators like albuterol, giving doctors a way to combine two mechanisms for a stronger effect in COPD and severe asthma.",
+    hazards:
+      "Can cause dry mouth and, less commonly, blurred vision if it contacts the eyes from a poorly aimed inhaler or nebulizer mist. Generally has fewer heart-related side effects than beta-agonist bronchodilators.",
+  },
+  {
+    slug: "fluticasone",
+    letter: "F",
+    name: "Fluticasone",
+    practicalName: "Flonase · Flovent (as propionate)",
+    drugClass: "Corticosteroid (glucocorticoid)",
+    category: "Corticosteroid",
+    cid: 62924,
+    formula: "C25H31F3O5S",
+    molecularWeight: 500.57,
+    molecularWeightLabel: "500.57 g/mol",
+    discovered: "Developed by Glaxo; introduced 1990s",
+    mechanism:
+      "Binds glucocorticoid receptors in airway and nasal tissue, switching off the genes that produce inflammatory signaling molecules. Delivered directly to the site of inflammation by inhaler or nasal spray, keeping most of its effect local.",
+    history:
+      "Fluticasone's high potency and low absorption into the bloodstream when inhaled made it a mainstay of daily asthma control and allergy treatment, where a systemic steroid's side effects would be an unacceptable tradeoff.",
+    hazards:
+      "Can cause oral thrush if the mouth isn't rinsed after inhaler use, and nasal irritation with spray forms. Long-term high-dose inhaled use still carries some risk of the systemic effects seen with oral steroids.",
+  },
+  {
+    slug: "chlorthalidone",
+    letter: "C",
+    name: "Chlorthalidone",
+    practicalName: "Hygroton",
+    drugClass: "Thiazide-like diuretic",
+    category: "Diuretic",
+    cid: 2732,
+    formula: "C14H11ClN2O4S",
+    molecularWeight: 338.76,
+    molecularWeightLabel: "338.76 g/mol",
+    discovered: "Developed by Ciba; FDA approved 1960",
+    mechanism:
+      "Blocks the sodium-chloride transporter in the kidney's distal tubule, reducing sodium reabsorption. More sodium and water pass into the urine, lowering overall blood volume and blood pressure.",
+    history:
+      "Chlorthalidone was the diuretic used in several of the largest blood-pressure outcome trials ever run, giving it an unusually strong evidence base despite being prescribed less often today than the similar drug hydrochlorothiazide.",
+    hazards:
+      "Can lower blood potassium and sodium levels, particularly in older adults, and may raise blood sugar and uric acid levels with long-term use.",
+  },
+  {
+    slug: "lansoprazole",
+    letter: "L",
+    name: "Lansoprazole",
+    practicalName: "Prevacid",
+    drugClass: "Proton pump inhibitor",
+    category: "PPI",
+    cid: 3883,
+    formula: "C16H14F3N3O2S",
+    molecularWeight: 369.36,
+    molecularWeightLabel: "369.36 g/mol",
+    discovered: "Developed by Takeda; FDA approved 1995",
+    mechanism:
+      "Irreversibly binds the stomach's acid-producing proton pump, permanently disabling it. New acid production resumes only once the stomach lining manufactures replacement pumps.",
+    history:
+      "Following omeprazole as the second major PPI to reach the U.S. market, lansoprazole's 1995 approval intensified competition in a drug class that would go on to become some of the best-selling medications in history.",
+    hazards:
+      "Long-term use is linked to reduced calcium, magnesium, and vitamin B12 absorption, along with an increased risk of certain gut infections due to lowered stomach acidity.",
+  },
+  {
+    slug: "pravastatin",
+    letter: "P",
+    name: "Pravastatin",
+    practicalName: "Pravachol",
+    drugClass: "HMG-CoA reductase inhibitor (statin)",
+    category: "Statin",
+    cid: 54687,
+    formula: "C23H36O7",
+    molecularWeight: 424.53,
+    molecularWeightLabel: "424.53 g/mol",
+    discovered: "Developed by Sankyo and Bristol-Myers Squibb; FDA approved 1991",
+    mechanism:
+      "Blocks HMG-CoA reductase, the enzyme the liver uses to manufacture cholesterol. With production reduced, liver cells increase their uptake of LDL cholesterol from the bloodstream to compensate.",
+    history:
+      "Pravastatin was notable for being processed by the liver through a different pathway than most other statins, giving it fewer drug interactions — a property that made it a common choice for patients on multiple medications.",
+    hazards:
+      "Can cause muscle pain and, rarely, the serious muscle-breakdown condition rhabdomyolysis, though generally considered to carry a somewhat lower interaction risk than statins that share metabolic pathways with more drugs.",
+  },
+  {
+    slug: "captopril",
+    letter: "C",
+    name: "Captopril",
+    practicalName: "Capoten",
+    drugClass: "ACE inhibitor",
+    category: "ACE Inhibitor",
+    cid: 44093,
+    formula: "C9H15NO3S",
+    molecularWeight: 217.29,
+    molecularWeightLabel: "217.29 g/mol",
+    discovered: "Developed by Squibb; FDA approved 1981",
+    mechanism:
+      "Blocks the angiotensin-converting enzyme (ACE), stopping the conversion of angiotensin I into angiotensin II, a hormone that narrows blood vessels and promotes sodium and water retention.",
+    history:
+      "Captopril was the first ACE inhibitor ever approved, and its development is often cited as a landmark case of rational, structure-based drug design rather than trial-and-error discovery — it directly inspired the entire ACE inhibitor class that followed.",
+    hazards:
+      "Can cause a persistent dry cough and, rarely, dangerous swelling called angioedema. Its shorter duration of action means it's typically taken multiple times a day, unlike later ACE inhibitors.",
+  },
+  {
+    slug: "pioglitazone",
+    letter: "P",
+    name: "Pioglitazone",
+    practicalName: "Actos",
+    drugClass: "Thiazolidinedione (insulin sensitizer)",
+    category: "Antidiabetic",
+    cid: 4829,
+    formula: "C19H20N2O3S",
+    molecularWeight: 356.44,
+    molecularWeightLabel: "356.44 g/mol",
+    discovered: "Developed by Takeda; FDA approved 1999",
+    mechanism:
+      "Activates a nuclear receptor called PPAR-gamma in fat and muscle cells, changing gene expression in ways that make those tissues more responsive to insulin — rather than increasing insulin output like sulfonylureas do.",
+    history:
+      "Pioglitazone's insulin-sensitizing approach offered a mechanism distinct from older diabetes drugs, though a related drug in its class, troglitazone, was withdrawn over liver toxicity, which kept scrutiny on the whole thiazolidinedione class.",
+    hazards:
+      "Associated with fluid retention, weight gain, and an increased risk of heart failure symptoms in susceptible patients. Long-term use has also been linked to a modestly increased bladder cancer risk in some studies.",
+  },
+  {
+    slug: "estradiol",
+    letter: "E",
+    name: "Estradiol",
+    practicalName: "Estrace · Climara",
+    drugClass: "Estrogen hormone",
+    category: "Hormone",
+    cid: 5757,
+    formula: "C18H24O2",
+    molecularWeight: 272.38,
+    molecularWeightLabel: "272.38 g/mol",
+    discovered: "First isolated 1933; synthesized for medical use in the 1930s-40s",
+    mechanism:
+      "Binds estrogen receptors throughout the body, where the hormone-receptor complex enters the cell nucleus and switches on genes involved in reproductive tissue development, bone density maintenance, and other estrogen-driven processes.",
+    history:
+      "As the primary and most potent naturally occurring estrogen, estradiol's isolation in the 1930s was part of the same wave of steroid hormone research that identified testosterone, and it remains the reference estrogen used in modern hormone therapy.",
+    hazards:
+      "Long-term systemic use has been linked to increased risk of blood clots and, in some studies, certain hormone-sensitive cancers, which is why hormone therapy is generally prescribed at the lowest effective dose for the shortest needed duration.",
+  },
 ];
 
 export function getDrugBySlug(slug: string) {

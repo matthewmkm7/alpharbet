@@ -382,6 +382,7 @@ footer a:hover { color: var(--text); }
 }
 .solitaire-win h2 { margin-bottom: 12px; }
 .solitaire-win p { color: var(--text-dim); margin-bottom: 20px; }
+.solitaire-round-win { border-color: var(--accent-orange); margin-top: 24px; }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }

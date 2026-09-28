@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { drugs, categorySlug, type DrugEntry, type DrugCategory } from "@/data/drugs";
+import { GAME_ROUNDS } from "@/data/rounds";
 
 function shuffle<T>(arr: T[]): T[] {
   const copy = [...arr];
@@ -13,25 +14,14 @@ function shuffle<T>(arr: T[]): T[] {
   return copy;
 }
 
-// Only categories with enough cards to make sorting meaningful become lanes.
-const LANE_CATEGORIES: DrugCategory[] = [
-  "Opioid",
-  "Stimulant",
-  "Antibiotic",
-  "Analgesic",
-  "Benzodiazepine",
-  "Antidepressant",
-  "Statin",
-];
-
 type LaneState = {
   category: DrugCategory;
   deck: DrugEntry[];
   sorted: DrugEntry[];
 };
 
-function buildLanes(): LaneState[] {
-  return LANE_CATEGORIES.map((category) => ({
+function buildLanes(categories: DrugCategory[]): LaneState[] {
+  return categories.map((category) => ({
     category,
     deck: shuffle(drugs.filter((d) => d.category === category)),
     sorted: [],
@@ -44,14 +34,19 @@ function dragPayload(drug: DrugEntry, category: DrugCategory) {
 }
 
 export default function SolitairePage() {
-  const [lanes, setLanes] = useState<LaneState[]>(() => buildLanes());
+  const [roundIndex, setRoundIndex] = useState(0);
+  const [lanes, setLanes] = useState<LaneState[]>(() => buildLanes(GAME_ROUNDS[0].categories));
   const [wrongSlug, setWrongSlug] = useState<string | null>(null);
   const [draggingSlug, setDraggingSlug] = useState<string | null>(null);
   const [dropTargetLane, setDropTargetLane] = useState<DrugCategory | null>(null);
+  const [matchComplete, setMatchComplete] = useState(false);
+
+  const round = GAME_ROUNDS[roundIndex];
+  const isFinalRound = roundIndex === GAME_ROUNDS.length - 1;
 
   const totalCards = useMemo(() => lanes.reduce((sum, l) => sum + l.deck.length + l.sorted.length, 0), [lanes]);
   const sortedCount = useMemo(() => lanes.reduce((sum, l) => sum + l.sorted.length, 0), [lanes]);
-  const won = sortedCount === totalCards;
+  const roundCleared = sortedCount === totalCards;
 
   function handlePick(laneCategory: DrugCategory, drug: DrugEntry) {
     setLanes((prev) =>
@@ -101,11 +96,26 @@ export default function SolitairePage() {
     handlePick(laneCategory, drug);
   }
 
-  function reset() {
-    setLanes(buildLanes());
+  function nextRound() {
+    if (isFinalRound) {
+      setMatchComplete(true);
+      return;
+    }
+    const next = roundIndex + 1;
+    setRoundIndex(next);
+    setLanes(buildLanes(GAME_ROUNDS[next].categories));
     setWrongSlug(null);
     setDraggingSlug(null);
     setDropTargetLane(null);
+  }
+
+  function reset() {
+    setRoundIndex(0);
+    setLanes(buildLanes(GAME_ROUNDS[0].categories));
+    setWrongSlug(null);
+    setDraggingSlug(null);
+    setDropTargetLane(null);
+    setMatchComplete(false);
   }
 
   return (
@@ -114,19 +124,23 @@ export default function SolitairePage() {
         <div className="eyebrow-line mono">Game — Solitaire</div>
         <h1>Sort each class by molecular weight.</h1>
         <p className="solitaire-hint">
-          Four classes, lightest to heaviest, one table. Drag a card into its lane&apos;s cleared
-          pile in ascending order of molecular weight — get it wrong and it bounces back, no
-          penalty. (Clicking a card works too.)
+          Four drug classes on the table at a time, lightest to heaviest, one round. Drag a card
+          into its lane&apos;s cleared pile in ascending order of molecular weight — get it wrong
+          and it bounces back, no penalty. Clear all four lanes to advance to the next round.
+          (Clicking a card works too.)
         </p>
-        <div className="solitaire-status mono">
-          {!won && `${sortedCount} of ${totalCards} sorted`}
-        </div>
+        {!matchComplete && (
+          <div className="solitaire-status mono">
+            Round {roundIndex + 1} of {GAME_ROUNDS.length} — {round.title}
+            {!roundCleared && ` · ${sortedCount} of ${totalCards} sorted`}
+          </div>
+        )}
       </div>
 
-      <div className="solitaire-arena">
-        <div className="solitaire-table">
-          {!won &&
-            lanes.map((lane) => (
+      {!matchComplete && (
+        <div className="solitaire-arena">
+          <div className="solitaire-table">
+            {lanes.map((lane) => (
               <div
                 className={`solitaire-lane${dropTargetLane === lane.category ? " is-drop-target" : ""}`}
                 data-category={lane.category}
@@ -176,14 +190,33 @@ export default function SolitairePage() {
                 )}
               </div>
             ))}
-        </div>
-      </div>
+          </div>
 
-      {won && (
+          {roundCleared && (
+            <div className="wrap">
+              <div className="solitaire-win solitaire-round-win">
+                <h2>{isFinalRound ? "Final round cleared." : "Round cleared."}</h2>
+                <p>
+                  {isFinalRound
+                    ? `You sorted every drug class across all ${GAME_ROUNDS.length} rounds.`
+                    : `You sorted all of "${round.title}" by molecular weight. Next up: ${GAME_ROUNDS[roundIndex + 1].title}.`}
+                </p>
+                <button type="button" className="btn-primary" onClick={nextRound}>
+                  {isFinalRound ? "Finish" : "Next round"}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {matchComplete && (
         <div className="wrap">
           <div className="solitaire-win">
-            <h2>Table cleared.</h2>
-            <p>You sorted all {totalCards} compounds across {LANE_CATEGORIES.length} drug classes by molecular weight.</p>
+            <h2>Every class, sorted.</h2>
+            <p>
+              You cleared all {GAME_ROUNDS.length} rounds across {GAME_ROUNDS.reduce((n, r) => n + r.categories.length, 0)} drug classes.
+            </p>
             <button type="button" className="btn-primary" onClick={reset} style={{ marginRight: 12 }}>
               Play again
             </button>

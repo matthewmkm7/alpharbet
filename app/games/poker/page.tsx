@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { drugs, categorySlug, type DrugEntry } from "@/data/drugs";
+import { drugs, categorySlug, type DrugEntry, type DrugCategory } from "@/data/drugs";
+import { GAME_ROUNDS } from "@/data/rounds";
 
 type Stat = "weight" | "age";
 
@@ -32,14 +33,18 @@ function statValue(drug: DrugEntry, stat: Stat): number {
   return stat === "weight" ? drug.molecularWeight : yearsOnMarket(drug);
 }
 
-function dealDecks() {
-  const shuffled = shuffle(drugs);
+// Each round deals only from that round's 4 drug classes — a standardized,
+// evenly-sized pool (every class now has exactly 4 entries) instead of
+// shuffling the entire 76-drug catalog into one long, shapeless match.
+function dealDecks(categories: DrugCategory[]) {
+  const pool = drugs.filter((d) => categories.includes(d.category));
+  const shuffled = shuffle(pool);
   const mid = Math.ceil(shuffled.length / 2);
   return { player: shuffled.slice(0, mid), computer: shuffled.slice(mid) };
 }
 
 // A small fanned stack of card-backs standing in for "cards remaining" —
-// caps at 4 layers so a deck of 19 doesn't turn into a wall of divs.
+// caps at 4 layers so a deck of 8 doesn't turn into a wall of divs.
 function DeckStack({ count, label }: { count: number; label: string }) {
   const layers = Math.max(1, Math.min(4, count));
   return (
@@ -73,14 +78,21 @@ type RoundResult = {
 };
 
 export default function PokerPage() {
-  const [decks, setDecks] = useState(() => dealDecks());
+  const [roundIndex, setRoundIndex] = useState(0);
+  const [decks, setDecks] = useState(() => dealDecks(GAME_ROUNDS[0].categories));
   const [result, setResult] = useState<RoundResult | null>(null);
-  const [round, setRound] = useState(1);
+  const [handNumber, setHandNumber] = useState(1);
+  const [matchScore, setMatchScore] = useState({ player: 0, computer: 0, ties: 0 });
+  const [matchComplete, setMatchComplete] = useState(false);
+
+  const round = GAME_ROUNDS[roundIndex];
+  const isFinalRound = roundIndex === GAME_ROUNDS.length - 1;
 
   const playerCard = decks.player[0];
   const computerCard = decks.computer[0];
-  const gameOver = decks.player.length === 0 || decks.computer.length === 0;
-  const playerWonGame = decks.computer.length === 0 && decks.player.length > 0;
+  const roundOver = decks.player.length === 0 || decks.computer.length === 0;
+  const playerWonRound = roundOver && decks.computer.length === 0 && decks.player.length > 0;
+  const computerWonRound = roundOver && decks.player.length === 0 && decks.computer.length > 0;
 
   function playStat(stat: Stat) {
     if (!playerCard || !computerCard || result) return;
@@ -98,7 +110,7 @@ export default function PokerPage() {
     setResult({ stat, playerCard, computerCard, winner, fact });
   }
 
-  function nextRound() {
+  function nextHand() {
     if (!result) return;
     setDecks((prev) => {
       const playerRest = prev.player.slice(1);
@@ -113,13 +125,33 @@ export default function PokerPage() {
       return { player: [...playerRest, result.playerCard], computer: [...computerRest, result.computerCard] };
     });
     setResult(null);
-    setRound((r) => r + 1);
+    setHandNumber((n) => n + 1);
+  }
+
+  function nextRound() {
+    setMatchScore((prev) => ({
+      player: prev.player + (playerWonRound ? 1 : 0),
+      computer: prev.computer + (computerWonRound ? 1 : 0),
+      ties: prev.ties + (!playerWonRound && !computerWonRound ? 1 : 0),
+    }));
+    if (isFinalRound) {
+      setMatchComplete(true);
+      return;
+    }
+    const next = roundIndex + 1;
+    setRoundIndex(next);
+    setDecks(dealDecks(GAME_ROUNDS[next].categories));
+    setResult(null);
+    setHandNumber(1);
   }
 
   function playAgain() {
-    setDecks(dealDecks());
+    setRoundIndex(0);
+    setDecks(dealDecks(GAME_ROUNDS[0].categories));
     setResult(null);
-    setRound(1);
+    setHandNumber(1);
+    setMatchScore({ player: 0, computer: 0, ties: 0 });
+    setMatchComplete(false);
   }
 
   return (
@@ -129,16 +161,25 @@ export default function PokerPage() {
         <h1>Top Trumps, restrung around pharmacology.</h1>
         <p className="solitaire-hint">
           Pick a stat from your top card. Highest value wins both cards. No betting, no bluffing —
-          just the numbers, and a fact about whichever drug comes out on top.
+          just the numbers, and a fact about whichever drug comes out on top. Each round deals from
+          four related drug classes; clear the opponent&apos;s hand to win the round.
         </p>
+        {!matchComplete && (
+          <div className="solitaire-status mono">
+            Round {roundIndex + 1} of {GAME_ROUNDS.length} — {round.title}
+            {!roundOver && ` · Hand ${handNumber}`}
+          </div>
+        )}
       </div>
 
-      {!gameOver && playerCard && computerCard && (
+      {!matchComplete && !roundOver && playerCard && computerCard && (
         <div className="poker-table-wrap">
           <div className="poker-table">
             <div className="poker-decks-row">
               <DeckStack count={decks.player.length} label="You" />
-              <div className="poker-round-badge mono">Round {round}</div>
+              <div className="poker-round-badge mono">
+                Match {matchScore.player}–{matchScore.computer}
+              </div>
               <DeckStack count={decks.computer.length} label="Opponent" />
             </div>
 
@@ -210,14 +251,14 @@ export default function PokerPage() {
                   {result.winner === "tie"
                     ? "Tie — both cards return to their decks."
                     : result.winner === "player"
-                      ? "You win this round."
-                      : "Opponent wins this round."}
+                      ? "You win this hand."
+                      : "Opponent wins this hand."}
                 </div>
                 <p className="poker-fact">
                   <span className="eyebrow-line mono">Reveal</span> {result.fact}
                 </p>
-                <button type="button" className="btn-primary" onClick={nextRound}>
-                  Next round
+                <button type="button" className="btn-primary" onClick={nextHand}>
+                  Next hand
                 </button>
               </div>
             )}
@@ -225,14 +266,36 @@ export default function PokerPage() {
         </div>
       )}
 
-      {gameOver && (
+      {!matchComplete && roundOver && (
+        <div className="wrap">
+          <div className="solitaire-win solitaire-round-win">
+            <h2>{playerWonRound ? `You cleared "${round.title}".` : `Opponent cleared "${round.title}".`}</h2>
+            <p>
+              {isFinalRound
+                ? "That was the last round of the match."
+                : `Next up: ${GAME_ROUNDS[roundIndex + 1].title}.`}
+            </p>
+            <button type="button" className="btn-primary" onClick={nextRound}>
+              {isFinalRound ? "See match result" : "Next round"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {matchComplete && (
         <div className="wrap">
           <div className="solitaire-win">
-            <h2>{playerWonGame ? "You cleared the deck." : "Opponent cleared the deck."}</h2>
+            <h2>
+              {matchScore.player > matchScore.computer
+                ? "You won the match."
+                : matchScore.player < matchScore.computer
+                  ? "Opponent won the match."
+                  : "The match ended in a tie."}
+            </h2>
             <p>
-              {playerWonGame
-                ? "Every card ended up in your pile — game over."
-                : "The opponent ended up with every card this time."}
+              Final score across all {GAME_ROUNDS.length} rounds: you {matchScore.player} — opponent{" "}
+              {matchScore.computer}
+              {matchScore.ties > 0 ? ` (${matchScore.ties} tied)` : ""}.
             </p>
             <button type="button" className="btn-primary" onClick={playAgain} style={{ marginRight: 12 }}>
               Play again
