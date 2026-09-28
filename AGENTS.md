@@ -51,7 +51,7 @@ No page should be a dead end. Each section should pull the user toward the next 
 Build this cross-linking into each feature as it's built, not as an afterthought.
 
 ## Build order — ALL PHASES COMPLETE as of this note
-1. Single entry page template — done (38 entries across 19 categories)
+1. Single entry page template — done (59 entries across 19 categories, at least 2 per category)
 2. A–Z index page — done (on the homepage, grouped by letter)
 3. Solitaire game — done, with drag-and-drop
 4. Poker/Top Trumps game — done
