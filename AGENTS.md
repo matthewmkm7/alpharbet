@@ -60,6 +60,12 @@ Build this cross-linking into each feature as it's built, not as an afterthought
 6. Local pharmacy/professional finder — done (/tools), but needs a Google Places API key in
    .env.local (see .env.local.example) and the same var set in Vercel's project settings before
    it works live — it degrades gracefully with a clear message if the key is missing
+7. Real per-drug pricing on Trends — done, but data/nadac-prices.json ships EMPTY ({}) because
+   the AI sandbox that built this can't reach data.medicaid.gov's network. The founder needs to
+   run `npm run fetch-nadac-prices` once from their own Terminal (not through Claude/Cowork) to
+   populate it with real prices from CMS's free NADAC dataset. Re-run it any time to refresh —
+   it's a manual script, not wired into the build, since the source file is 50+ MB and shouldn't
+   be re-downloaded on every deploy. See scripts/fetch-nadac-prices.mjs for how it works and why.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.

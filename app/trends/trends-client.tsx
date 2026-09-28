@@ -4,11 +4,19 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { drugs, type DrugEntry } from "@/data/drugs";
 import { macroStats, spotlightFacts, categoryDrivers, sources } from "@/data/trends";
+import nadacPricesRaw from "@/data/nadac-prices.json";
+
+// Real per-drug pricing from CMS's NADAC dataset (see scripts/fetch-nadac-prices.mjs).
+// This is what U.S. pharmacies pay to acquire the drug, not a retail price —
+// the label below says so. Populated by running that script; empty until then.
+type NadacPrice = { pricePerUnit: number; unit: string; effectiveDate: string; ndcDescription: string };
+const nadacPrices = nadacPricesRaw as Record<string, NadacPrice>;
 
 export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
   const [slug, setSlug] = useState(initialSlug);
   const drug = useMemo<DrugEntry>(() => drugs.find((d) => d.slug === slug) ?? drugs[0], [slug]);
   const spotlight = spotlightFacts[drug.slug];
+  const nadac = nadacPrices[drug.slug];
 
   // Purchasing efficiency calculator — real arithmetic on whatever the user enters.
   const [packagePrice, setPackagePrice] = useState("20");
@@ -59,6 +67,22 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
               ))}
             </select>
           </label>
+
+          {nadac && (
+            <div className="trends-nadac">
+              <span className="trends-nadac-value mono">
+                ${nadac.pricePerUnit.toFixed(4)} / {nadac.unit}
+              </span>
+              <span className="trends-nadac-label">
+                Current U.S. pharmacy acquisition cost (NADAC) for {nadac.ndcDescription.toLowerCase()}, as of{" "}
+                {nadac.effectiveDate}. This is what pharmacies pay to stock it, not what a patient pays at the
+                counter — insurance and coupons change that part.{" "}
+                <a href="https://www.medicaid.gov/medicaid/nadac" target="_blank" rel="noreferrer">
+                  How NADAC works
+                </a>
+              </span>
+            </div>
+          )}
 
           {spotlight ? (
             <div className="trends-spotlight">

@@ -80,4 +80,8 @@ export const sources: Source[] = [
     url: "https://www.aarp.org/press/releases/2026-02-12-rx-price-watch-report.html",
   },
   { title: "GoodRx — Atorvastatin pricing", url: "https://www.goodrx.com/atorvastatin" },
+  {
+    title: "CMS NADAC — National Average Drug Acquisition Cost",
+    url: "https://www.medicaid.gov/medicaid/nadac",
+  },
 ];

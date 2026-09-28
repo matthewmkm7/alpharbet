@@ -555,6 +555,13 @@ footer a:hover { color: var(--text); }
 }
 .trends-spotlight p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px; }
 .trends-spotlight a { color: var(--accent-green); font-size: 0.78rem; }
+
+.trends-nadac {
+  display: block; border-left: 2px solid var(--accent-green); padding-left: 16px; margin-bottom: 20px;
+}
+.trends-nadac-value { display: block; font-size: 1.15rem; color: var(--accent-green); margin-bottom: 4px; }
+.trends-nadac-label { display: block; color: var(--text-faint); font-size: 0.8rem; max-width: 62ch; }
+.trends-nadac-label a { color: var(--accent-green); }
 .trends-sources { margin-top: 8px; margin-bottom: 24px; }
 .trends-sources ul { list-style: none; margin-top: 10px; }
 .trends-sources li { margin-bottom: 6px; }

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "fetch-structures": "node --experimental-strip-types scripts/fetch-structures.mjs"
+    "fetch-structures": "node --experimental-strip-types scripts/fetch-structures.mjs",
+    "fetch-nadac-prices": "node --experimental-strip-types scripts/fetch-nadac-prices.mjs"
   },
   "dependencies": {
     "next": "16.3.6",
