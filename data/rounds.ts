@@ -32,7 +32,11 @@ export const GAME_ROUNDS: GameRound[] = [
     categories: ["Beta Blocker", "Diuretic", "Bronchodilator", "Corticosteroid"],
   },
   {
+    // 19 classes doesn't divide evenly into groups of 4 (4x4 + 1x3), so this
+    // round reuses Antihistamine from "Infection & Defense" as its fourth
+    // class — first-generation antihistamines act on the brain too (that's
+    // why they cause drowsiness), so the overlap still fits the theme.
     title: "Brain & Gut",
-    categories: ["Antipsychotic", "Stimulant", "PPI"],
+    categories: ["Antipsychotic", "Stimulant", "PPI", "Antihistamine"],
   },
 ];
