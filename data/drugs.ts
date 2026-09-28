@@ -760,6 +760,405 @@ export const drugs: DrugEntry[] = [
       "Carries a boxed warning against use as a standalone asthma treatment, since long-acting beta agonists used alone have been linked to an increased risk of severe asthma episodes.",
   },
 
+  {
+    slug: "glipizide",
+    letter: "G",
+    name: "Glipizide",
+    practicalName: "Glucotrol",
+    drugClass: "Second-generation sulfonylurea",
+    category: "Antidiabetic",
+    cid: 3478,
+    formula: "C21H27N5O4S",
+    molecularWeight: 445.54,
+    molecularWeightLabel: "445.54 g/mol",
+    discovered: "Developed by Pfizer; FDA approved 1984",
+    mechanism:
+      "Binds sulfonylurea receptors on pancreatic beta cells, closing ATP-sensitive potassium channels. That depolarizes the cell and triggers calcium influx, which pushes stored insulin out of the cell — working only when the pancreas can still produce insulin.",
+    history:
+      "Part of a second generation of sulfonylureas that replaced earlier drugs like tolbutamide, offering a lower effective dose and fewer interactions with other medications.",
+    hazards:
+      "Can cause hypoglycemia, especially if a meal is skipped after dosing. Effectiveness fades over time in some patients as pancreatic beta-cell function declines.",
+  },
+  {
+    slug: "sitagliptin",
+    letter: "S",
+    name: "Sitagliptin",
+    practicalName: "Januvia",
+    drugClass: "DPP-4 inhibitor",
+    category: "Antidiabetic",
+    cid: 4369359,
+    formula: "C16H15F6N5O",
+    molecularWeight: 407.31,
+    molecularWeightLabel: "407.31 g/mol",
+    discovered: "Developed by Merck; FDA approved 2006",
+    mechanism:
+      "Blocks the enzyme DPP-4, which normally breaks down incretin hormones released after eating. With DPP-4 blocked, those hormones linger longer and prompt the pancreas to release more insulin only when blood sugar is high.",
+    history:
+      "One of the first drugs in its class, sitagliptin offered a once-daily pill with a lower hypoglycemia risk than older diabetes drugs, since its effect depends on the body's own after-meal signaling.",
+    hazards:
+      "Linked to joint pain in some patients and rare reports of pancreatitis. Dose must be adjusted for reduced kidney function.",
+  },
+  {
+    slug: "levothyroxine",
+    letter: "L",
+    name: "Levothyroxine",
+    practicalName: "Synthroid · Levoxyl",
+    drugClass: "Synthetic thyroid hormone (T4)",
+    category: "Hormone",
+    cid: 5819,
+    formula: "C15H11I4NO4",
+    molecularWeight: 776.87,
+    molecularWeightLabel: "776.87 g/mol",
+    discovered: "First synthesized 1927; widely used from the 1950s onward",
+    mechanism:
+      "A synthetic version of thyroxine (T4), the body's own primary thyroid hormone. The body converts it to the more active T3 form, which enters cells and regulates metabolic rate, heart rate, and temperature by switching gene expression on and off.",
+    history:
+      "Before synthetic versions, hypothyroidism was treated with desiccated animal thyroid extract, which had inconsistent hormone content. A pure, synthetic, single-molecule version made dosing precise and predictable.",
+    hazards:
+      "Too high a dose mimics an overactive thyroid — rapid heartbeat, anxiety, weight loss — while too low a dose leaves hypothyroid symptoms untreated. Absorption is affected by food, calcium, and iron supplements.",
+  },
+  {
+    slug: "testosterone",
+    letter: "T",
+    name: "Testosterone",
+    practicalName: "AndroGel · Depo-Testosterone",
+    drugClass: "Androgen / anabolic steroid hormone",
+    category: "Hormone",
+    cid: 6013,
+    formula: "C19H28O2",
+    molecularWeight: 288.42,
+    molecularWeightLabel: "288.42 g/mol",
+    discovered: "First isolated and synthesized 1935",
+    mechanism:
+      "Binds androgen receptors inside cells, especially in muscle and reproductive tissue, where the hormone-receptor complex moves into the nucleus and switches on genes involved in muscle protein synthesis and male secondary sex characteristics.",
+    history:
+      "One of the first steroid hormones ever isolated and synthesized, testosterone's structure elucidation in the 1930s helped launch the field of steroid chemistry and earned its discoverers a share of a Nobel Prize.",
+    hazards:
+      "Exogenous use suppresses the body's own natural production. Non-prescribed high-dose use is associated with cardiovascular strain, liver stress with oral forms, and mood or behavioral changes.",
+  },
+  {
+    slug: "oxycodone",
+    letter: "O",
+    name: "Oxycodone",
+    practicalName: "OxyContin · Percocet (combined with paracetamol)",
+    drugClass: "Semisynthetic opioid agonist",
+    category: "Opioid",
+    cid: 5284603,
+    formula: "C18H21NO4",
+    molecularWeight: 315.36,
+    molecularWeightLabel: "315.36 g/mol",
+    discovered: "First synthesized 1916 in Germany; introduced to the US market 1939",
+    mechanism:
+      "Binds mu-opioid receptors in the brain and spinal cord, the same receptor family targeted by morphine, blocking pain signal transmission and triggering the reward pathway that produces euphoria.",
+    history:
+      "Synthesized from thebaine, a minor opium alkaloid, oxycodone was developed to be a safer alternative to earlier opioids — a goal that a later extended-release reformulation, marketed heavily in the 1990s, is now widely cited as a major contributor to the U.S. opioid crisis.",
+    hazards:
+      "High potential for dependence and respiratory depression, especially when combined with alcohol or other sedatives. A leading contributor to opioid-related overdose deaths in recent decades.",
+  },
+  {
+    slug: "caffeine",
+    letter: "C",
+    name: "Caffeine",
+    practicalName: "found in coffee, tea, energy drinks; also sold as tablets",
+    drugClass: "Xanthine stimulant",
+    category: "Stimulant",
+    cid: 2519,
+    formula: "C8H10N4O2",
+    molecularWeight: 194.19,
+    molecularWeightLabel: "194.19 g/mol",
+    discovered: "Isolated 1819 by German chemist Friedlieb Ferdinand Runge",
+    mechanism:
+      "Blocks adenosine receptors in the brain. Adenosine normally builds up through the day and promotes drowsiness — by occupying its receptors without activating them, caffeine keeps the brain's alertness signaling running.",
+    history:
+      "The world's most widely consumed psychoactive substance, caffeine's stimulant effect was documented in coffee and tea for centuries before Runge's 1819 isolation identified the specific compound responsible.",
+    hazards:
+      "High doses can cause anxiety, rapid heartbeat, and insomnia. Regular use produces mild physical dependence, and abrupt cessation commonly causes headaches.",
+  },
+  {
+    slug: "ciprofloxacin",
+    letter: "C",
+    name: "Ciprofloxacin",
+    practicalName: "Cipro",
+    drugClass: "Fluoroquinolone antibiotic",
+    category: "Antibiotic",
+    cid: 2764,
+    formula: "C17H18FN3O3",
+    molecularWeight: 331.34,
+    molecularWeightLabel: "331.34 g/mol",
+    discovered: "Developed by Bayer; FDA approved 1987",
+    mechanism:
+      "Inhibits bacterial DNA gyrase and topoisomerase IV, enzymes bacteria need to unwind and copy their DNA during replication. Without them, bacterial DNA becomes tangled and the cell cannot divide.",
+    history:
+      "One of the first widely used fluoroquinolones, ciprofloxacin broadened treatment options against gram-negative bacteria and became a standard stockpiled antibiotic for suspected anthrax exposure.",
+    hazards:
+      "Carries a boxed warning for tendon rupture and nerve damage risk, more common in older adults. Can prolong the heart's QT interval and interacts with dairy products, which block its absorption.",
+  },
+  {
+    slug: "naproxen",
+    letter: "N",
+    name: "Naproxen",
+    practicalName: "Aleve · Naprosyn",
+    drugClass: "NSAID (nonsteroidal anti-inflammatory drug)",
+    category: "Analgesic",
+    cid: 156391,
+    formula: "C14H14O3",
+    molecularWeight: 230.26,
+    molecularWeightLabel: "230.26 g/mol",
+    discovered: "Developed by Syntex; FDA approved 1976",
+    mechanism:
+      "Blocks cyclooxygenase (COX) enzymes, reducing production of prostaglandins — signaling molecules that sensitize nerve endings to pain and drive inflammation and fever.",
+    history:
+      "Naproxen's longer duration of action than earlier NSAIDs like ibuprofen made twice-daily dosing possible, and its 1994 switch to over-the-counter status made it one of the most accessible long-acting pain relievers.",
+    hazards:
+      "Long-term use raises the risk of stomach ulcers and gastrointestinal bleeding, along with cardiovascular risk and reduced kidney function, especially at high doses.",
+  },
+  {
+    slug: "alprazolam",
+    letter: "A",
+    name: "Alprazolam",
+    practicalName: "Xanax",
+    drugClass: "Short-acting benzodiazepine",
+    category: "Benzodiazepine",
+    cid: 2118,
+    formula: "C17H13ClN4",
+    molecularWeight: 308.77,
+    molecularWeightLabel: "308.77 g/mol",
+    discovered: "Developed by Upjohn; FDA approved 1981",
+    mechanism:
+      "Enhances the effect of GABA, the brain's main inhibitory neurotransmitter, at the GABA-A receptor. This increases chloride ion flow into neurons, making them less likely to fire and producing a calming, anti-anxiety effect.",
+    history:
+      "Originally developed as an antidepressant candidate, alprazolam's anti-anxiety and panic-disorder effects made it one of the most prescribed psychiatric medications by the late 1980s.",
+    hazards:
+      "High potential for dependence, especially with regular use beyond a few weeks. Abrupt discontinuation can cause dangerous withdrawal seizures. Sedative effects are amplified dangerously when combined with alcohol or opioids.",
+  },
+  {
+    slug: "venlafaxine",
+    letter: "V",
+    name: "Venlafaxine",
+    practicalName: "Effexor",
+    drugClass: "SNRI (serotonin-norepinephrine reuptake inhibitor)",
+    category: "Antidepressant",
+    cid: 5656,
+    formula: "C17H27NO2",
+    molecularWeight: 277.4,
+    molecularWeightLabel: "277.4 g/mol",
+    discovered: "Developed by Wyeth; FDA approved 1993",
+    mechanism:
+      "Blocks the reuptake transporters for both serotonin and norepinephrine, leaving more of each neurotransmitter available in the synapse between neurons, which is thought to gradually improve mood regulation over several weeks.",
+    history:
+      "One of the first SNRIs approved, venlafaxine offered an alternative mechanism to the SSRIs that dominated antidepressant treatment through the 1990s.",
+    hazards:
+      "Discontinuation can cause a pronounced withdrawal syndrome — dizziness, 'brain zaps', irritability — if stopped abruptly. Can raise blood pressure at higher doses.",
+  },
+  {
+    slug: "rosuvastatin",
+    letter: "R",
+    name: "Rosuvastatin",
+    practicalName: "Crestor",
+    drugClass: "HMG-CoA reductase inhibitor (statin)",
+    category: "Statin",
+    cid: 446157,
+    formula: "C22H28FN3O6S",
+    molecularWeight: 481.54,
+    molecularWeightLabel: "481.54 g/mol",
+    discovered: "Developed by Shionogi, licensed to AstraZeneca; FDA approved 2003",
+    mechanism:
+      "Blocks HMG-CoA reductase, the rate-limiting enzyme the liver uses to manufacture cholesterol. With less cholesterol produced internally, liver cells pull more LDL cholesterol out of the bloodstream to compensate.",
+    history:
+      "Entering the market after atorvastatin and simvastatin were already established, rosuvastatin distinguished itself with greater LDL-lowering potency at lower doses.",
+    hazards:
+      "Can cause muscle pain and, rarely, a serious muscle-breakdown condition called rhabdomyolysis. Requires monitoring in patients with reduced kidney function, and dose limits differ by ethnicity due to blood-level differences.",
+  },
+  {
+    slug: "cetirizine",
+    letter: "C",
+    name: "Cetirizine",
+    practicalName: "Zyrtec",
+    drugClass: "Second-generation antihistamine",
+    category: "Antihistamine",
+    cid: 2678,
+    formula: "C21H25ClN2O3",
+    molecularWeight: 388.89,
+    molecularWeightLabel: "388.89 g/mol",
+    discovered: "Developed by UCB; FDA approved 1995",
+    mechanism:
+      "Blocks H1 histamine receptors, preventing histamine — released during an allergic reaction — from triggering the itching, swelling, and mucus production that make up typical allergy symptoms.",
+    history:
+      "A metabolite of the older antihistamine hydroxyzine, cetirizine was designed to cross into the brain far less than first-generation antihistamines like diphenhydramine, cutting down drowsiness while keeping allergy relief.",
+    hazards:
+      "Can still cause mild drowsiness in some users despite being marketed as 'non-drowsy'. Rebound itching has been reported after stopping long-term daily use.",
+  },
+  {
+    slug: "olanzapine",
+    letter: "O",
+    name: "Olanzapine",
+    practicalName: "Zyprexa",
+    drugClass: "Atypical (second-generation) antipsychotic",
+    category: "Antipsychotic",
+    cid: 4585,
+    formula: "C17H20N4S",
+    molecularWeight: 312.43,
+    molecularWeightLabel: "312.43 g/mol",
+    discovered: "Developed by Eli Lilly; FDA approved 1996",
+    mechanism:
+      "Blocks dopamine D2 and serotonin 5-HT2A receptors in the brain, reducing the excess dopamine signaling linked to psychosis while its serotonin activity is thought to ease negative symptoms and reduce movement side effects compared to older antipsychotics.",
+    history:
+      "Part of a wave of 'atypical' antipsychotics that followed clozapine, olanzapine became one of the best-selling psychiatric drugs of the 2000s for its broad effectiveness against both positive and negative schizophrenia symptoms.",
+    hazards:
+      "Strongly associated with weight gain and metabolic changes, including increased risk of type 2 diabetes. Carries a boxed warning for increased mortality risk in older adults with dementia-related psychosis.",
+  },
+  {
+    slug: "valacyclovir",
+    letter: "V",
+    name: "Valacyclovir",
+    practicalName: "Valtrex",
+    drugClass: "Antiviral prodrug (guanosine analog)",
+    category: "Antiviral",
+    cid: 135398513,
+    formula: "C13H20N6O4",
+    molecularWeight: 324.34,
+    molecularWeightLabel: "324.34 g/mol",
+    discovered: "Developed by GlaxoSmithKline; FDA approved 1995",
+    mechanism:
+      "Converted by the body into acyclovir, which viral enzymes mistake for a natural DNA building block. Once incorporated into replicating viral DNA, it stops the chain from extending further, halting the virus's ability to copy itself.",
+    history:
+      "A prodrug form of acyclovir, valacyclovir was designed purely to improve on its predecessor's poor oral absorption — the body converts it to the exact same active drug, just at much higher blood levels per dose.",
+    hazards:
+      "Can cause kidney problems, particularly at high doses or in dehydrated patients. Rare cases of a blood-clotting disorder have been reported in immunocompromised patients.",
+  },
+  {
+    slug: "atenolol",
+    letter: "A",
+    name: "Atenolol",
+    practicalName: "Tenormin",
+    drugClass: "Beta-1 selective blocker",
+    category: "Beta Blocker",
+    cid: 2249,
+    formula: "C14H22N2O3",
+    molecularWeight: 266.34,
+    molecularWeightLabel: "266.34 g/mol",
+    discovered: "Developed by ICI (later AstraZeneca); introduced 1976",
+    mechanism:
+      "Selectively blocks beta-1 adrenergic receptors, found mainly in the heart, reducing the response to adrenaline. This slows heart rate and lowers the force of each contraction, reducing blood pressure and the heart's oxygen demand.",
+    history:
+      "Developed as a more heart-selective alternative to propranolol, atenolol's reduced action on the lungs' beta-2 receptors made it a safer option for patients with asthma.",
+    hazards:
+      "Should not be stopped abruptly, since sudden withdrawal can trigger rebound high blood pressure or chest pain. Can mask the warning signs of low blood sugar in people with diabetes.",
+  },
+  {
+    slug: "formoterol",
+    letter: "F",
+    name: "Formoterol",
+    practicalName: "Foradil · Perforomist",
+    drugClass: "Long-acting beta-2 agonist (LABA)",
+    category: "Bronchodilator",
+    cid: 3410,
+    formula: "C19H24N2O4",
+    molecularWeight: 344.4,
+    molecularWeightLabel: "344.4 g/mol",
+    discovered: "Developed by Yamanouchi; introduced in Europe in the 1990s",
+    mechanism:
+      "Activates beta-2 adrenergic receptors on airway smooth muscle, triggering relaxation and widening the airways. Its longer-lasting chemical binding gives it up to 12 hours of effect compared to a few hours for short-acting versions.",
+    history:
+      "Formoterol's fast onset alongside its long duration set it apart from earlier long-acting bronchodilators like salmeterol, which act more slowly.",
+    hazards:
+      "Carries the same boxed warning as other LABAs against use alone in asthma, since long-acting beta agonists used without an inhaled corticosteroid have been linked to increased risk of severe asthma episodes.",
+  },
+  {
+    slug: "hydrocortisone",
+    letter: "H",
+    name: "Hydrocortisone",
+    practicalName: "Cortef · topical Cortizone",
+    drugClass: "Corticosteroid (glucocorticoid)",
+    category: "Corticosteroid",
+    cid: 5754,
+    formula: "C21H30O5",
+    molecularWeight: 362.46,
+    molecularWeightLabel: "362.46 g/mol",
+    discovered: "First isolated from the adrenal cortex 1936; synthesized for medical use in the early 1950s",
+    mechanism:
+      "A synthetic form of the body's own cortisol. It binds glucocorticoid receptors inside cells, altering gene expression to suppress the production of inflammatory signaling molecules across the immune system.",
+    history:
+      "As the synthetic version of the body's own primary stress hormone, hydrocortisone's introduction gave doctors a way to replicate and control the immune-suppressing, anti-inflammatory effects the adrenal glands normally regulate naturally.",
+    hazards:
+      "Long-term systemic use can suppress the body's own cortisol production, weaken bones, and raise blood sugar. Topical overuse can thin the skin.",
+  },
+  {
+    slug: "spironolactone",
+    letter: "S",
+    name: "Spironolactone",
+    practicalName: "Aldactone",
+    drugClass: "Potassium-sparing diuretic",
+    category: "Diuretic",
+    cid: 5833,
+    formula: "C24H32O4S",
+    molecularWeight: 416.6,
+    molecularWeightLabel: "416.6 g/mol",
+    discovered: "Developed by G.D. Searle; FDA approved 1960",
+    mechanism:
+      "Blocks aldosterone receptors in the kidney's collecting ducts, preventing the hormone aldosterone from telling the kidney to retain sodium and water and excrete potassium — the opposite effect of most other diuretics.",
+    history:
+      "Unlike the diuretics that came before it, spironolactone works by directly blocking a hormone receptor rather than acting on a kidney transporter, and it remains one of the few diuretics that doesn't waste potassium.",
+    hazards:
+      "Can cause dangerously high potassium levels, especially when combined with potassium supplements or ACE inhibitors. Long-term use has been linked to breast tenderness and enlargement due to its hormonal activity.",
+  },
+  {
+    slug: "pantoprazole",
+    letter: "P",
+    name: "Pantoprazole",
+    practicalName: "Protonix",
+    drugClass: "Proton pump inhibitor",
+    category: "PPI",
+    cid: 4679,
+    formula: "C16H15F2N3O4S",
+    molecularWeight: 383.37,
+    molecularWeightLabel: "383.37 g/mol",
+    discovered: "Developed by Byk Gulden (later Nycomed); FDA approved 2000",
+    mechanism:
+      "Irreversibly binds the proton pump on stomach cells that produce acid, permanently disabling that specific pump. Acid production only resumes once the cell manufactures new pumps.",
+    history:
+      "Entering the PPI market after omeprazole's patent success, pantoprazole offered a similar mechanism with a somewhat different interaction profile, giving doctors an alternative when other PPIs interacted with a patient's other medications.",
+    hazards:
+      "Long-term use is associated with reduced calcium and vitamin B12 absorption, and an increased risk of certain gut infections due to reduced stomach acidity.",
+  },
+  {
+    slug: "rivaroxaban",
+    letter: "R",
+    name: "Rivaroxaban",
+    practicalName: "Xarelto",
+    drugClass: "Direct factor Xa inhibitor (DOAC)",
+    category: "Anticoagulant",
+    cid: 9875401,
+    formula: "C19H18ClN3O5S",
+    molecularWeight: 435.88,
+    molecularWeightLabel: "435.88 g/mol",
+    discovered: "Developed by Bayer; FDA approved 2011",
+    mechanism:
+      "Directly blocks factor Xa, a clotting-cascade enzyme that converts prothrombin into thrombin. Without active factor Xa, the final steps that form a stable clot slow down.",
+    history:
+      "Part of a new generation of oral anticoagulants that followed warfarin, rivaroxaban doesn't require the routine blood monitoring warfarin does, since its effect on clotting is far more predictable dose to dose.",
+    hazards:
+      "Bleeding is the main risk, and for years there was no dedicated reversal agent, unlike warfarin's vitamin K. Should not be stopped abruptly without medical guidance due to rebound clotting risk.",
+  },
+  {
+    slug: "ramipril",
+    letter: "R",
+    name: "Ramipril",
+    practicalName: "Altace",
+    drugClass: "ACE inhibitor",
+    category: "ACE Inhibitor",
+    cid: 5362129,
+    formula: "C23H32N2O5",
+    molecularWeight: 416.51,
+    molecularWeightLabel: "416.51 g/mol",
+    discovered: "Developed by Hoechst AG; FDA approved 1991",
+    mechanism:
+      "Blocks the angiotensin-converting enzyme (ACE), preventing the conversion of angiotensin I into angiotensin II, a hormone that narrows blood vessels and triggers sodium and water retention. With less angiotensin II, blood vessels relax and blood pressure falls.",
+    history:
+      "Later trials found ramipril reduced cardiovascular events even in patients without high blood pressure, broadening ACE inhibitors' use into general cardiovascular risk reduction beyond blood pressure control alone.",
+    hazards:
+      "Can cause a persistent dry cough and, rarely, a dangerous swelling reaction called angioedema. Not safe during pregnancy due to risk of fetal kidney damage.",
+  },
 ];
 
 export function getDrugBySlug(slug: string) {
