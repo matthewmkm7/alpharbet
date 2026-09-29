@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { drugs } from "@/data/drugs";
 
+// Solitaire and Poker share one "Games" nav entry (pointing at /games, which
+// lists both) instead of two separate links — they're both card games, and
+// the homepage already treats them as one group, so the nav should too.
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/entries", label: "Index" },
-  { href: "/games/solitaire", label: "Solitaire" },
-  { href: "/games/poker", label: "Poker" },
+  { href: "/games", label: "Games" },
   { href: "/trends", label: "Trends" },
   { href: "/tools", label: "Tools" },
   { href: "/history", label: "History" },
