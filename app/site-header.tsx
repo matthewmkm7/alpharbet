@@ -6,10 +6,12 @@ import { drugs } from "@/data/drugs";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/entries", label: "Index" },
   { href: "/games/solitaire", label: "Solitaire" },
   { href: "/games/poker", label: "Poker" },
   { href: "/trends", label: "Trends" },
   { href: "/tools", label: "Tools" },
+  { href: "/history", label: "History" },
 ];
 
 export default function SiteHeader() {

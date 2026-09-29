@@ -35,7 +35,7 @@ function statValue(drug: DrugEntry, stat: Stat): number {
 
 // Each round deals only from that round's 4 drug classes — a standardized,
 // evenly-sized pool (every class now has exactly 4 entries) instead of
-// shuffling the entire 76-drug catalog into one long, shapeless match.
+// shuffling the entire catalog into one long, shapeless match.
 function dealDecks(categories: DrugCategory[]) {
   const pool = drugs.filter((d) => categories.includes(d.category));
   const shuffled = shuffle(pool);

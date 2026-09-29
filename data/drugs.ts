@@ -1482,6 +1482,158 @@ export const drugs: DrugEntry[] = [
     hazards:
       "Long-term systemic use has been linked to increased risk of blood clots and, in some studies, certain hormone-sensitive cancers, which is why hormone therapy is generally prescribed at the lowest effective dose for the shortest needed duration.",
   },
+  {
+    slug: "doxycycline",
+    letter: "D",
+    name: "Doxycycline",
+    practicalName: "Vibramycin · Doryx",
+    drugClass: "Tetracycline antibiotic",
+    category: "Antibiotic",
+    cid: 590417,
+    formula: "C22H24N2O8",
+    molecularWeight: 444.44,
+    molecularWeightLabel: "444.44 g/mol",
+    discovered: "Developed by Pfizer; FDA approved 1967",
+    mechanism:
+      "Binds the bacterial 30S ribosomal subunit, blocking transfer RNA from docking during protein synthesis — without new proteins, bacteria can't grow or divide.",
+    history:
+      "A semisynthetic tetracycline with better absorption and a longer half-life than its predecessors, doxycycline became a mainstay for once- or twice-daily dosing and remains a first-line treatment for tick-borne illnesses like Lyme disease.",
+    hazards:
+      "Causes photosensitivity (increased sunburn risk) and can permanently discolor developing teeth, so it's avoided in young children and pregnancy. Should be taken with a full glass of water while upright, since it can irritate the esophagus.",
+  },
+  {
+    slug: "cephalexin",
+    letter: "C",
+    name: "Cephalexin",
+    practicalName: "Keflex",
+    drugClass: "First-generation cephalosporin antibiotic",
+    category: "Antibiotic",
+    cid: 27447,
+    formula: "C16H17N3O4S",
+    molecularWeight: 347.39,
+    molecularWeightLabel: "347.39 g/mol",
+    discovered: "Developed by Eli Lilly; FDA approved 1971",
+    mechanism:
+      "Like penicillins, blocks the transpeptidase enzymes bacteria use to cross-link peptidoglycan in their cell wall — structurally related to penicillin but built on a different core ring system.",
+    history:
+      "One of the first oral cephalosporins, cephalexin gave doctors a penicillin-class alternative for skin and urinary infections that could be taken as a pill rather than an injection.",
+    hazards:
+      "Can cause allergic reactions, with some cross-reactivity risk in patients with a penicillin allergy. Common side effects include GI upset and diarrhea.",
+  },
+  {
+    slug: "vancomycin",
+    letter: "V",
+    name: "Vancomycin",
+    practicalName: "Vancocin",
+    drugClass: "Glycopeptide antibiotic",
+    category: "Antibiotic",
+    cid: 14969,
+    formula: "C66H75Cl2N9O24",
+    molecularWeight: 1449.27,
+    molecularWeightLabel: "1449.27 g/mol",
+    discovered: "Isolated 1953 from soil bacteria by Eli Lilly; FDA approved 1958",
+    mechanism:
+      "Binds directly to the building blocks of the bacterial cell wall, physically blocking the enzymes that would normally assemble them — a different point of attack than penicillin-class drugs, which target the enzymes instead of the building blocks.",
+    history:
+      "Isolated from a soil sample collected in Borneo, vancomycin became known as a 'drug of last resort' for serious infections resistant to other antibiotics, particularly MRSA (methicillin-resistant Staphylococcus aureus).",
+    hazards:
+      "Can cause kidney damage and hearing loss at high doses, so blood levels are closely monitored during treatment. Rapid IV infusion can trigger 'red man syndrome,' a histamine-release reaction causing flushing and low blood pressure.",
+  },
+  {
+    slug: "metronidazole",
+    letter: "M",
+    name: "Metronidazole",
+    practicalName: "Flagyl",
+    drugClass: "Nitroimidazole antimicrobial",
+    category: "Antibiotic",
+    cid: 4173,
+    formula: "C6H9N3O3",
+    molecularWeight: 171.16,
+    molecularWeightLabel: "171.16 g/mol",
+    discovered: "Developed by Rhône-Poulenc; FDA approved 1963",
+    mechanism:
+      "Once inside a susceptible cell, its nitro group is chemically reduced into reactive compounds that break DNA strands — a process that only happens inside anaerobic bacteria and certain parasites, sparing human cells and aerobic bacteria.",
+    history:
+      "Originally developed to treat a parasitic infection, metronidazole's activity against anaerobic bacteria was discovered along the way, and it became a standard treatment for a wide range of anaerobic and parasitic infections.",
+    hazards:
+      "Causes a severe reaction (flushing, vomiting, rapid heartbeat) when combined with alcohol, so drinking is avoided during treatment and for a few days after. Can cause a metallic taste and, rarely, nerve damage with prolonged use.",
+  },
+  {
+    slug: "empagliflozin",
+    letter: "E",
+    name: "Empagliflozin",
+    practicalName: "Jardiance",
+    drugClass: "SGLT2 inhibitor",
+    category: "Antidiabetic",
+    cid: 11949646,
+    formula: "C23H27ClO7",
+    molecularWeight: 450.91,
+    molecularWeightLabel: "450.91 g/mol",
+    discovered: "Developed by Boehringer Ingelheim; FDA approved 2014",
+    mechanism:
+      "Blocks SGLT2, a transporter in the kidney that normally reabsorbs glucose back into the blood — with it blocked, excess glucose is excreted in urine instead, lowering blood sugar independent of insulin.",
+    history:
+      "Part of a drug class that traces back to a compound found in apple tree bark, which first suggested that blocking glucose reabsorption in the kidney could treat diabetes. Empagliflozin also proved to reduce heart failure hospitalizations — an unexpected benefit that reshaped how the class is used.",
+    hazards:
+      "Increases risk of genital yeast infections and urinary tract infections, since more glucose ends up in urine. Carries a rare but serious risk of a dangerous drop in blood pH (ketoacidosis) even with normal blood sugar.",
+  },
+  {
+    slug: "glyburide",
+    letter: "G",
+    name: "Glyburide",
+    practicalName: "DiaBeta · Micronase (glibenclamide outside the US)",
+    drugClass: "Sulfonylurea",
+    category: "Antidiabetic",
+    cid: 3488,
+    formula: "C23H28ClN3O5S",
+    molecularWeight: 494.0,
+    molecularWeightLabel: "494.00 g/mol",
+    discovered: "Developed by Hoechst; FDA approved 1984",
+    mechanism:
+      "Binds receptors on pancreatic beta cells that trigger insulin release, essentially prompting the pancreas to secrete more insulin regardless of current blood sugar levels.",
+    history:
+      "One of the most potent second-generation sulfonylureas, glyburide became a low-cost mainstay of type 2 diabetes treatment for decades before newer drug classes carrying less risk of dangerously low blood sugar became preferred first-line options.",
+    hazards:
+      "Highest risk of hypoglycemia (dangerously low blood sugar) among commonly used oral diabetes drugs, particularly in older adults or those with kidney problems. Can cause weight gain.",
+  },
+  {
+    slug: "acarbose",
+    letter: "A",
+    name: "Acarbose",
+    practicalName: "Precose · Glucobay",
+    drugClass: "Alpha-glucosidase inhibitor",
+    category: "Antidiabetic",
+    cid: 444254,
+    formula: "C25H43NO18",
+    molecularWeight: 645.61,
+    molecularWeightLabel: "645.61 g/mol",
+    discovered: "Developed by Bayer; FDA approved 1995",
+    mechanism:
+      "Blocks alpha-glucosidase enzymes in the small intestine that normally break complex carbohydrates into absorbable sugars, so carbs pass through undigested for longer — blunting the after-meal blood sugar spike.",
+    history:
+      "Derived from a fermentation product of soil bacteria, acarbose works entirely within the gut rather than being absorbed into the bloodstream, making it one of the few diabetes drugs that acts locally rather than systemically.",
+    hazards:
+      "Causes prominent gas, bloating, and diarrhea, since undigested carbohydrates ferment in the colon — the main reason many patients discontinue it. Doesn't cause low blood sugar on its own, but if it occurs, must be treated with glucose rather than table sugar, since acarbose blocks the enzyme needed to break down sucrose.",
+  },
+  {
+    slug: "canagliflozin",
+    letter: "C",
+    name: "Canagliflozin",
+    practicalName: "Invokana",
+    drugClass: "SGLT2 inhibitor",
+    category: "Antidiabetic",
+    cid: 24812758,
+    formula: "C24H25FO5S",
+    molecularWeight: 444.52,
+    molecularWeightLabel: "444.52 g/mol",
+    discovered: "Developed by Mitsubishi Tanabe / Janssen; FDA approved 2013",
+    mechanism:
+      "Like empagliflozin, blocks the SGLT2 transporter in the kidney that reabsorbs glucose, causing excess sugar to be excreted in urine rather than reabsorbed into the blood.",
+    history:
+      "The first SGLT2 inhibitor approved in the US, canagliflozin opened up an entirely new drug class for type 2 diabetes that works in the kidney rather than the pancreas or liver.",
+    hazards:
+      "Carries a boxed warning for increased risk of leg and foot amputations, along with the class-wide risks of genital infections and ketoacidosis. Can also increase fracture risk with long-term use.",
+  },
 ];
 
 export function getDrugBySlug(slug: string) {

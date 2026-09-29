@@ -12,30 +12,10 @@ const GAME_LINKS = [
 // Order matches how the founder wants the directory read: Index first, then
 // Trends, Tools, History — Games (below) comes last since it's its own block.
 const SITE_CARDS = [
-  {
-    label: "BROWSE",
-    title: "Index",
-    body: "Every compound, A to Z — jump straight to the one you need.",
-    href: "/entries",
-  },
-  {
-    label: "DATA",
-    title: "Trends",
-    body: "Real acquisition-cost data, plotted over time — pick a few drugs and compare how their prices have moved.",
-    href: "/trends",
-  },
-  {
-    label: "FIND",
-    title: "Tools",
-    body: "Locate pharmacies and professionals near you, right from your own location.",
-    href: "/tools",
-  },
-  {
-    label: "PAST",
-    title: "History",
-    body: "How today's drugs got here — origins and discovery, one compound at a time.",
-    href: "/history",
-  },
+  { label: "BROWSE", title: "Index", body: "Every compound, A–Z.", href: "/entries" },
+  { label: "DATA", title: "Trends", body: "Real price data, over time.", href: "/trends" },
+  { label: "FIND", title: "Tools", body: "Pharmacies near you.", href: "/tools" },
+  { label: "PAST", title: "History", body: "Where each drug came from.", href: "/history" },
 ];
 
 export default function Home() {
@@ -45,7 +25,7 @@ export default function Home() {
         <h1>
           The A–Z reference for <span className="phar-gradient">pharmacology</span>.
         </h1>
-        <p className="hero-sub">Real structures, real data, real history — through games, not flashcards.</p>
+        <p className="hero-sub">Built around games, not flashcards.</p>
         <div className="page-intro-actions">
           <Link href="/games/solitaire" className="btn-primary">
             Play Solitaire
@@ -59,9 +39,6 @@ export default function Home() {
       <div className="section-divider" />
 
       <section id="explore">
-        <div className="section-head">
-          <h2>Explore the site.</h2>
-        </div>
         <div className="site-card-grid">
           {SITE_CARDS.map((card) => (
             <Link href={card.href} className="site-card" key={card.title}>
@@ -73,7 +50,7 @@ export default function Home() {
           <div className="site-card">
             <div className="g-label mono">PLAY</div>
             <h3>Games</h3>
-            <p>Two ways to study through play — sort compounds by class, or go head to head on their stats.</p>
+            <p>Solitaire and Poker, pharmacology style.</p>
             <div className="site-card-subnav">
               {GAME_LINKS.map((game) => (
                 <Link href={game.href} className="site-card-sublink" key={game.title}>

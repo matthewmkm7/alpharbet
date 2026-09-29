@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { drugs } from "@/data/drugs";
 
-// Keeps a full history paragraph scannable across 76 entries — cut to a
+// Keeps a full history paragraph scannable across the whole catalog — cut to a
 // clean sentence break rather than mid-word.
 function truncate(text: string, max = 150) {
   if (text.length <= max) return text;

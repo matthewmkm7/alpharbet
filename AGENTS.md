@@ -51,8 +51,10 @@ No page should be a dead end. Each section should pull the user toward the next 
 Build this cross-linking into each feature as it's built, not as an afterthought.
 
 ## Build order — ALL PHASES COMPLETE as of this note
-1. Single entry page template — done (76 entries across 19 categories, exactly 4 per category —
-   this even count is what data/rounds.ts's 4-class rounds depend on for Solitaire/Poker)
+1. Single entry page template — done (84 entries across 19 categories; most categories have
+   exactly 4, Antibiotic and Antidiabetic have grown to 8 each as the catalog expands — always
+   add new entries in multiples of 4 to a category, since that's what data/rounds.ts's 4-class
+   Solitaire/Poker rounds are built around)
 2. A–Z index page — done, at /entries (grouped by letter; moved off the homepage so the
    homepage stays a short directory of cards instead of the full list)
 3. Solitaire game — done, with drag-and-drop

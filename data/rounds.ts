@@ -2,10 +2,13 @@ import type { DrugCategory } from "./drugs";
 
 // Both games are organized into standardized "rounds" — a curated set of 4
 // drug classes at a time, grouped so the classes in a round relate to each
-// other (same body system or use case). This keeps each round's card count
-// even (every category now has exactly 4 entries: 4 classes x 4 cards = 16
-// cards per round) and keeps the board from ever showing all 19 classes at
-// once, which was the source of the "awkward, cluttered" feedback earlier.
+// other (same body system or use case). Most categories have exactly 4
+// entries (4 classes x 4 cards = 16 cards in a round); Antibiotic and
+// Antidiabetic have grown to 8 each as the catalog expanded, so their rounds
+// ("Infection & Defense" and "Metabolic & Hormonal") deal a bigger board —
+// that's fine for both games, just a deeper round, not a bug. This keeps the
+// board from ever showing all 19 classes at once, which was the source of
+// the "awkward, cluttered" feedback earlier.
 //
 // Rounds rotate in order and wrap back to the first after the last one.
 
