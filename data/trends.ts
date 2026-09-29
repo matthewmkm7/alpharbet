@@ -50,6 +50,20 @@ export const spotlightFacts: Record<string, { fact: string; source: Source }> = 
     fact: "Like atorvastatin, simvastatin has been off-patent for years and is commonly stocked in $4-generic pharmacy programs, making the statin class one of the cheapest drug categories on this site.",
     source: { title: "GoodRx — statins pricing", url: "https://www.goodrx.com/classes/statins" },
   },
+  doxycycline: {
+    fact: "A textbook case of generic-drug price spikes: doxycycline hyclate 100 mg capsules rose 2,048% in a single year (2013), with one pharmacist telling a Senate committee the cost of a bottle went from $3 to $135 — despite the drug being decades off-patent.",
+    source: {
+      title: "U.S. Senate Special Committee on Aging — \"Why Are Some Generic Drugs Skyrocketing in Price?\" (2014 hearing)",
+      url: "https://www.govinfo.gov/content/pkg/CHRG-113shrg24459/html/CHRG-113shrg24459.htm",
+    },
+  },
+  vancomycin: {
+    fact: "Even after generics arrived in 2012, oral vancomycin stayed 'inexplicably expensive' — cash prices for a standard capsule course often top $1,000 in the US, versus roughly $207 for the same 10-day course under Canadian formularies.",
+    source: {
+      title: "Open Forum Infectious Diseases — \"Economic Barriers in the Treatment of C. difficile Infection With Oral Vancomycin\" (2017)",
+      url: "https://academic.oup.com/ofid/article/4/2/ofx078/3748271",
+    },
+  },
 };
 
 export const categoryDrivers: Record<DrugCategory, string> = {
@@ -83,5 +97,13 @@ export const sources: Source[] = [
   {
     title: "CMS NADAC — National Average Drug Acquisition Cost",
     url: "https://www.medicaid.gov/medicaid/nadac",
+  },
+  {
+    title: "U.S. Senate Special Committee on Aging — \"Why Are Some Generic Drugs Skyrocketing in Price?\" (2014 hearing)",
+    url: "https://www.govinfo.gov/content/pkg/CHRG-113shrg24459/html/CHRG-113shrg24459.htm",
+  },
+  {
+    title: "Open Forum Infectious Diseases — \"Economic Barriers in the Treatment of C. difficile Infection With Oral Vancomycin\" (2017)",
+    url: "https://academic.oup.com/ofid/article/4/2/ofx078/3748271",
   },
 ];
