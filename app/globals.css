@@ -181,26 +181,26 @@ section { padding: 60px 0; }
 .divider { border: none; border-top: 1px solid var(--line); }
 .section-divider { border: none; border-top: 1px solid var(--line); margin: 0; }
 
-/* ---------- Games ---------- */
-.game-grid {
+/* ---------- Homepage site-directory cards (one per other page) ---------- */
+.site-card-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
 }
-.game-card {
+.site-card {
   background: var(--bg-elevated); padding: 30px 26px; display: block; text-decoration: none; color: inherit;
   border: 1px solid var(--line); border-radius: 10px; position: relative; overflow: hidden;
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
-.game-card::before {
+.site-card::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
 }
-.game-card-solitaire::before { background: linear-gradient(100deg, var(--accent-orange), var(--accent-magenta)); }
-.game-card-poker::before { background: var(--accent-green); }
-.game-card:hover { transform: translateY(-3px); border-color: var(--accent-green); }
-.game-card .g-label {
+.site-card:nth-child(odd)::before { background: linear-gradient(100deg, var(--accent-orange), var(--accent-magenta)); }
+.site-card:nth-child(even)::before { background: var(--accent-green); }
+.site-card:hover { transform: translateY(-3px); border-color: var(--accent-green); }
+.site-card .g-label {
   font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--accent-green); margin-bottom: 16px;
 }
-.game-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-.game-card p { color: var(--text-dim); font-size: 0.94rem; }
+.site-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.site-card p { color: var(--text-dim); font-size: 0.94rem; }
 
 /* ---------- A-Z index ---------- */
 .index-grid {
@@ -641,7 +641,7 @@ footer a:hover { color: var(--text); }
 .price-compare-note { color: var(--text-faint); font-size: 0.76rem; margin-top: 12px; max-width: 62ch; }
 
 @media (max-width: 860px) {
-  .game-grid { grid-template-columns: 1fr; }
+  .site-card-grid { grid-template-columns: 1fr; }
   .index-grid { columns: 2 160px; }
   .entry-grid { grid-template-columns: 1fr; }
   .entry-side { position: static; }

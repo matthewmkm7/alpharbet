@@ -1,18 +1,31 @@
 import Link from "next/link";
 import { drugs } from "@/data/drugs";
 
-const GAMES = [
+// One card per other page on the site, so the homepage doubles as a directory.
+const SITE_CARDS = [
   {
-    label: "GAME 01",
+    label: "PLAY",
     title: "Solitaire",
     body: "Sort compounds into sequence — by molar mass, by class, by potency — to clear the board.",
     href: "/games/solitaire",
   },
   {
-    label: "GAME 02",
+    label: "PLAY",
     title: "Poker",
     body: "Compare drug stat-cards head to head — molecular weight, years on the market — and see what each reveal teaches you.",
     href: "/games/poker",
+  },
+  {
+    label: "DATA",
+    title: "Trends",
+    body: "Real acquisition-cost data, plotted over time — pick a few drugs and compare how their prices have moved.",
+    href: "/trends",
+  },
+  {
+    label: "FIND",
+    title: "Tools",
+    body: "Locate pharmacies and professionals near you, right from your own location.",
+    href: "/tools",
   },
 ];
 
@@ -49,16 +62,16 @@ export default function Home() {
 
       <div className="section-divider" />
 
-      <section id="games">
+      <section id="explore">
         <div className="section-head">
-          <h2>Games built around how drugs actually behave.</h2>
+          <h2>Everything the index leads to.</h2>
         </div>
-        <div className="game-grid">
-          {GAMES.map((game) => (
-            <Link href={game.href} className={`game-card game-card-${game.href.split("/").pop()}`} key={game.label}>
-              <div className="g-label mono">{game.label}</div>
-              <h3>{game.title}</h3>
-              <p>{game.body}</p>
+        <div className="site-card-grid">
+          {SITE_CARDS.map((card) => (
+            <Link href={card.href} className="site-card" key={card.title}>
+              <div className="g-label mono">{card.label}</div>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
             </Link>
           ))}
         </div>
