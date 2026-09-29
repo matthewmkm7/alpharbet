@@ -18,8 +18,14 @@ type SearchState =
   | { status: "error"; message: string }
   | { status: "done"; results: PharmacyResult[] };
 
+// Set at build time from NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY — this one is
+// meant to be public (it's restricted by HTTP referrer in Google Cloud
+// Console instead), unlike the server-only GOOGLE_PLACES_API_KEY used above.
+const MAPS_EMBED_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY;
+
 export default function ToolsPage() {
   const [state, setState] = useState<SearchState>({ status: "idle" });
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
 
   function findNearby() {
     if (!("geolocation" in navigator)) {
@@ -29,9 +35,10 @@ export default function ToolsPage() {
     setState({ status: "locating" });
     navigator.geolocation.getCurrentPosition(
       async (position) => {
+        const { latitude, longitude } = position.coords;
+        setCoords({ lat: latitude, lng: longitude });
         setState({ status: "loading" });
         try {
-          const { latitude, longitude } = position.coords;
           const res = await fetch(`/api/pharmacy-search?lat=${latitude}&lng=${longitude}`);
           const data = await res.json();
           if (!res.ok) {
@@ -67,6 +74,26 @@ export default function ToolsPage() {
         </button>
 
         {state.status === "error" && <p className="tools-error">{state.message}</p>}
+
+        {coords && (
+          <div className="tools-map">
+            {MAPS_EMBED_KEY ? (
+              <iframe
+                className="tools-map-frame"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Map of nearby pharmacies"
+                src={`https://www.google.com/maps/embed/v1/search?key=${MAPS_EMBED_KEY}&q=pharmacy&center=${coords.lat},${coords.lng}&zoom=14`}
+              />
+            ) : (
+              <p className="tools-map-missing">
+                Map view isn&apos;t set up yet — the site owner needs to add a Google Maps Embed API
+                key (see .env.local.example). The list below still works.
+              </p>
+            )}
+          </div>
+        )}
 
         {state.status === "done" && (
           <div className="tools-results">

@@ -59,7 +59,10 @@ Build this cross-linking into each feature as it's built, not as an afterthought
 5. Trends/market-optimizer section — done, using real cited data (see data/trends.ts), plus a working purchasing calculator
 6. Local pharmacy/professional finder — done (/tools), but needs a Google Places API key in
    .env.local (see .env.local.example) and the same var set in Vercel's project settings before
-   it works live — it degrades gracefully with a clear message if the key is missing
+   it works live — it degrades gracefully with a clear message if the key is missing. Also shows
+   a visual Google Maps Embed of nearby pharmacies once found, which needs a SECOND, separate key
+   (NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY — see .env.local.example for why it's a different key and
+   how to restrict it) also set in Vercel; degrades the same way if missing.
 7. Real per-drug pricing on Trends — done, but data/nadac-prices.json ships EMPTY ({}) because
    the AI sandbox that built this can't reach data.medicaid.gov's network. The founder needs to
    run `npm run fetch-nadac-prices` once from their own Terminal (not through Claude/Cowork) to
