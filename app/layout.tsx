@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "Alpharbet — The A–Z of drugs, made to stick",
 };
 
+// Only loads if NEXT_PUBLIC_ADSENSE_CLIENT_ID is set in Vercel — see
+// .env.local.example. Until then this renders nothing, same "degrade
+// gracefully with no key" pattern as the Tools page's Google API keys.
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
@@ -18,6 +23,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
+        {ADSENSE_CLIENT_ID && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+          />
+        )}
       </head>
       <body>
         <MoleculeBackground />

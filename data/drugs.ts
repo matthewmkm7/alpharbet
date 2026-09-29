@@ -1645,3 +1645,16 @@ export function getDrugBySlug(slug: string) {
 export function categorySlug(category: DrugCategory): string {
   return category.toLowerCase().replace(/\s+/g, "-");
 }
+
+// Total atom count parsed straight from the real chemical formula (e.g.
+// "C22H24N2O8" -> 22+24+2+8 = 56) — used as a Poker battling stat that's
+// genuinely distinct from molecular weight and years-on-market: it's about
+// structural size/complexity, not mass or history, and it's computed from
+// data we already have rather than a new invented number.
+export function atomCount(formula: string): number {
+  const matches = formula.match(/[A-Z][a-z]?\d*/g) ?? [];
+  return matches.reduce((sum, part) => {
+    const count = part.match(/\d+/);
+    return sum + (count ? parseInt(count[0], 10) : 1);
+  }, 0);
+}

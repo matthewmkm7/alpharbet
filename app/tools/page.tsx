@@ -23,6 +23,11 @@ type SearchState =
 // Console instead), unlike the server-only GOOGLE_PLACES_API_KEY used above.
 const MAPS_EMBED_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY;
 
+// A pharmacy-discount affiliate link — set once you're approved for a
+// program (see .env.local.example). Renders nothing until it's set, same
+// degrade-gracefully pattern as the two API keys above.
+const AFFILIATE_URL = process.env.NEXT_PUBLIC_PHARMACY_AFFILIATE_URL;
+
 export default function ToolsPage() {
   const [state, setState] = useState<SearchState>({ status: "idle" });
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
@@ -116,6 +121,30 @@ export default function ToolsPage() {
               ))
             )}
           </div>
+        )}
+
+        {state.status === "done" && state.results.length > 0 && (
+          <>
+            {AFFILIATE_URL && (
+              <div className="entry-side-card" style={{ maxWidth: 480, marginTop: 24 }}>
+                <div className="eyebrow-line mono">Save on the price</div>
+                <p>Get a free discount card before you go — often cheaper than insurance copays.</p>
+                <a href={AFFILIATE_URL} target="_blank" rel="noreferrer sponsored" className="btn-primary btn-link">
+                  Find a discount card
+                </a>
+                <p className="tools-affiliate-disclosure mono">
+                  Affiliate link — Alpharbet may earn a commission at no extra cost to you.
+                </p>
+              </div>
+            )}
+            <div className="entry-side-card" style={{ maxWidth: 480, marginTop: 24 }}>
+              <div className="eyebrow-line mono">Look something up</div>
+              <p>Found your pharmacy — now look up a drug while you&apos;re there.</p>
+              <Link href="/entries" className="btn-primary btn-link">
+                Browse the index
+              </Link>
+            </div>
+          </>
         )}
 
         <p style={{ marginTop: 32 }}>

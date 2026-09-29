@@ -41,8 +41,8 @@ An A–Z reference site for drugs/pharmaceutical compounds, aimed first at pharm
 7. Hazards / dangers of usage (informational level only — see Hard rules)
 
 ## Games (final — only these two)
-- **Solitaire**: sort compounds into sequence by molar mass, drug class, or potency to clear the board. Mechanic may vary by drug class/topic area.
-- **Poker** (Top Trumps–style stat comparison, not real poker mechanics — no betting/bluffing): players compare drug "stat cards" (potency, molar mass, discovery era, etc.) against a target hand or class to win. Hidden-variable "reveal" moments should be based on mechanism-of-action surprises or historical facts (e.g. "these two share a receptor target," "this one was the first FDA-approved in its class") — see Hard rules for what the hidden variable must NOT be.
+- **Solitaire**: sort compounds into sequence by molar mass, drug class, or potency to clear the board. Mechanic may vary by drug class/topic area. Has a Medium/Hard difficulty toggle: Medium shows each card's name and drug class as always; Hard shows only the chemical formula, so you're judging weight from the chemistry itself rather than recognizing the drug by name.
+- **Poker** (Top Trumps–style stat comparison, not real poker mechanics — no betting/bluffing): players compare drug "stat cards" (potency, molar mass, discovery era, etc.) against a target hand or class to win. Hidden-variable "reveal" moments should be based on mechanism-of-action surprises or historical facts (e.g. "these two share a receptor target," "this one was the first FDA-approved in its class") — see Hard rules for what the hidden variable must NOT be. Your whole hand is dealt face-up and you choose which card to play each hand (not a forced top-of-deck order); the computer plays a random card from its hidden hand in response. Three distinct battling stats, all derived from real data already on the card — molecular weight, years since discovery, and total atom count (parsed from the formula via `atomCount()` in data/drugs.ts) — deliberately not a fabricated "potency score", per the hard rule against presenting invented numbers as real.
 - Pool/8-ball is cut. Do not reintroduce a synthesis-based game mechanic under any name.
 
 ## Engagement loop (design principle for every page)
@@ -69,11 +69,16 @@ Build this cross-linking into each feature as it's built, not as an afterthought
    a visual Google Maps Embed of nearby pharmacies once found, which needs a SECOND, separate key
    (NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY — see .env.local.example for why it's a different key and
    how to restrict it) also set in Vercel; degrades the same way if missing.
-7. Real per-drug pricing on Trends — done, but data/nadac-prices.json ships EMPTY ({}) because
-   the AI sandbox that built this can't reach data.medicaid.gov's network. The founder needs to
-   run `npm run fetch-nadac-prices` once from their own Terminal (not through Claude/Cowork) to
-   populate it with real prices from CMS's free NADAC dataset. Re-run it any time to refresh —
-   it's a manual script, not wired into the build, since the source file is 50+ MB and shouldn't
+7. Real per-drug pricing on Trends — done. data/nadac-prices.json is populated (72 drugs, from
+   the founder running the script locally), but data/nadac-price-history.json is still EMPTY
+   ({}) — it was added after that last run, so the per-drug price snapshot works but the "compare
+   over time" chart (build order #10, below) has nothing to plot yet and will keep showing "no
+   price history yet" until the founder re-runs the script. The AI sandbox that built this can't
+   reach data.medicaid.gov's network, so this can only be run from the founder's own Terminal
+   (not through Claude/Cowork):
+   run `npm run fetch-nadac-prices` to (re-)populate both files with real prices from CMS's free
+   NADAC dataset. Re-run it any time to refresh — it's a manual script, not wired into the build,
+   since the source file is 50+ MB and shouldn't
    be re-downloaded on every deploy. See scripts/fetch-nadac-prices.mjs for how it works and why.
 8. History gets its own page per drug — done, at /entries/[slug]/history (linked from the main
    entry page; ends in a challenge into Solitaire, per the engagement loop above). Hazards stays
@@ -101,6 +106,18 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     CDC's own county/ZIP-level PLACES dataset lives at data.cdc.gov, which — like
     data.medicaid.gov (see NADAC pricing, above) — this sandbox's shell can't reach directly, so
     live per-user geolocation isn't buildable here without a paid data provider.
+13. Monetization scaffolding — done, but INACTIVE until the founder has real accounts/IDs.
+    Nothing here changes what a visitor sees until env vars are set in Vercel:
+    - NEXT_PUBLIC_PHARMACY_AFFILIATE_URL — once set, shows a disclosed affiliate link ("Find a
+      discount card") on /tools right after someone finds a nearby pharmacy. Needs the founder to
+      apply to a pharmacy-discount affiliate program (e.g. GoodRx's) and paste the tracked URL
+      they're given. See .env.local.example.
+    - NEXT_PUBLIC_ADSENSE_CLIENT_ID — once set, loads the Google AdSense script site-wide
+      (app/layout.tsx). Needs the founder to apply at adsense.google.com once the site is live on
+      its own domain (their review requires a real domain + a privacy policy, which this site
+      already has at /privacy).
+    Both follow the same "degrade gracefully with no key" pattern already used for the Google
+    Places/Maps keys — leaving either blank renders nothing, not a broken link or placeholder.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.

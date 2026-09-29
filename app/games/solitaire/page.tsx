@@ -14,6 +14,8 @@ function shuffle<T>(arr: T[]): T[] {
   return copy;
 }
 
+type Difficulty = "medium" | "hard";
+
 type LaneState = {
   category: DrugCategory;
   deck: DrugEntry[];
@@ -36,6 +38,13 @@ function dragPayload(drug: DrugEntry, category: DrugCategory) {
 export default function SolitairePage() {
   const [roundIndex, setRoundIndex] = useState(0);
   const [lanes, setLanes] = useState<LaneState[]>(() => buildLanes(GAME_ROUNDS[0].categories));
+  // Medium shows each card's name and drug class, same as always. Hard hides
+  // both and shows only the chemical formula — you have to judge molecular
+  // weight from the formula itself instead of recognizing the drug by name,
+  // which is a genuinely harder (and more chemistry-based) skill. Switching
+  // mid-round reshuffles the current round rather than leaving it half-solved
+  // under the old rules.
+  const [difficulty, setDifficulty] = useState<Difficulty>("medium");
   const [wrongSlug, setWrongSlug] = useState<string | null>(null);
   const [draggingSlug, setDraggingSlug] = useState<string | null>(null);
   const [dropTargetLane, setDropTargetLane] = useState<DrugCategory | null>(null);
@@ -109,6 +118,15 @@ export default function SolitairePage() {
     setDropTargetLane(null);
   }
 
+  function changeDifficulty(next: Difficulty) {
+    if (next === difficulty) return;
+    setDifficulty(next);
+    setLanes(buildLanes(round.categories));
+    setWrongSlug(null);
+    setDraggingSlug(null);
+    setDropTargetLane(null);
+  }
+
   function reset() {
     setRoundIndex(0);
     setLanes(buildLanes(GAME_ROUNDS[0].categories));
@@ -127,8 +145,26 @@ export default function SolitairePage() {
           Four drug classes on the table at a time, lightest to heaviest, one round. Drag a card
           into its lane&apos;s cleared pile in ascending order of molecular weight — get it wrong
           and it bounces back, no penalty. Clear all four lanes to advance to the next round.
-          (Clicking a card works too.)
+          (Clicking a card works too.) On Hard, cards show only their formula — you're judging
+          weight from the chemistry, not the name.
         </p>
+        <div className="difficulty-toggle">
+          <span className="difficulty-toggle-label mono">Difficulty:</span>
+          <button
+            type="button"
+            className={`difficulty-btn${difficulty === "medium" ? " is-active" : ""}`}
+            onClick={() => changeDifficulty("medium")}
+          >
+            Medium — labeled cards
+          </button>
+          <button
+            type="button"
+            className={`difficulty-btn${difficulty === "hard" ? " is-active" : ""}`}
+            onClick={() => changeDifficulty("hard")}
+          >
+            Hard — formula only
+          </button>
+        </div>
         {!matchComplete && (
           <div className="solitaire-status mono">
             Round {roundIndex + 1} of {GAME_ROUNDS.length} — {round.title}
@@ -173,8 +209,14 @@ export default function SolitairePage() {
                       onDragStart={(e) => handleDragStart(e, drug, lane.category)}
                       onDragEnd={handleDragEnd}
                     >
-                      <span className="solitaire-card-name">{drug.name}</span>
-                      <span className="solitaire-card-class mono">{drug.drugClass}</span>
+                      {difficulty === "medium" ? (
+                        <>
+                          <span className="solitaire-card-name">{drug.name}</span>
+                          <span className="solitaire-card-class mono">{drug.drugClass}</span>
+                        </>
+                      ) : (
+                        <span className="solitaire-card-formula mono">{drug.formula}</span>
+                      )}
                     </button>
                   ))}
                 </div>

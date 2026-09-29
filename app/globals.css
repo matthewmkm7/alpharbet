@@ -171,13 +171,10 @@ a { color: inherit; }
 
 /* ---------- Section shared ---------- */
 section { padding: 60px 0; }
-.section-head { max-width: 62ch; margin-bottom: 44px; }
 .eyebrow-line {
   font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
   color: var(--accent-green); margin-bottom: 14px;
 }
-.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
-.section-head p { color: var(--text-dim); font-size: 1rem; }
 .divider { border: none; border-top: 1px solid var(--line); }
 .section-divider { border: none; border-top: 1px solid var(--line); margin: 0; }
 
@@ -278,7 +275,6 @@ footer a:hover { color: var(--text); }
 .entry-side-card p { color: var(--text-dim); font-size: 0.92rem; margin: 10px 0 16px; }
 .history-body { margin-bottom: 32px; }
 .history-challenge { max-width: 480px; border-color: var(--accent-green); }
-.btn-disabled { display: inline-block; opacity: 0.55; cursor: default; font-size: 0.85rem; padding: 10px 16px; }
 .btn-link { display: inline-block; font-size: 0.85rem; padding: 10px 16px; text-decoration: none; }
 .molecule-viewer-wrap { position: relative; }
 .molecule-viewer {
@@ -304,6 +300,17 @@ footer a:hover { color: var(--text); }
 .solitaire-page { padding: 48px 0 100px; }
 .solitaire-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
 .solitaire-hint { color: var(--text-dim); font-size: 1rem; margin-bottom: 8px; max-width: 62ch; }
+
+/* A small button-pair toggle, reused wherever a page offers exactly two
+   named modes (currently just Solitaire's difficulty). */
+.difficulty-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.difficulty-toggle-label { color: var(--text-faint); font-size: 0.78rem; margin-right: 2px; }
+.difficulty-btn {
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 999px;
+  padding: 7px 14px; font-size: 0.8rem; color: var(--text-dim); cursor: pointer;
+}
+.difficulty-btn.is-active { border-color: var(--accent-green); color: var(--text); background: rgba(63,143,91,0.1); }
+.solitaire-card-formula { font-size: 0.95rem; color: var(--text); }
 .solitaire-status { color: var(--accent-green); font-size: 0.9rem; margin-bottom: 8px; min-height: 22px; }
 
 .solitaire-arena { padding: 24px 16px 80px; }
@@ -544,6 +551,18 @@ footer a:hover { color: var(--text); }
 .poker-fact { color: rgba(253,252,249,0.7); font-size: 0.94rem; margin-bottom: 18px; max-width: 62ch; margin-inline: auto; }
 .poker-fact .eyebrow-line { color: rgba(232,163,61,0.85); }
 
+.poker-hand { margin-top: 28px; }
+.poker-hand-label { color: rgba(253,252,249,0.6); font-size: 0.76rem; margin-bottom: 12px; }
+.poker-hand-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.poker-hand-card {
+  all: unset; cursor: pointer; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px;
+  background: var(--always-white); color: #17140F; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;
+  padding: 10px 14px; min-width: 140px; box-shadow: 0 8px 16px -10px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.poker-hand-card:hover { transform: translateY(-3px); box-shadow: 0 14px 24px -12px rgba(0,0,0,0.6); }
+.poker-hand-card .solitaire-card-name { color: #17140F; font-size: 0.88rem; }
+
 @media (max-width: 640px) {
   .poker-face-off { grid-template-columns: 1fr; }
   .poker-vs { margin: 0 auto; }
@@ -553,6 +572,7 @@ footer a:hover { color: var(--text); }
 .tools-page { padding: 48px 0 100px; }
 .tools-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
 .tools-error { color: var(--accent-magenta); margin-top: 16px; font-size: 0.92rem; }
+.tools-affiliate-disclosure { color: var(--text-faint); font-size: 0.72rem; margin-top: 10px; }
 .tools-map { margin-top: 24px; }
 .tools-map-frame {
   width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 10px;
