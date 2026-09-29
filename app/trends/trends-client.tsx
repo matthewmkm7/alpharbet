@@ -56,6 +56,9 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
               ))}
             </select>
           </label>
+          {currency.status === "loading" && (
+            <span className="trends-currency-note trends-currency-note-loading">Fetching live rates…</span>
+          )}
           {currency.status === "error" && (
             <span className="trends-currency-note">Live rates unavailable right now — showing USD.</span>
           )}

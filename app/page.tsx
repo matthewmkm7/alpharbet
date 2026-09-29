@@ -9,18 +9,14 @@ const GAME_LINKS = [
   { title: "Poker", href: "/games/poker" },
 ];
 
+// Order matches how the founder wants the directory read: Index first, then
+// Trends, Tools, History — Games (below) comes last since it's its own block.
 const SITE_CARDS = [
   {
     label: "BROWSE",
     title: "Index",
     body: "Every compound, A to Z — jump straight to the one you need.",
     href: "/entries",
-  },
-  {
-    label: "PAST",
-    title: "History",
-    body: "How today's drugs got here — origins and discovery, one compound at a time.",
-    href: "/history",
   },
   {
     label: "DATA",
@@ -33,6 +29,12 @@ const SITE_CARDS = [
     title: "Tools",
     body: "Locate pharmacies and professionals near you, right from your own location.",
     href: "/tools",
+  },
+  {
+    label: "PAST",
+    title: "History",
+    body: "How today's drugs got here — origins and discovery, one compound at a time.",
+    href: "/history",
   },
 ];
 
@@ -61,6 +63,13 @@ export default function Home() {
           <h2>Explore the site.</h2>
         </div>
         <div className="site-card-grid">
+          {SITE_CARDS.map((card) => (
+            <Link href={card.href} className="site-card" key={card.title}>
+              <div className="g-label mono">{card.label}</div>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </Link>
+          ))}
           <div className="site-card">
             <div className="g-label mono">PLAY</div>
             <h3>Games</h3>
@@ -73,13 +82,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          {SITE_CARDS.map((card) => (
-            <Link href={card.href} className="site-card" key={card.title}>
-              <div className="g-label mono">{card.label}</div>
-              <h3>{card.title}</h3>
-              <p>{card.body}</p>
-            </Link>
-          ))}
         </div>
       </section>
 
