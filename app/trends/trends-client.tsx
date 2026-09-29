@@ -6,6 +6,7 @@ import { drugs, type DrugEntry } from "@/data/drugs";
 import { macroStats, spotlightFacts, categoryDrivers, sources } from "@/data/trends";
 import nadacPricesRaw from "@/data/nadac-prices.json";
 import PriceCompareChart from "./price-compare-chart";
+import { useCurrencyRates, CURRENCIES, type CurrencyCode } from "./use-currency";
 
 // Real per-drug pricing from CMS's NADAC dataset (see scripts/fetch-nadac-prices.mjs).
 // This is what U.S. pharmacies pay to acquire the drug, not a retail price —
@@ -18,6 +19,7 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
   const drug = useMemo<DrugEntry>(() => drugs.find((d) => d.slug === slug) ?? drugs[0], [slug]);
   const spotlight = spotlightFacts[drug.slug];
   const nadac = nadacPrices[drug.slug];
+  const currency = useCurrencyRates();
 
   // Purchasing efficiency calculator — real arithmetic on whatever the user enters.
   const [packagePrice, setPackagePrice] = useState("20");
@@ -42,6 +44,22 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
             Source: {sources[0].title}
           </a>
         </p>
+
+        <div className="trends-currency">
+          <label className="mono">
+            Show prices in:{" "}
+            <select value={currency.code} onChange={(e) => currency.setCode(e.target.value as CurrencyCode)}>
+              {CURRENCIES.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.code} — {c.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          {currency.status === "error" && (
+            <span className="trends-currency-note">Live rates unavailable right now — showing USD.</span>
+          )}
+        </div>
 
         <div className="trends-stat-grid">
           {macroStats.map((stat) => (
@@ -72,7 +90,7 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           {nadac && (
             <div className="trends-nadac">
               <span className="trends-nadac-value mono">
-                ${nadac.pricePerUnit.toFixed(4)} / {nadac.unit}
+                {currency.format(nadac.pricePerUnit)} / {nadac.unit}
               </span>
               <span className="trends-nadac-label">
                 Current U.S. pharmacy acquisition cost (NADAC) for {nadac.ndcDescription.toLowerCase()}, as of{" "}
@@ -102,7 +120,7 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           <p style={{ color: "var(--text-dim)", fontSize: "0.92rem", marginBottom: 16 }}>
             See how acquisition cost has moved for several drugs at once.
           </p>
-          <PriceCompareChart />
+          <PriceCompareChart formatPrice={currency.format} />
         </div>
 
         <div className="trends-calc-card">
@@ -112,7 +130,7 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           </p>
           <div className="trends-calc-row">
             <label>
-              Package price ($)
+              Package price (USD)
               <input type="number" min="0" value={packagePrice} onChange={(e) => setPackagePrice(e.target.value)} />
             </label>
             <label>
@@ -125,7 +143,8 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
             </label>
           </div>
           <div className="trends-calc-result mono">
-            ${costPerMg.toFixed(4)} per mg · {packagesNeeded} package{packagesNeeded === 1 ? "" : "s"} · ${totalCost.toFixed(2)} total
+            {currency.format(costPerMg)} per mg · {packagesNeeded} package{packagesNeeded === 1 ? "" : "s"} ·{" "}
+            {currency.format(totalCost)} total
           </div>
         </div>
 

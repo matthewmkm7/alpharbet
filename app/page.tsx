@@ -11,6 +11,18 @@ const GAME_LINKS = [
 
 const SITE_CARDS = [
   {
+    label: "BROWSE",
+    title: "Index",
+    body: "Every compound, A to Z — jump straight to the one you need.",
+    href: "/entries",
+  },
+  {
+    label: "PAST",
+    title: "History",
+    body: "How today's drugs got here — origins and discovery, one compound at a time.",
+    href: "/history",
+  },
+  {
     label: "DATA",
     title: "Trends",
     body: "Real acquisition-cost data, plotted over time — pick a few drugs and compare how their prices have moved.",
@@ -24,20 +36,7 @@ const SITE_CARDS = [
   },
 ];
 
-// Group entries by their starting letter for the index below.
-function groupByLetter() {
-  const groups = new Map<string, typeof drugs>();
-  for (const drug of [...drugs].sort((a, b) => a.name.localeCompare(b.name))) {
-    const group = groups.get(drug.letter) ?? [];
-    group.push(drug);
-    groups.set(drug.letter, group);
-  }
-  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
-}
-
 export default function Home() {
-  const letterGroups = groupByLetter();
-
   return (
     <div className="wrap">
       <section className="page-intro">
@@ -59,7 +58,7 @@ export default function Home() {
 
       <section id="explore">
         <div className="section-head">
-          <h2>Everything the index leads to.</h2>
+          <h2>Explore the site.</h2>
         </div>
         <div className="site-card-grid">
           <div className="site-card">
@@ -80,28 +79,6 @@ export default function Home() {
               <h3>{card.title}</h3>
               <p>{card.body}</p>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      <div className="section-divider" />
-
-      <section id="index">
-        <div className="section-head">
-          <h2>{drugs.length} entries and counting.</h2>
-        </div>
-        <div className="index-grid">
-          {letterGroups.map(([letter, group]) => (
-            <div className="index-letter-group" key={letter}>
-              <div className="index-letter mono">{letter}</div>
-              <ul>
-                {group.map((drug) => (
-                  <li key={drug.slug}>
-                    <Link href={`/entries/${drug.slug}`}>{drug.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
           ))}
         </div>
       </section>

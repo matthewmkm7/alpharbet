@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { drugs } from "@/data/drugs";
 import historyRaw from "@/data/nadac-price-history.json";
 
@@ -24,26 +24,13 @@ const MARGIN = { top: 16, right: 16, bottom: 12, left: 40 };
 // point (= 100) rather than plotted in raw dollars, because different drugs
 // are priced per different units (per tablet, per mL, etc.) — raw dollar
 // values aren't comparable across them, but "how much has it moved" is.
-export default function PriceCompareChart() {
+export default function PriceCompareChart({ formatPrice }: { formatPrice: (usd: number) => string }) {
   const comparable = useMemo(() => drugs.filter((d) => (history[d.slug]?.length ?? 0) >= 2), []);
 
+  // Starts empty — the picker below is entirely the user's choice, not a
+  // default we've made for them.
   const [selections, setSelections] = useState<Selection[]>([]);
   const [hover, setHover] = useState<{ slug: string; point: HistoryPoint; x: number; y: number } | null>(null);
-
-  // Show something on first load instead of a blank chart: pick a random
-  // handful of comparable drugs once data is available. Done in an effect
-  // (client-only) rather than the initial state, so the server-rendered HTML
-  // and the first client render match — picking randomly during render would
-  // make the two disagree.
-  useEffect(() => {
-    if (comparable.length === 0) return;
-    setSelections((prev) => {
-      if (prev.length > 0) return prev; // don't clobber a selection the user already made
-      const shuffled = [...comparable].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, MAX_SERIES).map((d, i) => ({ slug: d.slug, colorIndex: i }));
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [comparable]);
 
   function toggleDrug(slug: string) {
     setSelections((prev) => {
@@ -176,7 +163,7 @@ export default function PriceCompareChart() {
                   {hover.point.date}
                 </text>
                 <text x={Math.min(Math.max(hover.x, 57), CHART_WIDTH - 57)} y={Math.max(hover.y - 12, 30)} textAnchor="middle" className="price-compare-tooltip-text mono">
-                  ${hover.point.price.toFixed(4)}
+                  {formatPrice(hover.point.price)}
                 </text>
               </g>
             )}

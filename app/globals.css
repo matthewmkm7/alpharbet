@@ -582,6 +582,26 @@ footer a:hover { color: var(--text); }
 .tools-result-meta .is-open { color: var(--accent-green); }
 .tools-result-meta .is-closed { color: var(--accent-magenta); }
 
+/* ---------- Entries index (A–Z browse page) ---------- */
+.index-page { padding: 48px 0 100px; }
+.index-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
+
+/* ---------- History hub (all drugs' origin stories) ---------- */
+.history-hub-page { padding: 48px 0 100px; }
+.history-hub-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
+.history-hub-list {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
+}
+.history-hub-card {
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 10px;
+  padding: 20px 22px; text-decoration: none; color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.history-hub-card:hover { border-color: var(--accent-green); transform: translateY(-2px); }
+.history-hub-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; margin-bottom: 8px; }
+.history-hub-excerpt { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 12px; }
+.history-hub-fact { color: var(--text-faint); font-size: 0.76rem; }
+
 /* ---------- Trends ---------- */
 .trends-page { padding: 48px 0 100px; }
 .trends-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
@@ -589,6 +609,15 @@ footer a:hover { color: var(--text); }
   font-size: 0.85rem; color: var(--text-faint); margin-bottom: 40px; max-width: 62ch;
   border-left: 2px solid var(--line); padding-left: 14px;
 }
+.trends-currency {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 28px; font-size: 0.85rem; color: var(--text-dim);
+}
+.trends-currency select {
+  margin-left: 8px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+}
+.trends-currency-note { color: var(--accent-magenta); font-size: 0.8rem; }
 .trends-chart-card, .trends-calc-card {
   background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 10px;
   padding: 28px; margin-bottom: 32px;
@@ -649,6 +678,7 @@ footer a:hover { color: var(--text); }
 
 @media (max-width: 860px) {
   .site-card-grid { grid-template-columns: 1fr; }
+  .history-hub-list { grid-template-columns: 1fr; }
   .index-grid { columns: 2 160px; }
   .entry-grid { grid-template-columns: 1fr; }
   .entry-side { position: static; }
