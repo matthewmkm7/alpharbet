@@ -97,7 +97,16 @@ async function main() {
   }
 
   const lines = text.split("\n").filter((line) => line.trim().length > 0);
-  const header = parseCsvLine(lines[0]).map((h) => h.trim().toLowerCase());
+  // Normalize headers so "NDC Description" and "ndc_description" both match —
+  // the CSV's actual header style isn't guaranteed to match the data
+  // dictionary's machine-readable field names exactly.
+  const normalize = (h) =>
+    h
+      .replace(/^﻿/, "") // strip a possible byte-order-mark on the first header
+      .trim()
+      .toLowerCase()
+      .replace(/[\s-]+/g, "_");
+  const header = parseCsvLine(lines[0]).map(normalize);
   const col = (name) => header.indexOf(name);
   const iDescription = col("ndc_description");
   const iPrice = col("nadac_per_unit");
@@ -105,8 +114,9 @@ async function main() {
   const iUnit = col("pricing_unit");
 
   if (iDescription === -1 || iPrice === -1 || iDate === -1 || iUnit === -1) {
-    console.error("NADAC's column names have changed — this script needs updating to match.");
-    console.error("Leaving data/nadac-prices.json unchanged.");
+    console.error("Couldn't find the expected columns in this file. Here's what it actually has:");
+    console.error(header.map((h, i) => `  [${i}] ${h}`).join("\n"));
+    console.error("Leaving data/nadac-prices.json unchanged — send this list back so the script can be fixed.");
     return;
   }
 
