@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { drugs } from "@/data/drugs";
+import EntrySearch from "./entry-search";
 
 // The full A–Z list used to live on the homepage — moved here so the
 // homepage can stay a short, scannable directory instead of a wall of links.
@@ -21,6 +22,8 @@ export default function EntriesIndexPage() {
       <div className="eyebrow-line mono">Index</div>
       <h1>{drugs.length} entries, A–Z.</h1>
       <p className="solitaire-hint">Every compound on Alpharbet, grouped by first letter.</p>
+
+      <EntrySearch />
 
       <div className="index-grid" style={{ marginTop: 32 }}>
         {letterGroups.map(([letter, group]) => (

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { drugs } from "@/data/drugs";
 import historyRaw from "@/data/nadac-price-history.json";
+import DrugMultiselect from "./drug-multiselect";
 
 type HistoryPoint = { date: string; price: number };
 const history = historyRaw as Record<string, HistoryPoint[]>;
@@ -88,27 +89,13 @@ export default function PriceCompareChart({ formatPrice }: { formatPrice: (usd: 
 
   return (
     <div className="price-compare">
-      <div className="price-compare-picker">
-        {comparable.map((drug) => {
-          const sel = selections.find((s) => s.slug === drug.slug);
-          const disabled = !sel && selections.length >= MAX_SERIES;
-          return (
-            <button
-              key={drug.slug}
-              type="button"
-              className={`price-compare-pill${sel ? " is-selected" : ""}`}
-              style={sel ? { borderColor: `var(${SERIES_COLOR_VARS[sel.colorIndex]})` } : undefined}
-              onClick={() => toggleDrug(drug.slug)}
-              disabled={disabled}
-            >
-              {sel && (
-                <span className="price-compare-dot" style={{ background: `var(${SERIES_COLOR_VARS[sel.colorIndex]})` }} />
-              )}
-              {drug.name}
-            </button>
-          );
-        })}
-      </div>
+      <DrugMultiselect
+        options={comparable}
+        selections={selections}
+        maxSelections={MAX_SERIES}
+        colorVars={SERIES_COLOR_VARS}
+        onToggle={toggleDrug}
+      />
 
       {selections.length === 0 ? (
         <p style={{ color: "var(--text-dim)", fontSize: "0.92rem", marginTop: 12 }}>

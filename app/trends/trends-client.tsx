@@ -48,7 +48,12 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
         <div className="trends-currency">
           <label className="mono">
             Show prices in:{" "}
-            <select value={currency.code} onChange={(e) => currency.setCode(e.target.value as CurrencyCode)}>
+            <select
+              className="dropdown-select"
+              style={{ marginLeft: 8 }}
+              value={currency.code}
+              onChange={(e) => currency.setCode(e.target.value as CurrencyCode)}
+            >
               {CURRENCIES.map((c) => (
                 <option key={c.code} value={c.code}>
                   {c.code} — {c.label}
@@ -78,9 +83,10 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           <label className="mono" style={{ display: "block", marginBottom: 14, fontSize: "0.82rem" }}>
             Drug:{" "}
             <select
+              className="dropdown-select"
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
-              style={{ marginLeft: 8, padding: "6px 10px", borderRadius: 4, border: "1px solid var(--line)", background: "var(--bg)", color: "var(--text)" }}
+              style={{ marginLeft: 8 }}
             >
               {drugs.map((d) => (
                 <option key={d.slug} value={d.slug}>

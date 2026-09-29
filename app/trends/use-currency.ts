@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-export type CurrencyCode = "USD" | "EUR" | "GBP" | "JPY" | "INR" | "BTC" | "ETH";
+// Every fiat code Frankfurter (ECB rates) supports, plus the two cryptos from
+// CoinGecko — see the fetch below. Adding more here costs nothing extra: one
+// currency-list API call already returns all of these rates at once.
+export type CurrencyCode =
+  | "USD" | "EUR" | "GBP" | "JPY" | "INR" | "AUD" | "BRL" | "CAD" | "CHF" | "CNY"
+  | "CZK" | "DKK" | "HKD" | "HUF" | "IDR" | "ILS" | "ISK" | "KRW" | "MXN" | "MYR"
+  | "NOK" | "NZD" | "PHP" | "PLN" | "RON" | "SEK" | "SGD" | "THB" | "TRY" | "ZAR"
+  | "BTC" | "ETH";
 
 export const CURRENCIES: { code: CurrencyCode; label: string; symbol: string; isCrypto?: boolean }[] = [
   { code: "USD", label: "US Dollar", symbol: "$" },
@@ -10,6 +17,31 @@ export const CURRENCIES: { code: CurrencyCode; label: string; symbol: string; is
   { code: "GBP", label: "British Pound", symbol: "£" },
   { code: "JPY", label: "Japanese Yen", symbol: "¥" },
   { code: "INR", label: "Indian Rupee", symbol: "₹" },
+  { code: "AUD", label: "Australian Dollar", symbol: "A$" },
+  { code: "BRL", label: "Brazilian Real", symbol: "R$" },
+  { code: "CAD", label: "Canadian Dollar", symbol: "C$" },
+  { code: "CHF", label: "Swiss Franc", symbol: "CHF " },
+  { code: "CNY", label: "Chinese Yuan", symbol: "¥" },
+  { code: "CZK", label: "Czech Koruna", symbol: "Kč" },
+  { code: "DKK", label: "Danish Krone", symbol: "kr" },
+  { code: "HKD", label: "Hong Kong Dollar", symbol: "HK$" },
+  { code: "HUF", label: "Hungarian Forint", symbol: "Ft" },
+  { code: "IDR", label: "Indonesian Rupiah", symbol: "Rp" },
+  { code: "ILS", label: "Israeli Shekel", symbol: "₪" },
+  { code: "ISK", label: "Icelandic Krona", symbol: "kr" },
+  { code: "KRW", label: "South Korean Won", symbol: "₩" },
+  { code: "MXN", label: "Mexican Peso", symbol: "MX$" },
+  { code: "MYR", label: "Malaysian Ringgit", symbol: "RM" },
+  { code: "NOK", label: "Norwegian Krone", symbol: "kr" },
+  { code: "NZD", label: "New Zealand Dollar", symbol: "NZ$" },
+  { code: "PHP", label: "Philippine Peso", symbol: "₱" },
+  { code: "PLN", label: "Polish Zloty", symbol: "zł" },
+  { code: "RON", label: "Romanian Leu", symbol: "lei" },
+  { code: "SEK", label: "Swedish Krona", symbol: "kr" },
+  { code: "SGD", label: "Singapore Dollar", symbol: "S$" },
+  { code: "THB", label: "Thai Baht", symbol: "฿" },
+  { code: "TRY", label: "Turkish Lira", symbol: "₺" },
+  { code: "ZAR", label: "South African Rand", symbol: "R" },
   { code: "BTC", label: "Bitcoin", symbol: "₿", isCrypto: true },
   { code: "ETH", label: "Ethereum", symbol: "Ξ", isCrypto: true },
 ];
@@ -36,7 +68,7 @@ export function useCurrencyRates() {
 
     async function load() {
       const [fiatResult, cryptoResult] = await Promise.allSettled([
-        fetch("https://api.frankfurter.app/latest?from=USD").then((r) => r.json()),
+        fetch("https://api.frankfurter.dev/v1/latest?base=USD").then((r) => r.json()),
         fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd").then((r) =>
           r.json()
         ),

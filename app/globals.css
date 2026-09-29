@@ -576,6 +576,34 @@ footer a:hover { color: var(--text); }
 /* ---------- Entries index (A–Z browse page) ---------- */
 .index-page { padding: 48px 0 100px; }
 .index-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 14px 0 10px; }
+.entry-search { position: relative; max-width: 420px; margin-top: 20px; }
+.entry-search-input {
+  width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--bg-elevated); color: var(--text); font-size: 0.95rem; font-family: 'Inter', sans-serif;
+}
+.entry-search-input:focus { outline: none; border-color: var(--accent-green); }
+.entry-search-panel {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 20;
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 8px;
+  max-height: 320px; overflow-y: auto; box-shadow: 0 16px 40px -16px rgba(0,0,0,0.35);
+}
+.entry-search-panel ul { list-style: none; }
+.entry-search-panel li a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 12px 14px; text-decoration: none; border-radius: 6px;
+}
+.entry-search-panel li a:hover { background: var(--bg); }
+.entry-search-panel li a:hover .search-result-name { color: var(--accent-green); }
+.entry-search-empty { color: var(--text-faint); font-size: 0.88rem; padding: 16px 14px; }
+
+/* A native <select> styled the same way everywhere it appears (Trends' drug
+   picker, the currency picker) instead of each one being styled ad hoc. */
+.dropdown-select {
+  padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--bg-elevated); color: var(--text);
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+}
+.dropdown-select:focus { outline: none; border-color: var(--accent-green); }
 
 /* ---------- Illnesses ---------- */
 .illness-drug-list {
@@ -615,10 +643,6 @@ footer a:hover { color: var(--text); }
 .trends-currency {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   margin-bottom: 28px; font-size: 0.85rem; color: var(--text-dim);
-}
-.trends-currency select {
-  margin-left: 8px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--line);
-  background: var(--bg); color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
 }
 .trends-currency-note { color: var(--accent-magenta); font-size: 0.8rem; }
 .trends-currency-note-loading { color: var(--text-faint); }
@@ -661,15 +685,45 @@ footer a:hover { color: var(--text); }
 }
 .trends-calc-result { font-size: 1.1rem; color: var(--accent-green); font-family: 'IBM Plex Mono', monospace; }
 
-.price-compare-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-.price-compare-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
-  padding: 7px 14px; font-size: 0.82rem; color: var(--text-dim); cursor: pointer;
-}
-.price-compare-pill.is-selected { color: var(--text); border-width: 2px; padding: 6px 13px; }
-.price-compare-pill:disabled { opacity: 0.4; cursor: not-allowed; }
 .price-compare-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+
+/* ---------- Drug multiselect (Trends compare-chart picker) ---------- */
+.drug-multiselect { position: relative; margin-bottom: 4px; }
+.drug-multiselect-chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.drug-multiselect-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--bg); border: 2px solid var(--line); border-radius: 999px;
+  padding: 6px 8px 6px 13px; font-size: 0.82rem; color: var(--text);
+}
+.drug-multiselect-chip button {
+  background: none; border: none; color: var(--text-faint); font-size: 1rem; line-height: 1;
+  cursor: pointer; padding: 2px 4px;
+}
+.drug-multiselect-chip button:hover { color: var(--accent-magenta); }
+.drug-multiselect-trigger {
+  background: var(--bg-elevated); border: 1px dashed var(--line); border-radius: 999px;
+  padding: 8px 16px; font-size: 0.82rem; color: var(--text-dim); cursor: pointer;
+}
+.drug-multiselect-trigger:hover { border-color: var(--accent-green); color: var(--text); }
+.drug-multiselect-panel {
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20;
+  width: min(360px, 90vw);
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 20px 50px -16px rgba(0,0,0,0.4);
+  display: flex; flex-direction: column; max-height: 360px; overflow: hidden;
+}
+.drug-multiselect-input {
+  border: none; border-bottom: 1px solid var(--line); background: transparent; color: var(--text);
+  padding: 14px 16px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
+}
+.drug-multiselect-input:focus { outline: none; }
+.drug-multiselect-list { overflow-y: auto; padding: 6px; }
+.drug-multiselect-item {
+  display: flex; align-items: baseline; gap: 10px; padding: 10px 10px; border-radius: 6px; cursor: pointer;
+}
+.drug-multiselect-item:hover { background: var(--bg); }
+.drug-multiselect-item.is-disabled { opacity: 0.4; cursor: not-allowed; }
+.drug-multiselect-item input { flex: none; }
 .price-compare-svg { width: 100%; height: auto; margin-top: 18px; }
 .price-compare-grid { stroke: var(--line); stroke-width: 1; }
 .price-compare-baseline { stroke: var(--text-faint); stroke-width: 1; }
