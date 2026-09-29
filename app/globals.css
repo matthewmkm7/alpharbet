@@ -254,6 +254,8 @@ footer a:hover { color: var(--text); }
   background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 6px; padding: 22px;
 }
 .entry-side-card p { color: var(--text-dim); font-size: 0.92rem; margin: 10px 0 16px; }
+.history-body { margin-bottom: 32px; }
+.history-challenge { max-width: 480px; border-color: var(--accent-green); }
 .btn-disabled { display: inline-block; opacity: 0.55; cursor: default; font-size: 0.85rem; padding: 10px 16px; }
 .btn-link { display: inline-block; font-size: 0.85rem; padding: 10px 16px; text-decoration: none; }
 .molecule-viewer-wrap { position: relative; }

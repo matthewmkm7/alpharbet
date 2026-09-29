@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { drugs } from "@/data/drugs";
 import historyRaw from "@/data/nadac-price-history.json";
 
@@ -29,6 +29,21 @@ export default function PriceCompareChart() {
 
   const [selections, setSelections] = useState<Selection[]>([]);
   const [hover, setHover] = useState<{ slug: string; point: HistoryPoint; x: number; y: number } | null>(null);
+
+  // Show something on first load instead of a blank chart: pick a random
+  // handful of comparable drugs once data is available. Done in an effect
+  // (client-only) rather than the initial state, so the server-rendered HTML
+  // and the first client render match — picking randomly during render would
+  // make the two disagree.
+  useEffect(() => {
+    if (comparable.length === 0) return;
+    setSelections((prev) => {
+      if (prev.length > 0) return prev; // don't clobber a selection the user already made
+      const shuffled = [...comparable].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, MAX_SERIES).map((d, i) => ({ slug: d.slug, colorIndex: i }));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [comparable]);
 
   function toggleDrug(slug: string) {
     setSelections((prev) => {

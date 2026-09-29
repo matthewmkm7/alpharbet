@@ -49,18 +49,17 @@ export default async function EntryPage({
           </section>
 
           <section className="entry-block">
-            <div className="eyebrow-line mono">History and discovery</div>
-            <p>{drug.history}</p>
-            <div className="entry-fact mono">{drug.discovered}</div>
-          </section>
-
-          <section className="entry-block">
             <div className="eyebrow-line mono">Hazards and usage notes</div>
             <p>{drug.hazards}</p>
           </section>
         </div>
 
         <aside className="entry-side">
+          <div className="entry-side-card">
+            <div className="eyebrow-line mono">History and discovery</div>
+            <p>Where {drug.name} came from, and how its use has changed since.</p>
+            <Link href={`/entries/${drug.slug}/history`} className="btn-primary btn-link">Read the history</Link>
+          </div>
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Test what you know</div>
             <p>Think you&apos;ve got {drug.name} down cold?</p>
