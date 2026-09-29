@@ -14,6 +14,16 @@
   --always-white: #FDFCF9;
   --wordmark-grad-a: var(--accent-orange);
   --wordmark-grad-b: var(--accent-magenta);
+
+  /* Categorical chart palette (validated against this background with the
+     site's data-viz skill — see scripts/validate_palette.js). Used by the
+     Trends price-compare chart; each drug gets one slot, in order. */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
 }
 
 :root[data-theme="dark"] {
@@ -28,6 +38,15 @@
   --accent-green: #57B37A;
   --wordmark-grad-a: #A56EFF;
   --wordmark-grad-b: #57B37A;
+
+  /* Same six-slot chart palette, re-stepped for the dark background —
+     validated separately against #14120F. */
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -316,25 +335,33 @@ footer a:hover { color: var(--text); }
   letter-spacing: 0.03em; text-transform: uppercase; padding: 5px 10px;
   border-radius: 999px; color: var(--always-white);
 }
-.category-badge.cat-opioid { background: #A93F4C; }
-.category-badge.cat-stimulant { background: #3F6FB3; }
-.category-badge.cat-antibiotic { background: #2E9E8F; }
-.category-badge.cat-analgesic { background: #C98A2E; }
-.category-badge.cat-antidiabetic { background: #4B7BAE; }
-.category-badge.cat-hormone { background: #B15FA0; }
-.category-badge.cat-benzodiazepine { background: #7A5FA6; }
-.category-badge.cat-antidepressant { background: #4E8F8A; }
-.category-badge.cat-statin { background: #A6673F; }
-.category-badge.cat-ace-inhibitor { background: #5C8A3F; }
-.category-badge.cat-beta-blocker { background: #3F8FA6; }
-.category-badge.cat-anticoagulant { background: #B4433F; }
-.category-badge.cat-ppi { background: #8A6E3F; }
-.category-badge.cat-antihistamine { background: #6F9E4D; }
-.category-badge.cat-antipsychotic { background: #6B4FA0; }
-.category-badge.cat-corticosteroid { background: #C97A4E; }
-.category-badge.cat-antiviral { background: #3F9E6E; }
-.category-badge.cat-diuretic { background: #3F7FA0; }
-.category-badge.cat-bronchodilator { background: #5FA68F; }
+
+/* A plain color dot — same per-category colors as category-badge, but no
+   text. Used on Solitaire's lane headers so the lane doesn't just tell you
+   its own drug class outright (each card already shows its class). */
+.category-dot {
+  display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
+}
+.category-badge.cat-opioid, .category-dot.cat-opioid { background: #A93F4C; }
+.category-badge.cat-stimulant, .category-dot.cat-stimulant { background: #3F6FB3; }
+.category-badge.cat-antibiotic, .category-dot.cat-antibiotic { background: #2E9E8F; }
+.category-badge.cat-analgesic, .category-dot.cat-analgesic { background: #C98A2E; }
+.category-badge.cat-antidiabetic, .category-dot.cat-antidiabetic { background: #4B7BAE; }
+.category-badge.cat-hormone, .category-dot.cat-hormone { background: #B15FA0; }
+.category-badge.cat-benzodiazepine, .category-dot.cat-benzodiazepine { background: #7A5FA6; }
+.category-badge.cat-antidepressant, .category-dot.cat-antidepressant { background: #4E8F8A; }
+.category-badge.cat-statin, .category-dot.cat-statin { background: #A6673F; }
+.category-badge.cat-ace-inhibitor, .category-dot.cat-ace-inhibitor { background: #5C8A3F; }
+.category-badge.cat-beta-blocker, .category-dot.cat-beta-blocker { background: #3F8FA6; }
+.category-badge.cat-anticoagulant, .category-dot.cat-anticoagulant { background: #B4433F; }
+.category-badge.cat-ppi, .category-dot.cat-ppi { background: #8A6E3F; }
+.category-badge.cat-antihistamine, .category-dot.cat-antihistamine { background: #6F9E4D; }
+.category-badge.cat-antipsychotic, .category-dot.cat-antipsychotic { background: #6B4FA0; }
+.category-badge.cat-corticosteroid, .category-dot.cat-corticosteroid { background: #C97A4E; }
+.category-badge.cat-antiviral, .category-dot.cat-antiviral { background: #3F9E6E; }
+.category-badge.cat-diuretic, .category-dot.cat-diuretic { background: #3F7FA0; }
+.category-badge.cat-bronchodilator, .category-dot.cat-bronchodilator { background: #5FA68F; }
 
 .solitaire-cards { display: flex; flex-direction: column; gap: 10px; }
 .solitaire-cards-sorted {
@@ -574,6 +601,25 @@ footer a:hover { color: var(--text); }
   padding: 10px 12px; color: var(--text); font-size: 0.95rem; width: 160px;
 }
 .trends-calc-result { font-size: 1.1rem; color: var(--accent-green); font-family: 'IBM Plex Mono', monospace; }
+
+.price-compare-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.price-compare-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
+  padding: 7px 14px; font-size: 0.82rem; color: var(--text-dim); cursor: pointer;
+}
+.price-compare-pill.is-selected { color: var(--text); border-width: 2px; padding: 6px 13px; }
+.price-compare-pill:disabled { opacity: 0.4; cursor: not-allowed; }
+.price-compare-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.price-compare-svg { width: 100%; height: auto; margin-top: 18px; }
+.price-compare-grid { stroke: var(--line); stroke-width: 1; }
+.price-compare-baseline { stroke: var(--text-faint); stroke-width: 1; }
+.price-compare-axis-label { fill: var(--text-faint); font-size: 10px; }
+.price-compare-tooltip-bg { fill: var(--bg); stroke: var(--line); stroke-width: 1; }
+.price-compare-tooltip-text { fill: var(--text); font-size: 10px; }
+.price-compare-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
+.price-compare-legend-item { display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text-dim); }
+.price-compare-note { color: var(--text-faint); font-size: 0.76rem; margin-top: 12px; max-width: 62ch; }
 
 @media (max-width: 860px) {
   .game-grid { grid-template-columns: 1fr; }

@@ -150,9 +150,11 @@ export default function SolitairePage() {
                 onDrop={(e) => handleDropOnLane(e, lane.category)}
               >
                 <div className="solitaire-lane-header">
-                  <span className={`category-badge cat-${categorySlug(lane.category)}`}>
-                    {lane.category}
-                  </span>
+                  <span
+                    className={`category-dot cat-${categorySlug(lane.category)}`}
+                    aria-label={lane.category}
+                    title={lane.category}
+                  />
                   <span className="solitaire-lane-count mono">
                     {lane.sorted.length}/{lane.deck.length + lane.sorted.length}
                   </span>

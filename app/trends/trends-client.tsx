@@ -5,6 +5,7 @@ import Link from "next/link";
 import { drugs, type DrugEntry } from "@/data/drugs";
 import { macroStats, spotlightFacts, categoryDrivers, sources } from "@/data/trends";
 import nadacPricesRaw from "@/data/nadac-prices.json";
+import PriceCompareChart from "./price-compare-chart";
 
 // Real per-drug pricing from CMS's NADAC dataset (see scripts/fetch-nadac-prices.mjs).
 // This is what U.S. pharmacies pay to acquire the drug, not a retail price —
@@ -94,6 +95,14 @@ export default function TrendsClient({ initialSlug }: { initialSlug: string }) {
           ) : (
             <p style={{ color: "var(--text-dim)", fontSize: "0.95rem" }}>{categoryDrivers[drug.category]}</p>
           )}
+        </div>
+
+        <div className="trends-chart-card">
+          <div className="eyebrow-line mono">Compare drugs over time</div>
+          <p style={{ color: "var(--text-dim)", fontSize: "0.92rem", marginBottom: 16 }}>
+            See how acquisition cost has moved for several drugs at once.
+          </p>
+          <PriceCompareChart />
         </div>
 
         <div className="trends-calc-card">
