@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteHeader from "./site-header";
+import SiteFooter from "./site-footer";
 import MoleculeBackground from "./molecule-background";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MoleculeBackground />
         <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { drugs } from "@/data/drugs";
 
 // One card per other page on the site, so the homepage doubles as a directory.
 // Solitaire and Poker share a single "Games" card (see GAME_LINKS) instead of
@@ -61,11 +60,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer>
-        <div>Alpharbet</div>
-        <div>{drugs.length} entries, A–Z</div>
-      </footer>
     </div>
   );
 }
