@@ -32,7 +32,10 @@ An A–Z reference site for drugs/pharmaceutical compounds, aimed first at pharm
 1. Name (chemical name + practical/brand name)
 2. Interactive 3D structure
 3. Chemical formula
-4. Chemical data with accompanying animations
+4. Chemical data (formula, molecular weight, category) — the earlier animated
+   molecular-weight-vs-water/caffeine comparison bar was removed by founder
+   request (added no real information); the section is plain stats only for
+   now
 5. Mechanism of action / how it works in the body (NOT step-by-step synthesis routes — see Hard rules)
 6. Historical/discovery context
 7. Hazards / dangers of usage (informational level only — see Hard rules)
@@ -87,6 +90,17 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     Frankfurter (api.frankfurter.app, ECB data), crypto (BTC/ETH) from CoinGecko — both free,
     no API key, called straight from the browser. Falls back to USD with a visible note if either
     is unreachable.
+12. Illnesses section — done, at /illnesses (data/illnesses.ts). Each illness lists real, cited
+    CDC prevalence stats and links to the drug classes that treat it, cross-linking back into
+    entries, Games, and Trends per the engagement loop. Starts with 6 illnesses covering 8 of the
+    19 drug categories (same "start real, grow later" pattern as Trends' spotlightFacts) — add
+    more the same way: WebSearch + WebFetch a primary CDC/WHO page, never invented numbers.
+    IMPORTANT scope decision: "geographic data" here means real published aggregate figures
+    (national, and state-level only where a verified source exists — currently diabetes and
+    depression) — NOT a live "conditions near you" feature. No free source for that exists;
+    CDC's own county/ZIP-level PLACES dataset lives at data.cdc.gov, which — like
+    data.medicaid.gov (see NADAC pricing, above) — this sandbox's shell can't reach directly, so
+    live per-user geolocation isn't buildable here without a paid data provider.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.

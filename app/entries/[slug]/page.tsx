@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { drugs, getDrugBySlug } from "@/data/drugs";
+import { getIllnessesForCategory } from "@/data/illnesses";
 import MoleculeViewer from "./molecule-viewer";
 import ChemDataPanel from "./chem-data-panel";
 
@@ -16,6 +17,9 @@ export default async function EntryPage({
   const { slug } = await params;
   const drug = getDrugBySlug(slug);
   if (!drug) notFound();
+  // Only some categories have a matching illness page so far (see
+  // data/illnesses.ts) — the card below only renders when one exists.
+  const relatedIllness = getIllnessesForCategory(drug.category)[0];
 
   return (
     <div className="wrap entry-page">
@@ -55,6 +59,15 @@ export default async function EntryPage({
         </div>
 
         <aside className="entry-side">
+          {relatedIllness && (
+            <div className="entry-side-card">
+              <div className="eyebrow-line mono">Related condition</div>
+              <p>See real prevalence data for {relatedIllness.name.toLowerCase()}.</p>
+              <Link href={`/illnesses/${relatedIllness.slug}`} className="btn-primary btn-link">
+                View {relatedIllness.name}
+              </Link>
+            </div>
+          )}
           <div className="entry-side-card">
             <div className="eyebrow-line mono">History and discovery</div>
             <p>Where {drug.name} came from, and how its use has changed since.</p>
