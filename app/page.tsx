@@ -33,10 +33,10 @@ export default function Home() {
   return (
     <div className="wrap">
       <section className="page-intro">
-        <h1>The A–Z reference for pharmacology.</h1>
-        <p className="hero-sub">
-          Real structures, real data, real history — built around games instead of flashcards.
-        </p>
+        <h1>
+          The A–Z reference for <span className="phar-gradient">pharmacology</span>.
+        </h1>
+        <p className="hero-sub">Real structures, real data, real history — through games, not flashcards.</p>
         <div className="page-intro-actions">
           <Link href="/games/solitaire" className="btn-primary">
             Play Solitaire
@@ -47,16 +47,15 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="divider" />
+      <div className="section-divider" />
 
       <section id="games">
         <div className="section-head">
-          <div className="eyebrow-line mono">Study through play</div>
           <h2>Games built around how drugs actually behave.</h2>
         </div>
         <div className="game-grid">
           {GAMES.map((game) => (
-            <Link href={game.href} className="game-card" key={game.label}>
+            <Link href={game.href} className={`game-card game-card-${game.href.split("/").pop()}`} key={game.label}>
               <div className="g-label mono">{game.label}</div>
               <h3>{game.title}</h3>
               <p>{game.body}</p>
@@ -65,11 +64,10 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="divider" />
+      <div className="section-divider" />
 
       <section id="index">
         <div className="section-head">
-          <div className="eyebrow-line mono">The index</div>
           <h2>{drugs.length} entries and counting.</h2>
         </div>
         <div className="index-grid">
