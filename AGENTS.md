@@ -53,7 +53,8 @@ Build this cross-linking into each feature as it's built, not as an afterthought
 ## Build order — ALL PHASES COMPLETE as of this note
 1. Single entry page template — done (76 entries across 19 categories, exactly 4 per category —
    this even count is what data/rounds.ts's 4-class rounds depend on for Solitaire/Poker)
-2. A–Z index page — done (on the homepage, grouped by letter)
+2. A–Z index page — done, at /entries (grouped by letter; moved off the homepage so the
+   homepage stays a short directory of cards instead of the full list)
 3. Solitaire game — done, with drag-and-drop
 4. Poker/Top Trumps game — done
 5. Trends/market-optimizer section — done, using real cited data (see data/trends.ts), plus a working purchasing calculator
@@ -69,6 +70,21 @@ Build this cross-linking into each feature as it's built, not as an afterthought
    populate it with real prices from CMS's free NADAC dataset. Re-run it any time to refresh —
    it's a manual script, not wired into the build, since the source file is 50+ MB and shouldn't
    be re-downloaded on every deploy. See scripts/fetch-nadac-prices.mjs for how it works and why.
+8. History gets its own page per drug — done, at /entries/[slug]/history (linked from the main
+   entry page; ends in a challenge into Solitaire, per the engagement loop above). Hazards stays
+   on the main entry page. A /history hub page lists every drug's origin story at a glance and
+   links into each one's full history page.
+9. Homepage is a directory of cards (Games, Index, History, Trends, Tools) rather than a hub that
+   embeds each page's content directly — Solitaire and Poker share one "Games" card since they're
+   two variants of the same idea.
+10. Price-over-time compare chart on Trends — done (data/nadac-price-history.json, populated by
+    the same fetch-nadac-prices script as the price snapshot). Starts with nothing selected; the
+    user picks which drugs to compare, up to 6 at once.
+11. Currency filter on Trends — done (app/trends/use-currency.ts). Converts the NADAC price
+    display, the purchasing calculator, and the compare chart's tooltip. Fiat rates come from
+    Frankfurter (api.frankfurter.app, ECB data), crypto (BTC/ETH) from CoinGecko — both free,
+    no API key, called straight from the browser. Falls back to USD with a visible note if either
+    is unreachable.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.
