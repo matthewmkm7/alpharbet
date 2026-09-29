@@ -183,7 +183,7 @@ section { padding: 60px 0; }
 
 /* ---------- Homepage site-directory cards (one per other page) ---------- */
 .site-card-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
 }
 .site-card {
   background: var(--bg-elevated); padding: 30px 26px; display: block; text-decoration: none; color: inherit;
@@ -201,6 +201,13 @@ section { padding: 60px 0; }
 }
 .site-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
 .site-card p { color: var(--text-dim); font-size: 0.94rem; }
+.site-card-subnav { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.site-card-sublink {
+  display: inline-block; font-size: 0.82rem; font-weight: 600; text-decoration: none;
+  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--text);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.site-card-sublink:hover { border-color: var(--accent-green); color: var(--accent-green); }
 
 /* ---------- A-Z index ---------- */
 .index-grid {

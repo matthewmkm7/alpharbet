@@ -2,19 +2,14 @@ import Link from "next/link";
 import { drugs } from "@/data/drugs";
 
 // One card per other page on the site, so the homepage doubles as a directory.
+// Solitaire and Poker share a single "Games" card (see GAME_LINKS) instead of
+// each getting their own, since they're two variants of the same idea.
+const GAME_LINKS = [
+  { title: "Solitaire", href: "/games/solitaire" },
+  { title: "Poker", href: "/games/poker" },
+];
+
 const SITE_CARDS = [
-  {
-    label: "PLAY",
-    title: "Solitaire",
-    body: "Sort compounds into sequence — by molar mass, by class, by potency — to clear the board.",
-    href: "/games/solitaire",
-  },
-  {
-    label: "PLAY",
-    title: "Poker",
-    body: "Compare drug stat-cards head to head — molecular weight, years on the market — and see what each reveal teaches you.",
-    href: "/games/poker",
-  },
   {
     label: "DATA",
     title: "Trends",
@@ -67,6 +62,18 @@ export default function Home() {
           <h2>Everything the index leads to.</h2>
         </div>
         <div className="site-card-grid">
+          <div className="site-card">
+            <div className="g-label mono">PLAY</div>
+            <h3>Games</h3>
+            <p>Two ways to study through play — sort compounds by class, or go head to head on their stats.</p>
+            <div className="site-card-subnav">
+              {GAME_LINKS.map((game) => (
+                <Link href={game.href} className="site-card-sublink" key={game.title}>
+                  {game.title}
+                </Link>
+              ))}
+            </div>
+          </div>
           {SITE_CARDS.map((card) => (
             <Link href={card.href} className="site-card" key={card.title}>
               <div className="g-label mono">{card.label}</div>
