@@ -1,1 +1,434 @@
-{}
+{
+  "amoxicillin": {
+    "pricePerUnit": 0.01794,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "AMOXICILLIN 125 MG/5 ML SUSP"
+  },
+  "azithromycin": {
+    "pricePerUnit": 0.38236,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "AZITHROMYCIN 100 MG/5 ML SUSP"
+  },
+  "aspirin": {
+    "pricePerUnit": 0.01576,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ASPIRIN 325 MG TABLET"
+  },
+  "ibuprofen": {
+    "pricePerUnit": 0.02565,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "IBUPROFEN 100 MG/5 ML SUSP"
+  },
+  "morphine": {
+    "pricePerUnit": 0.04368,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "MORPHINE SULF 10 MG/5 ML SOLN"
+  },
+  "codeine": {
+    "pricePerUnit": 0.68483,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CODEINE SULFATE 15 MG TABLET"
+  },
+  "amphetamine": {
+    "pricePerUnit": 16.55093,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "AMPHETAMINE ER 12.5 MG ODT"
+  },
+  "methylphenidate": {
+    "pricePerUnit": 2.98279,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "METHYLPHENIDATE 10 MG CHEW TAB"
+  },
+  "metformin": {
+    "pricePerUnit": 0.42601,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "METFORMIN ER 1,000 MG GASTR-TB"
+  },
+  "insulin": {
+    "pricePerUnit": 6.95487,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "INSULIN ASPART 100 UNIT/ML VL"
+  },
+  "diazepam": {
+    "pricePerUnit": 221.72208,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "DIAZEPAM 10 MG RECTAL GEL (2PK)"
+  },
+  "lorazepam": {
+    "pricePerUnit": 0.04198,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "LORAZEPAM 0.5 MG TABLET"
+  },
+  "sertraline": {
+    "pricePerUnit": 5.03993,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "SERTRALINE 150 MG CAPSULE"
+  },
+  "fluoxetine": {
+    "pricePerUnit": 0.0621,
+    "unit": "EA",
+    "effectiveDate": "12/24/2025",
+    "ndcDescription": "FLUOXETINE HCL 40 MG CAPSULE"
+  },
+  "atorvastatin": {
+    "pricePerUnit": 0.02546,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ATORVASTATIN 10 MG TABLET"
+  },
+  "simvastatin": {
+    "pricePerUnit": 0.02806,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "SIMVASTATIN 10 MG TABLET"
+  },
+  "lisinopril": {
+    "pricePerUnit": 0.01877,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "LISINOPRIL 10 MG TABLET"
+  },
+  "enalapril": {
+    "pricePerUnit": 1.0044,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ENALAPRIL 1 MG/ML ORAL SOLN"
+  },
+  "metoprolol": {
+    "pricePerUnit": 0.01767,
+    "unit": "EA",
+    "effectiveDate": "12/24/2025",
+    "ndcDescription": "METOPROLOL TARTRATE 25 MG TAB"
+  },
+  "propranolol": {
+    "pricePerUnit": 0.04983,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "PROPRANOLOL 10 MG TABLET"
+  },
+  "warfarin": {
+    "pricePerUnit": 0.08054,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "WARFARIN SODIUM 1 MG TABLET"
+  },
+  "omeprazole": {
+    "pricePerUnit": 0.07163,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "OMEPRAZOLE DR 10 MG CAPSULE"
+  },
+  "esomeprazole": {
+    "pricePerUnit": 6.81103,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ESOMEPRAZOLE DR 10 MG PACKET"
+  },
+  "loratadine": {
+    "pricePerUnit": 0.56932,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "LORATADINE 10 MG ODT"
+  },
+  "diphenhydramine": {
+    "pricePerUnit": 0.01595,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "DIPHENHYDRAMINE 12.5 MG/5 ML"
+  },
+  "risperidone": {
+    "pricePerUnit": 2.91568,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "RISPERIDONE 0.25 MG ODT"
+  },
+  "haloperidol": {
+    "pricePerUnit": 0.11287,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "HALOPERIDOL 0.5 MG TABLET"
+  },
+  "prednisone": {
+    "pricePerUnit": 0.04092,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "PREDNISONE 1 MG TABLET"
+  },
+  "dexamethasone": {
+    "pricePerUnit": 0.12095,
+    "unit": "EA",
+    "effectiveDate": "12/24/2025",
+    "ndcDescription": "DEXAMETHASONE 0.75 MG TABLET"
+  },
+  "oseltamivir": {
+    "pricePerUnit": 0.17004,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "OSELTAMIVIR 6 MG/ML SUSPENSION"
+  },
+  "acyclovir": {
+    "pricePerUnit": 0.10702,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ACYCLOVIR 200 MG CAPSULE"
+  },
+  "hydrochlorothiazide": {
+    "pricePerUnit": 0.03032,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "HYDROCHLOROTHIAZIDE 12.5 MG CP"
+  },
+  "furosemide": {
+    "pricePerUnit": 0.10217,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "FUROSEMIDE 10 MG/ML SOLUTION"
+  },
+  "albuterol": {
+    "pricePerUnit": 0.44441,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ALBUTEROL 2.5 MG/0.5 ML SOL"
+  },
+  "glipizide": {
+    "pricePerUnit": 0.04758,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "GLIPIZIDE 10 MG TABLET"
+  },
+  "sitagliptin": {
+    "pricePerUnit": 3.77084,
+    "unit": "EA",
+    "effectiveDate": "08/05/2026",
+    "ndcDescription": "SITAGLIPTIN PHOSPHATE 100 MG TABLET"
+  },
+  "levothyroxine": {
+    "pricePerUnit": 0.05712,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "LEVOTHYROXINE 100 MCG TABLET"
+  },
+  "testosterone": {
+    "pricePerUnit": 2.10347,
+    "unit": "GM",
+    "effectiveDate": "12/31/2025",
+    "ndcDescription": "TESTOSTERONE 1% (25 MG/2.5 G) PK"
+  },
+  "oxycodone": {
+    "pricePerUnit": 0.1629,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "OXYCODONE HCL (IR) 10 MG TAB"
+  },
+  "caffeine": {
+    "pricePerUnit": 0.08774,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CAFFEINE 200 MG TABLET"
+  },
+  "ciprofloxacin": {
+    "pricePerUnit": 7.00476,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CIPROFLOXACIN 0.2% OTIC SOLN"
+  },
+  "naproxen": {
+    "pricePerUnit": 0.18369,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "NAPROXEN 125 MG/5 ML SUSPEN"
+  },
+  "alprazolam": {
+    "pricePerUnit": 0.02504,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ALPRAZOLAM 0.25 MG TABLET"
+  },
+  "venlafaxine": {
+    "pricePerUnit": 6.18438,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "VENLAFAXINE BES ER 112.5 MG TB"
+  },
+  "rosuvastatin": {
+    "pricePerUnit": 0.03993,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ROSUVASTATIN CALCIUM 10 MG TAB"
+  },
+  "cetirizine": {
+    "pricePerUnit": 0.02158,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CETIRIZINE HCL 1 MG/ML SOLN"
+  },
+  "olanzapine": {
+    "pricePerUnit": 0.10689,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "OLANZAPINE 10 MG TABLET"
+  },
+  "valacyclovir": {
+    "pricePerUnit": 0.41606,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "VALACYCLOVIR HCL 1 GRAM TABLET"
+  },
+  "atenolol": {
+    "pricePerUnit": 0.04244,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ATENOLOL 100 MG TABLET"
+  },
+  "formoterol": {
+    "pricePerUnit": 2.04855,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "FORMOTEROL 20 MCG/2 ML NEB VL"
+  },
+  "hydrocortisone": {
+    "pricePerUnit": 0.05369,
+    "unit": "GM",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "HYDROCORTISONE 0.5% CREAM"
+  },
+  "spironolactone": {
+    "pricePerUnit": 0.18792,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "SPIRONOLACTONE 100 MG TABLET"
+  },
+  "pantoprazole": {
+    "pricePerUnit": 4.1626,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "PANTOPRAZOLE DR 40 MG SUSP PKT"
+  },
+  "rivaroxaban": {
+    "pricePerUnit": 2.06691,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "RIVAROXABAN 1 MG/ML SUSPENSION"
+  },
+  "ramipril": {
+    "pricePerUnit": 0.09891,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "RAMIPRIL 1.25 MG CAPSULE"
+  },
+  "hydromorphone": {
+    "pricePerUnit": 0.28737,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "HYDROMORPHONE 1 MG/ML SOLUTION"
+  },
+  "modafinil": {
+    "pricePerUnit": 0.29651,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "MODAFINIL 100 MG TABLET"
+  },
+  "dabigatran": {
+    "pricePerUnit": 1.40581,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "DABIGATRAN ETEXILATE 110 MG CP"
+  },
+  "bupropion": {
+    "pricePerUnit": 0.11945,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "BUPROPION HCL 100 MG TABLET"
+  },
+  "fexofenadine": {
+    "pricePerUnit": 0.27028,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "FEXOFENADINE HCL 180 MG TABLET"
+  },
+  "quetiapine": {
+    "pricePerUnit": 1.27508,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "QUETIAPINE 150 MG TABLET"
+  },
+  "tenofovir": {
+    "pricePerUnit": 0.34668,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "TENOFOVIR DISOPROXIL FUMARATE 300 MG TABLET"
+  },
+  "clonazepam": {
+    "pricePerUnit": 0.60724,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CLONAZEPAM 0.125 MG DIS TAB"
+  },
+  "carvedilol": {
+    "pricePerUnit": 0.02137,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CARVEDILOL 12.5 MG TABLET"
+  },
+  "ipratropium": {
+    "pricePerUnit": 0.449,
+    "unit": "ML",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "IPRATROPIUM 0.03% SPRAY"
+  },
+  "fluticasone": {
+    "pricePerUnit": 4.20931,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "FLUTICASONE ELLIPTA 100 MCG INH"
+  },
+  "chlorthalidone": {
+    "pricePerUnit": 0.08869,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CHLORTHALIDONE 25 MG TABLET"
+  },
+  "lansoprazole": {
+    "pricePerUnit": 0.17064,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "LANSOPRAZOLE DR 15 MG CAPSULE"
+  },
+  "pravastatin": {
+    "pricePerUnit": 0.06442,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "PRAVASTATIN SODIUM 10 MG TAB"
+  },
+  "captopril": {
+    "pricePerUnit": 0.29978,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "CAPTOPRIL 100 MG TABLET"
+  },
+  "pioglitazone": {
+    "pricePerUnit": 0.06929,
+    "unit": "EA",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "PIOGLITAZONE HCL 15 MG TABLET"
+  },
+  "estradiol": {
+    "pricePerUnit": 0.41941,
+    "unit": "GM",
+    "effectiveDate": "12/17/2025",
+    "ndcDescription": "ESTRADIOL 0.01% CREAM"
+  }
+}
