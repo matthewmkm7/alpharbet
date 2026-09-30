@@ -1,3 +1,5 @@
+import pubchemProperties from "./pubchem-properties.json";
+
 export type DrugCategory =
   | "Opioid"
   | "Stimulant"
@@ -1657,4 +1659,24 @@ export function atomCount(formula: string): number {
     const count = part.match(/\d+/);
     return sum + (count ? parseInt(count[0], 10) : 1);
   }, 0);
+}
+
+// Extra real PubChem properties (IUPAC name, lipophilicity, polar surface
+// area, hydrogen-bond counts, rotatable bonds, SMILES) — populated by
+// scripts/fetch-chem-data.mjs, which the founder runs from their own
+// Terminal since this sandbox can't reach PubChem's network. Starts as {}
+// until that script has been run, so every consumer of this must treat a
+// missing entry as "not fetched yet," not as an error.
+export type PubChemProperties = {
+  iupacName: string | null;
+  xLogP: number | null;
+  tpsa: number | null;
+  hBondDonorCount: number | null;
+  hBondAcceptorCount: number | null;
+  rotatableBondCount: number | null;
+  canonicalSmiles: string | null;
+};
+
+export function getChemProperties(slug: string): PubChemProperties | undefined {
+  return (pubchemProperties as Record<string, PubChemProperties>)[slug];
 }

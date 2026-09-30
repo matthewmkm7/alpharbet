@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/games/poker`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/trends`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/tools`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/partners`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/disclaimer`, changeFrequency: "yearly", priority: 0.2 },

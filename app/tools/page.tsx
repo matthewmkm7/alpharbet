@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import SponsorSpot from "@/app/sponsor-spot";
 
 type PharmacyResult = {
   name: string;
@@ -146,6 +147,8 @@ export default function ToolsPage() {
             </div>
           </>
         )}
+
+        <SponsorSpot />
 
         <p style={{ marginTop: 32 }}>
           <Link href="/" className="back-link mono">

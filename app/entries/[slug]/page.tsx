@@ -5,6 +5,7 @@ import { drugs, getDrugBySlug } from "@/data/drugs";
 import { getIllnessesForCategory } from "@/data/illnesses";
 import MoleculeViewer from "./molecule-viewer";
 import ChemDataPanel from "./chem-data-panel";
+import SponsorSpot from "@/app/sponsor-spot";
 
 export function generateStaticParams() {
   return drugs.map((d) => ({ slug: d.slug }));
@@ -141,6 +142,7 @@ export default async function EntryPage({
               </p>
             </div>
           )}
+          <SponsorSpot />
         </aside>
       </div>
     </div>

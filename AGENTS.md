@@ -136,6 +136,29 @@ Build this cross-linking into each feature as it's built, not as an afterthought
       pointed at Amazon search results for textbooks/study guides on that drug's class. Same
       degrade-gracefully pattern — inert until the founder has a real Associate tag.
 
+15. Richer chemical data + direct institution sponsorships — done.
+    - Chemical data panel now shows real PubChem descriptors beyond formula/weight/category —
+      lipophilicity (XLogP), polar surface area, H-bond donor/acceptor counts, rotatable bonds,
+      and IUPAC name — once populated. Like NADAC pricing, this sandbox can't reach PubChem's
+      network (blocked by robots.txt/proxy), so data/pubchem-properties.json ships as {} and the
+      founder runs `npm run fetch-chem-data` once from their own Terminal to populate it (batches
+      ~40 drugs per PubChem request via scripts/fetch-chem-data.mjs). The panel just shows the 3
+      original stats until that's been run — same degrade-gracefully pattern as everything else.
+    - Direct institution/company sponsorships — the fastest-to-launch revenue stream on the site,
+      because unlike AdSense/affiliate programs it needs NO third-party approval: the founder
+      pitches nursing/pharmacy programs, test-prep companies, etc. directly and sets a price
+      themselves.
+      - /partners — a pitch page explaining the offer, linked from the site footer.
+      - NEXT_PUBLIC_PARTNERSHIP_EMAIL — the inquiry contact address shown on /partners.
+      - data/sponsors.ts — starts as an empty array; once a deal is actually closed and paid for,
+        add one object here by hand (id, name, tagline, url) — no other code changes needed.
+      - SponsorSpot (app/sponsor-spot.tsx) — renders nothing while data/sponsors.ts is empty;
+        once it has entries, shows them as a clearly labeled "Sponsored" card. Placed on entry
+        pages and /tools.
+    Adding more drug entries (the catalog is still 84) was intentionally left for a follow-up
+    pass — writing accurate mechanism/history/hazards content for new drugs is its own focused
+    piece of work, not something to rush alongside a data-schema and revenue-infrastructure phase.
+
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.
 

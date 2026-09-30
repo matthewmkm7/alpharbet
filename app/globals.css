@@ -273,6 +273,7 @@ footer a:hover { color: var(--text); }
   background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 6px; padding: 22px;
 }
 .entry-side-card p { color: var(--text-dim); font-size: 0.92rem; margin: 10px 0 16px; }
+.sponsor-item + .sponsor-item { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
 .history-body { margin-bottom: 32px; }
 .history-challenge { max-width: 480px; border-color: var(--accent-green); }
 .btn-link { display: inline-block; font-size: 0.85rem; padding: 10px 16px; text-decoration: none; }
@@ -288,13 +289,16 @@ footer a:hover { color: var(--text); }
 
 /* ---------- Chemical data stat row ---------- */
 .chem-stat-row {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  /* auto-fit instead of a fixed 3 columns, since the row now grows from 3 to
+     up to 7 stats once scripts/fetch-chem-data.mjs has been run */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px;
   background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 .chem-stat { background: var(--bg-elevated); padding: 16px 18px; }
 .chem-stat-value { font-size: 1rem; color: var(--text); margin-bottom: 4px; }
 .chem-stat-label { font-size: 0.76rem; color: var(--text-faint); }
+.chem-iupac { font-size: 0.76rem; color: var(--text-faint); margin-bottom: 24px; word-break: break-word; }
 
 /* ---------- Solitaire: lab-bench / casino-table hybrid arena ---------- */
 .solitaire-page { padding: 48px 0 100px; }

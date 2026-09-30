@@ -5,6 +5,7 @@ import { drugs } from "@/data/drugs";
 // so the legal pages are reachable from anywhere on the site — not just the
 // homepage, where a one-off footer used to live.
 const LEGAL_LINKS = [
+  { href: "/partners", label: "Partners" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/disclaimer", label: "Disclaimer" },
