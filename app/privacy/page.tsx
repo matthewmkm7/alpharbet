@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
       <h2>Children&apos;s privacy</h2>
       <p>
-        Alpharbet is built for pharmacy, nursing, and pre-med students, and isn&apos;t directed at children.
+        Alpharbet is a general-audience reference and game platform and isn&apos;t directed at children.
         We don&apos;t knowingly collect information from anyone under 13.
       </p>
 

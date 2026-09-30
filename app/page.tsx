@@ -26,7 +26,7 @@ export default function Home() {
         <h1>
           The A–Z reference for <span className="phar-gradient">pharmacology</span>.
         </h1>
-        <p className="hero-sub">Built around games, not flashcards.</p>
+        <p className="hero-sub">Real structures, real mechanisms, real history — playable, not just readable.</p>
         <div className="page-intro-actions">
           <Link href="/games/solitaire" className="btn-primary">
             Play Solitaire

@@ -5,7 +5,7 @@ import { drugs } from "@/data/drugs";
 export const metadata: Metadata = {
   title: "Partner With Alpharbet",
   description:
-    "Sponsor a listing on Alpharbet, seen by pharmacy, nursing, and pre-med students studying with the site.",
+    "Sponsor a listing on Alpharbet, an A–Z drug and pharmacology reference reaching healthcare professionals, students, and the general public.",
 };
 
 // Set once you have an email you want to receive partnership inquiries at —
@@ -23,7 +23,7 @@ export default function PartnersPage() {
 
       <div className="entry-header">
         <h1>Partner with Alpharbet.</h1>
-        <div className="practical-name">A sponsored listing in front of students actually studying this material.</div>
+        <div className="practical-name">A sponsored listing in front of people actively looking up drug information.</div>
       </div>
 
       <div className="entry-grid">
@@ -31,10 +31,10 @@ export default function PartnersPage() {
           <section className="entry-block">
             <div className="eyebrow-line mono">Who sees it</div>
             <p>
-              Alpharbet is a study reference covering {drugs.length} drugs, used by pharmacy, nursing, and
-              pre-med students who are actively studying drug mechanisms, drug classes, and pharmacology —
-              not casual browsers. A listing reaches people in study mode, on the exact pages about the
-              subject matter your program or product relates to.
+              Alpharbet is an A–Z reference covering {drugs.length} drugs — structures, mechanisms, history,
+              and pricing — used by healthcare professionals, pharmacy/nursing/pre-health students, and
+              members of the general public looking up how a specific drug works. A listing reaches people
+              with real intent on the page, not casual scrollers.
             </p>
           </section>
 
@@ -51,9 +51,10 @@ export default function PartnersPage() {
           <section className="entry-block">
             <div className="eyebrow-line mono">Who this is a fit for</div>
             <p>
-              Nursing and pharmacy programs recruiting students, NCLEX/PANCE/NAPLEX test-prep companies,
-              tutoring services, study-tool platforms, and scrubs or equipment brands aimed at students
-              entering the field.
+              Healthcare education programs and test-prep companies (NCLEX/PANCE/NAPLEX), tutoring and
+              study-tool platforms, medical/pharmacy equipment and scrubs brands, telehealth and pharmacy
+              services, and health-focused media (podcasts, newsletters, science communicators) reaching
+              the same curious, health-literate audience.
             </p>
           </section>
 

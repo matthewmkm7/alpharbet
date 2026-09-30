@@ -12,7 +12,7 @@ import MoleculeBackground from "./molecule-background";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alpharbet.example.com";
 const SITE_TITLE = "Alpharbet — The A–Z of drugs, made to stick";
 const SITE_DESCRIPTION =
-  "An A–Z pharmacology reference for pharmacy, nursing, and pre-med students — interactive drug structures, mechanism-of-action breakdowns, and study games instead of flat flashcards.";
+  "An A–Z reference for drugs and pharmaceutical compounds — real chemical structures, mechanism-of-action breakdowns, and pricing data, wrapped in interactive games. For healthcare professionals, students, and anyone curious how drugs actually work.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

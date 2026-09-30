@@ -16,9 +16,10 @@ export default function TermsPage() {
 
       <h2>Using Alpharbet</h2>
       <p>
-        By using this site, you agree to these terms. Alpharbet is a study reference and game platform
-        for pharmacology — built for pharmacy, nursing, and pre-med students. It is not medical advice;
-        see the <Link href="/disclaimer">Medical Disclaimer</Link> for what that means.
+        By using this site, you agree to these terms. Alpharbet is a reference and game platform for
+        pharmacology, open to anyone — healthcare professionals, students, and the general public.
+        It is not medical advice; see the <Link href="/disclaimer">Medical Disclaimer</Link> for what
+        that means.
       </p>
 
       <h2>Accuracy of information</h2>

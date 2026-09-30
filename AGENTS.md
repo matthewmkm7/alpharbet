@@ -11,7 +11,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # Alpharbet
 
 ## What this is
-An A–Z reference site for drugs/pharmaceutical compounds, aimed first at pharmacy, nursing, and pre-med students, built around gamified study tools instead of flat flashcards. Non-technical founder building this solo; be explicit and avoid unexplained jargon in responses. Optimize for getting things right the first time — founder has limited token budget, so avoid speculative or unrequested scope.
+An A–Z reference site for drugs/pharmaceutical compounds. Audience is deliberately NOT limited to
+students — this is for healthcare professionals (pharmacists, nurses, physicians), pharmacy/nursing/
+pre-med students, and the general public curious how drugs actually work, all at once. Do not write
+copy, slogans, or features that frame the site as a student study tool first — "for students" is one
+audience among several, not the identity of the site. Built around interactive, game-like ways to
+explore the material (not flat flashcards or a dry database), but the positioning is "understand
+drugs," not "study for an exam." Non-technical founder building this solo; be explicit and avoid
+unexplained jargon in responses. Optimize for getting things right the first time — founder has
+limited token budget, so avoid speculative or unrequested scope.
 
 ## Stack
 - Next.js (App Router — not Pages Router)
@@ -158,6 +166,25 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     Adding more drug entries (the catalog is still 84) was intentionally left for a follow-up
     pass — writing accurate mechanism/history/hazards content for new drugs is its own focused
     piece of work, not something to rush alongside a data-schema and revenue-infrastructure phase.
+
+16. Positioning pivot: general audience, not "student study tool" — done. The site was originally
+    framed as being built first for pharmacy/nursing/pre-med students ("built around games, not
+    flashcards"). The founder explicitly rejected that framing as too narrow — the site has no
+    upper limit on audience and should read that way everywhere. Changed:
+    - Homepage hero line (app/page.tsx), root layout's default meta description (app/layout.tsx),
+      and the legacy index.html reference copy — all dropped the "for pharmacy/nursing/pre-med
+      students" framing and the "not flashcards" slogan specifically.
+    - /terms and /privacy — broadened from "built for pharmacy, nursing, and pre-med students" to
+      general-audience language, while keeping the substance of both pages (not medical advice,
+      not directed at children) exactly as before — those protections don't change with audience.
+    - /partners — broadened "who sees it" and the sponsor-fit list beyond student-recruiting
+      pitches to the full audience (healthcare pros, students, general public) and adjacent
+      sponsor categories (health media, telehealth, equipment brands).
+    This does NOT relax any Hard rule below — if anything, a broader, non-professional audience
+    makes the no-synthesis/no-toxicity-mechanics/informational-only-hazards rules MORE important,
+    not less, since more readers won't have professional judgment to fall back on. Do not read
+    "no true limit" as license to loosen those rules; it's about who the content is framed for,
+    not what the content is allowed to contain.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.
