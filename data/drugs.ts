@@ -36,6 +36,7 @@ export type DrugEntry = {
   mechanism: string;
   history: string;
   hazards: string;
+  sideEffects: string;
 };
 
 export const drugs: DrugEntry[] = [
@@ -57,6 +58,8 @@ export const drugs: DrugEntry[] = [
       "A semisynthetic descendant of penicillin, amoxicillin was engineered to survive stomach acid and absorb better when taken orally than its predecessor, ampicillin — a small structural change that made it one of the most prescribed antibiotics in the world.",
     hazards:
       "Common allergen, with cross-reactivity risk in patients allergic to other penicillins and some cephalosporins. Can reduce the effectiveness of hormonal contraceptives. Overuse contributes to antibiotic resistance.",
+    sideEffects:
+      "Commonly causes mild diarrhea, nausea, and a non-allergic skin rash, especially in children — most cases are mild and resolve after the course ends.",
   },
   {
     slug: "penicillin-g",
@@ -76,6 +79,8 @@ export const drugs: DrugEntry[] = [
       "The discovery of penicillin is often called the single most transformative moment in modern medicine, turning bacterial infections that once killed routinely into treatable conditions almost overnight.",
     hazards:
       "Allergic reactions are relatively common. Breaks down in stomach acid, so it's typically given by injection rather than as a pill.",
+    sideEffects:
+      "Since it's usually given by injection, pain, redness, or swelling at the injection site is common; mild nausea and diarrhea occur less often.",
   },
   {
     slug: "azithromycin",
@@ -95,6 +100,8 @@ export const drugs: DrugEntry[] = [
       "Prized for its unusually long half-life, azithromycin popularized the short, five-day treatment course — the classic 'Z-Pack' — at a time when most antibiotics required a week or more.",
     hazards:
       "Can cause GI upset. Carries a rare but serious risk of heart rhythm changes (QT prolongation) in susceptible patients.",
+    sideEffects:
+      "The most frequent complaints are stomach pain, mild diarrhea, and a temporary altered sense of taste; headache is also fairly common.",
   },
   {
     slug: "aspirin",
@@ -114,6 +121,8 @@ export const drugs: DrugEntry[] = [
       "One of the oldest synthetic drugs still in wide use, aspirin was derived from salicin, a compound found in willow bark used medicinally for centuries before its active ingredient was isolated and chemically stabilized.",
     hazards:
       "Raises the risk of gastrointestinal bleeding and ulcers. Linked to Reye's syndrome in children recovering from viral illness. Increases bleeding risk when combined with anticoagulants.",
+    sideEffects:
+      "Commonly causes stomach upset and heartburn even at doses well below those linked to ulcers; ringing in the ears (tinnitus) can signal too high a dose.",
   },
   {
     slug: "ibuprofen",
@@ -133,6 +142,8 @@ export const drugs: DrugEntry[] = [
       "Developed as a gentler alternative to aspirin for long-term arthritis treatment, ibuprofen went on to become one of the most widely used over-the-counter pain relievers worldwide.",
     hazards:
       "Can irritate the GI tract and raise ulcer risk with prolonged use. Associated with kidney strain, especially in dehydration. Higher doses carry increased cardiovascular risk.",
+    sideEffects:
+      "Frequently causes mild stomach upset, heartburn, and headache; dizziness is also reported by some users.",
   },
   {
     slug: "paracetamol",
@@ -152,6 +163,8 @@ export const drugs: DrugEntry[] = [
       "Despite being one of the most widely used medicines in the world, paracetamol's precise mechanism remained unclear for decades after it entered common use — a reminder that a drug can be trusted long before it's fully understood.",
     hazards:
       "Narrow safety margin — overdose is a leading cause of acute liver failure. Risk increases significantly when combined with alcohol or exceeding the recommended daily dose.",
+    sideEffects:
+      "Well tolerated at normal doses, with few day-to-day side effects; occasional nausea or a mild rash has been reported.",
   },
   {
     slug: "morphine",
@@ -171,6 +184,8 @@ export const drugs: DrugEntry[] = [
       "Named after Morpheus, the Greek god of dreams, morphine's isolation from opium launched the entire field of alkaloid chemistry and remains the reference standard every other opioid painkiller is measured against.",
     hazards:
       "High potential for physical dependence. Can cause dangerous respiratory depression at excessive doses. Tolerance develops rapidly with repeated use.",
+    sideEffects:
+      "Commonly causes constipation, nausea, drowsiness, and itching — constipation in particular tends to persist throughout treatment rather than fading with continued use.",
   },
   {
     slug: "codeine",
@@ -190,6 +205,8 @@ export const drugs: DrugEntry[] = [
       "Long valued as a gentler alternative to morphine for cough suppression and mild pain, though genetic differences in how people metabolize codeine can make its effects surprisingly unpredictable from person to person.",
     hazards:
       "Carries the same dependence risks as other opioids. Metabolism into morphine varies significantly between individuals, occasionally producing unexpectedly strong effects.",
+    sideEffects:
+      "Frequently causes constipation, nausea, drowsiness, and itching, similar to other opioids, though generally milder than with stronger opioids like morphine.",
   },
   {
     slug: "amphetamine",
@@ -209,6 +226,8 @@ export const drugs: DrugEntry[] = [
       "One of the first synthetic stimulants ever marketed as medicine, amphetamine went from an over-the-counter nasal inhaler in the 1930s to a tightly controlled prescription drug today, tracking a growing understanding of its dependence potential.",
     hazards:
       "Potential for dependence. Can strain the cardiovascular system through elevated heart rate and blood pressure. Overuse is linked to anxiety and sleep disruption.",
+    sideEffects:
+      "Commonly causes decreased appetite, dry mouth, headache, and difficulty falling asleep.",
   },
   {
     slug: "methylphenidate",
@@ -228,6 +247,8 @@ export const drugs: DrugEntry[] = [
       "Became the primary medication for attention-deficit/hyperactivity disorder from the 1960s onward, fundamentally changing how the condition is diagnosed and managed.",
     hazards:
       "Potential for misuse and dependence. Can raise heart rate and blood pressure, and disrupt sleep if taken too late in the day.",
+    sideEffects:
+      "Frequently causes decreased appetite, stomach upset, headache, and trouble falling asleep, particularly early in treatment.",
   },
   {
     slug: "metformin",
@@ -247,6 +268,8 @@ export const drugs: DrugEntry[] = [
       "Derived from a compound found in the plant Galega officinalis, long used in folk medicine for symptoms resembling diabetes, metformin remains the first-line treatment for type 2 diabetes worldwide.",
     hazards:
       "Rare but serious risk of lactic acidosis, particularly in patients with kidney impairment. Commonly causes GI upset, especially when starting treatment.",
+    sideEffects:
+      "Commonly causes diarrhea, nausea, and a metallic taste in the mouth, especially when starting treatment — symptoms that often ease once the body adjusts or the dose is taken with food.",
   },
   {
     slug: "insulin",
@@ -266,6 +289,8 @@ export const drugs: DrugEntry[] = [
       "The first hormone ever used therapeutically, insulin's discovery transformed type 1 diabetes from a near-certain death sentence into a manageable condition within a single year of its isolation.",
     hazards:
       "Overdose causes hypoglycemia, which can be life-threatening if untreated. Injection sites can develop lipodystrophy (fat tissue changes) with repeated use in the same spot.",
+    sideEffects:
+      "Common effects include weight gain and mild swelling; injection sites can also become red or itchy shortly after injection.",
   },
   {
     slug: "diazepam",
@@ -285,6 +310,8 @@ export const drugs: DrugEntry[] = [
       "Diazepam followed close behind the first benzodiazepine, chlordiazepoxide, and quickly became one of the best-selling drugs of the 20th century as safer alternative to older sedatives like barbiturates.",
     hazards:
       "Long-term use carries a real risk of physical dependence and difficult withdrawal. Combining it with alcohol or opioids significantly increases the risk of dangerous respiratory depression.",
+    sideEffects:
+      "Frequently causes drowsiness, muscle weakness, and impaired coordination, especially at the start of treatment or with higher doses.",
   },
   {
     slug: "lorazepam",
@@ -304,6 +331,8 @@ export const drugs: DrugEntry[] = [
       "Became a preferred option in hospital settings partly because its straightforward metabolism means it interacts with fewer other medications than older benzodiazepines.",
     hazards:
       "Shares the dependence and withdrawal risks common to the benzodiazepine class. Sedation and memory impairment are more pronounced at higher doses.",
+    sideEffects:
+      "Commonly causes drowsiness, dizziness, and unsteadiness, particularly noticeable when starting treatment.",
   },
   {
     slug: "sertraline",
@@ -323,6 +352,8 @@ export const drugs: DrugEntry[] = [
       "Part of the wave of SSRIs that reshaped depression treatment starting in the late 1980s, offering a notably safer overdose profile than the older tricyclic antidepressants they largely replaced.",
     hazards:
       "Common side effects include nausea and sexual dysfunction. Carries an FDA boxed warning for increased suicidal thinking in young people during early treatment. Abruptly stopping can cause withdrawal-like symptoms.",
+    sideEffects:
+      "Also commonly causes diarrhea, insomnia or drowsiness, and dry mouth, most pronounced in the first few weeks of treatment.",
   },
   {
     slug: "fluoxetine",
@@ -342,6 +373,8 @@ export const drugs: DrugEntry[] = [
       "The first SSRI to reach the US market, fluoxetine's arrival is widely credited with normalizing depression treatment and dramatically expanding how many people sought care for it.",
     hazards:
       "Same boxed warning as other SSRIs for suicidal thinking in younger patients. Its long half-life means side effects can persist for weeks after stopping.",
+    sideEffects:
+      "Commonly causes nausea, insomnia, and decreased appetite, along with sexual side effects similar to other SSRIs.",
   },
   {
     slug: "atorvastatin",
@@ -361,6 +394,8 @@ export const drugs: DrugEntry[] = [
       "Went on to become the best-selling drug in pharmaceutical history for a period, on the strength of large trials showing it reduced heart attacks and strokes in a wide range of patients.",
     hazards:
       "Can cause muscle pain and, rarely, serious muscle breakdown (rhabdomyolysis). Requires liver-function monitoring, and interacts with several other common medications.",
+    sideEffects:
+      "Commonly causes mild muscle aches and joint pain even without the rare breakdown risk noted above; headache and digestive upset are also reported.",
   },
   {
     slug: "simvastatin",
@@ -380,6 +415,8 @@ export const drugs: DrugEntry[] = [
       "One of the earliest statins to demonstrate a clear survival benefit in large clinical trials, helping establish cholesterol-lowering drugs as a mainstay of heart disease prevention.",
     hazards:
       "Same muscle-related and liver-monitoring concerns as other statins, with a particularly notable interaction risk when combined with grapefruit juice.",
+    sideEffects:
+      "Frequently causes mild muscle aches, headache, and digestive upset such as constipation or gas.",
   },
   {
     slug: "lisinopril",
@@ -399,6 +436,8 @@ export const drugs: DrugEntry[] = [
       "Part of the ACE inhibitor class that followed captopril, the first drug of its kind, lisinopril became a first-line treatment for high blood pressure and heart failure because it only needs to be taken once a day.",
     hazards:
       "Can cause a persistent dry cough in some patients. Carries a rare but serious risk of angioedema (rapid tissue swelling). Not recommended during pregnancy due to risk to fetal development.",
+    sideEffects:
+      "Aside from the cough noted above, commonly causes dizziness and fatigue, especially after the first dose.",
   },
   {
     slug: "enalapril",
@@ -418,6 +457,8 @@ export const drugs: DrugEntry[] = [
       "One of the earliest ACE inhibitors to reach the market, enalapril helped establish the class as a mainstay for hypertension and heart failure treatment through the 1980s.",
     hazards:
       "Shares the dry cough and angioedema risks common to ACE inhibitors. Requires kidney-function monitoring, particularly when starting treatment.",
+    sideEffects:
+      "Commonly causes dizziness, headache, and fatigue, particularly when starting treatment.",
   },
   {
     slug: "metoprolol",
@@ -437,6 +478,8 @@ export const drugs: DrugEntry[] = [
       "Metoprolol's selectivity for heart-specific beta-1 receptors, rather than the beta-2 receptors found in the lungs, made it a safer option than earlier beta blockers for patients with respiratory conditions like asthma.",
     hazards:
       "Can cause fatigue and slow heart rate (bradycardia). Stopping abruptly after long-term use can trigger a rebound spike in heart rate and blood pressure, so tapering is important.",
+    sideEffects:
+      "Can also cause cold hands and feet, dizziness, and vivid dreams or other sleep disturbances.",
   },
   {
     slug: "propranolol",
@@ -456,6 +499,8 @@ export const drugs: DrugEntry[] = [
       "The first successful beta blocker ever developed, propranolol's invention is considered one of the most significant contributions to cardiovascular medicine — its creator, James Black, later won a Nobel Prize partly for this work.",
     hazards:
       "Because it isn't heart-selective, it can worsen asthma and other breathing conditions. Also masks the warning signs of low blood sugar in people with diabetes.",
+    sideEffects:
+      "Commonly causes fatigue, cold extremities, and vivid dreams; some patients also notice a slower resting heart rate.",
   },
   {
     slug: "warfarin",
@@ -475,6 +520,8 @@ export const drugs: DrugEntry[] = [
       "Originally developed and sold as a rat poison, warfarin was found to be safely dosable in humans and became the dominant oral anticoagulant for over 50 years, despite requiring regular blood tests to keep its effect in a safe range.",
     hazards:
       "Narrow therapeutic window — too little fails to prevent clots, too much causes dangerous bleeding. Interacts with a huge range of foods and other medications, especially anything affecting vitamin K intake.",
+    sideEffects:
+      "Aside from the bleeding risk noted above, minor bruising is common even at a properly managed dose; some patients also notice hair thinning with long-term use.",
   },
   {
     slug: "apixaban",
@@ -494,6 +541,8 @@ export const drugs: DrugEntry[] = [
       "Part of a newer generation of anticoagulants designed to sidestep warfarin's monitoring requirements and unpredictable food interactions, apixaban has become one of the most widely prescribed blood thinners.",
     hazards:
       "Still carries a real bleeding risk, including rare but serious internal bleeding. Unlike warfarin, it has no simple at-home test to check its blood level.",
+    sideEffects:
+      "Minor bruising and nosebleeds are relatively common even without a major bleeding event.",
   },
   {
     slug: "omeprazole",
@@ -513,6 +562,8 @@ export const drugs: DrugEntry[] = [
       "The first proton pump inhibitor to reach the market, omeprazole transformed treatment of ulcers and acid reflux and became one of the best-selling drugs in the world through the 1990s and 2000s.",
     hazards:
       "Long-term use is associated with reduced absorption of vitamin B12, magnesium, and calcium, and a modestly increased risk of certain infections and bone fractures.",
+    sideEffects:
+      "Commonly causes headache, abdominal pain, and nausea; some patients notice diarrhea or gas.",
   },
   {
     slug: "esomeprazole",
@@ -532,6 +583,8 @@ export const drugs: DrugEntry[] = [
       "Esomeprazole was developed largely as omeprazole's patent protection was expiring, a common pharmaceutical strategy of refining an existing drug into a new patentable version — sometimes called an 'evergreening' drug.",
     hazards:
       "Shares the same long-term nutrient-absorption and infection-risk concerns as omeprazole and other proton pump inhibitors.",
+    sideEffects:
+      "Commonly causes headache and mild abdominal discomfort, similar to omeprazole.",
   },
   {
     slug: "loratadine",
@@ -551,6 +604,8 @@ export const drugs: DrugEntry[] = [
       "Designed specifically to cross into the brain far less than older antihistamines like diphenhydramine, loratadine helped define the 'non-drowsy' generation of allergy medication.",
     hazards:
       "Generally well-tolerated. Rare side effects include headache and dry mouth; drowsiness is much less common than with first-generation antihistamines.",
+    sideEffects:
+      "Occasional mild drowsiness or dizziness has been reported, though most users notice no effects at all beyond allergy relief.",
   },
   {
     slug: "diphenhydramine",
@@ -570,6 +625,8 @@ export const drugs: DrugEntry[] = [
       "One of the first antihistamines ever developed, diphenhydramine's sedating side effect was so pronounced that it was later repurposed and marketed separately as an over-the-counter sleep aid.",
     hazards:
       "Causes significant drowsiness and impaired coordination — a real concern for driving or operating machinery. Older adults are especially sensitive to its effects on memory and confusion.",
+    sideEffects:
+      "Commonly causes dry mouth, blurred vision, and constipation, due to its broader effect on other neurotransmitter systems beyond histamine.",
   },
   {
     slug: "risperidone",
@@ -589,6 +646,8 @@ export const drugs: DrugEntry[] = [
       "Part of the 'atypical' or second-generation antipsychotics that emerged from research trying to reduce the movement-related side effects common with earlier drugs in the class.",
     hazards:
       "Can cause weight gain and metabolic changes like elevated blood sugar. Still carries some risk of movement disorders, though generally less than first-generation antipsychotics.",
+    sideEffects:
+      "Commonly causes drowsiness, dizziness, and increased prolactin levels, which can lead to menstrual changes or breast tenderness.",
   },
   {
     slug: "haloperidol",
@@ -608,6 +667,8 @@ export const drugs: DrugEntry[] = [
       "One of the earliest and most widely used first-generation ('typical') antipsychotics, haloperidol remains in use today, particularly in acute settings, despite newer alternatives.",
     hazards:
       "Higher risk of movement-related side effects (tremor, rigidity) than newer antipsychotics, including a rare but serious risk of persistent involuntary movements with long-term use.",
+    sideEffects:
+      "Commonly causes drowsiness and dry mouth; some patients experience restlessness (akathisia) during treatment.",
   },
   {
     slug: "prednisone",
@@ -627,6 +688,8 @@ export const drugs: DrugEntry[] = [
       "Following the discovery of cortisone's anti-inflammatory effects in the late 1940s, prednisone was developed as a more potent, longer-acting synthetic alternative and became a cornerstone treatment for autoimmune and inflammatory conditions.",
     hazards:
       "Long-term use is linked to bone density loss, weight gain, elevated blood sugar, and increased infection risk. Must typically be tapered off gradually rather than stopped abruptly.",
+    sideEffects:
+      "Even short courses commonly cause increased appetite, mood changes, difficulty sleeping, and fluid retention.",
   },
   {
     slug: "dexamethasone",
@@ -646,6 +709,8 @@ export const drugs: DrugEntry[] = [
       "Gained global public attention during the COVID-19 pandemic when a large UK trial found it reduced deaths in critically ill, oxygen-dependent patients — one of the first treatments shown to do so.",
     hazards:
       "Shares the same long-term risks as other corticosteroids — bone loss, elevated blood sugar, and immune suppression — often at lower doses than prednisone due to its higher potency.",
+    sideEffects:
+      "Shares prednisone's short-term effects — increased appetite, trouble sleeping, and mood swings — often more pronounced given its higher potency.",
   },
   {
     slug: "oseltamivir",
@@ -665,6 +730,8 @@ export const drugs: DrugEntry[] = [
       "Originally synthesized from shikimic acid extracted from Chinese star anise, oseltamivir became a globally stockpiled antiviral during pandemic flu preparedness efforts in the 2000s.",
     hazards:
       "Most effective when started within the first two days of symptoms. Common side effects include nausea; rare neuropsychiatric effects have been reported, mostly in children.",
+    sideEffects:
+      "Can also cause vomiting and headache; taking it with food reduces the nausea some people experience.",
   },
   {
     slug: "acyclovir",
@@ -684,6 +751,8 @@ export const drugs: DrugEntry[] = [
       "Its selective activity against infected cells was considered a landmark in antiviral design, and its discoverer, Gertrude Elion, later won the Nobel Prize in Physiology or Medicine partly for this work.",
     hazards:
       "Generally well-tolerated; can occasionally affect kidney function, especially at high doses or in patients with existing kidney impairment.",
+    sideEffects:
+      "Commonly causes nausea, headache, and mild diarrhea; topical forms can cause local skin irritation.",
   },
   {
     slug: "hydrochlorothiazide",
@@ -703,6 +772,8 @@ export const drugs: DrugEntry[] = [
       "One of the first practical oral diuretics, hydrochlorothiazide became a foundational blood pressure medication and remains one of the most commonly prescribed drugs in the world today.",
     hazards:
       "Can cause electrolyte imbalances, particularly low potassium and sodium. Increases sensitivity to sunlight and can raise blood sugar and uric acid levels.",
+    sideEffects:
+      "Commonly causes increased urination, dizziness upon standing, and mild fatigue, especially when starting treatment.",
   },
   {
     slug: "furosemide",
@@ -722,6 +793,8 @@ export const drugs: DrugEntry[] = [
       "Its rapid, powerful effect made furosemide the go-to diuretic for emergency fluid overload situations, such as acute heart failure, where a slower-acting thiazide wouldn't act quickly enough.",
     hazards:
       "Can cause significant electrolyte loss and dehydration if not monitored. Rapid fluid loss can also affect blood pressure and kidney function.",
+    sideEffects:
+      "Commonly causes frequent urination and dizziness upon standing, particularly soon after a dose.",
   },
   {
     slug: "albuterol",
@@ -741,6 +814,8 @@ export const drugs: DrugEntry[] = [
       "Its selectivity for beta-2 (airway) receptors over beta-1 (heart) receptors made it a much safer rescue inhaler than earlier bronchodilators, which often caused unwanted heart-racing side effects.",
     hazards:
       "Overuse can cause tremor, rapid heartbeat, and jitteriness. Relying on it too frequently is generally a sign that a person's underlying asthma isn't well controlled.",
+    sideEffects:
+      "Commonly causes a mild headache and throat or nasal irritation from the inhaled mist, along with occasional muscle cramps.",
   },
   {
     slug: "salmeterol",
@@ -760,6 +835,8 @@ export const drugs: DrugEntry[] = [
       "Designed for long-term asthma and COPD control rather than emergency relief, salmeterol is typically paired with an inhaled corticosteroid rather than used as a standalone rescue inhaler.",
     hazards:
       "Carries a boxed warning against use as a standalone asthma treatment, since long-acting beta agonists used alone have been linked to an increased risk of severe asthma episodes.",
+    sideEffects:
+      "Commonly causes headache, throat irritation, and mild tremor, similar to other beta-2 agonists but usually less pronounced given its longer, steadier release.",
   },
 
   {
@@ -780,6 +857,8 @@ export const drugs: DrugEntry[] = [
       "Part of a second generation of sulfonylureas that replaced earlier drugs like tolbutamide, offering a lower effective dose and fewer interactions with other medications.",
     hazards:
       "Can cause hypoglycemia, especially if a meal is skipped after dosing. Effectiveness fades over time in some patients as pancreatic beta-cell function declines.",
+    sideEffects:
+      "Can also cause mild nausea, stomach upset, and dizziness, particularly when starting treatment.",
   },
   {
     slug: "sitagliptin",
@@ -799,6 +878,8 @@ export const drugs: DrugEntry[] = [
       "One of the first drugs in its class, sitagliptin offered a once-daily pill with a lower hypoglycemia risk than older diabetes drugs, since its effect depends on the body's own after-meal signaling.",
     hazards:
       "Linked to joint pain in some patients and rare reports of pancreatitis. Dose must be adjusted for reduced kidney function.",
+    sideEffects:
+      "Generally well tolerated; the most common complaints are upper respiratory symptoms like a stuffy nose and sore throat, and mild headache.",
   },
   {
     slug: "levothyroxine",
@@ -818,6 +899,8 @@ export const drugs: DrugEntry[] = [
       "Before synthetic versions, hypothyroidism was treated with desiccated animal thyroid extract, which had inconsistent hormone content. A pure, synthetic, single-molecule version made dosing precise and predictable.",
     hazards:
       "Too high a dose mimics an overactive thyroid — rapid heartbeat, anxiety, weight loss — while too low a dose leaves hypothyroid symptoms untreated. Absorption is affected by food, calcium, and iron supplements.",
+    sideEffects:
+      "At a properly adjusted dose, side effects are uncommon; some people notice mild hair thinning in the first few months of treatment.",
   },
   {
     slug: "testosterone",
@@ -837,6 +920,8 @@ export const drugs: DrugEntry[] = [
       "One of the first steroid hormones ever isolated and synthesized, testosterone's structure elucidation in the 1930s helped launch the field of steroid chemistry and earned its discoverers a share of a Nobel Prize.",
     hazards:
       "Exogenous use suppresses the body's own natural production. Non-prescribed high-dose use is associated with cardiovascular strain, liver stress with oral forms, and mood or behavioral changes.",
+    sideEffects:
+      "Common effects during treatment include acne, fluid retention, and an increased red blood cell count; injectable forms can also cause injection-site irritation.",
   },
   {
     slug: "oxycodone",
@@ -856,6 +941,8 @@ export const drugs: DrugEntry[] = [
       "Synthesized from thebaine, a minor opium alkaloid, oxycodone was developed to be a safer alternative to earlier opioids — a goal that a later extended-release reformulation, marketed heavily in the 1990s, is now widely cited as a major contributor to the U.S. opioid crisis.",
     hazards:
       "High potential for dependence and respiratory depression, especially when combined with alcohol or other sedatives. A leading contributor to opioid-related overdose deaths in recent decades.",
+    sideEffects:
+      "Commonly causes constipation, nausea, drowsiness, and itching — the same day-to-day tolerability profile shared by opioids generally.",
   },
   {
     slug: "caffeine",
@@ -875,6 +962,8 @@ export const drugs: DrugEntry[] = [
       "The world's most widely consumed psychoactive substance, caffeine's stimulant effect was documented in coffee and tea for centuries before Runge's 1819 isolation identified the specific compound responsible.",
     hazards:
       "High doses can cause anxiety, rapid heartbeat, and insomnia. Regular use produces mild physical dependence, and abrupt cessation commonly causes headaches.",
+    sideEffects:
+      "Moderate daily use can still cause mild jitteriness, increased urination, and stomach upset in sensitive individuals.",
   },
   {
     slug: "ciprofloxacin",
@@ -894,6 +983,8 @@ export const drugs: DrugEntry[] = [
       "One of the first widely used fluoroquinolones, ciprofloxacin broadened treatment options against gram-negative bacteria and became a standard stockpiled antibiotic for suspected anthrax exposure.",
     hazards:
       "Carries a boxed warning for tendon rupture and nerve damage risk, more common in older adults. Can prolong the heart's QT interval and interacts with dairy products, which block its absorption.",
+    sideEffects:
+      "Commonly causes nausea, diarrhea, and headache; some people also report dizziness or a mild rash.",
   },
   {
     slug: "naproxen",
@@ -913,6 +1004,8 @@ export const drugs: DrugEntry[] = [
       "Naproxen's longer duration of action than earlier NSAIDs like ibuprofen made twice-daily dosing possible, and its 1994 switch to over-the-counter status made it one of the most accessible long-acting pain relievers.",
     hazards:
       "Long-term use raises the risk of stomach ulcers and gastrointestinal bleeding, along with cardiovascular risk and reduced kidney function, especially at high doses.",
+    sideEffects:
+      "Commonly causes heartburn, stomach upset, and headache, even without the more serious risks noted above.",
   },
   {
     slug: "alprazolam",
@@ -932,6 +1025,8 @@ export const drugs: DrugEntry[] = [
       "Originally developed as an antidepressant candidate, alprazolam's anti-anxiety and panic-disorder effects made it one of the most prescribed psychiatric medications by the late 1980s.",
     hazards:
       "High potential for dependence, especially with regular use beyond a few weeks. Abrupt discontinuation can cause dangerous withdrawal seizures. Sedative effects are amplified dangerously when combined with alcohol or opioids.",
+    sideEffects:
+      "Commonly causes drowsiness, light-headedness, and impaired coordination, most noticeable soon after each dose.",
   },
   {
     slug: "venlafaxine",
@@ -951,6 +1046,8 @@ export const drugs: DrugEntry[] = [
       "One of the first SNRIs approved, venlafaxine offered an alternative mechanism to the SSRIs that dominated antidepressant treatment through the 1990s.",
     hazards:
       "Discontinuation can cause a pronounced withdrawal syndrome — dizziness, 'brain zaps', irritability — if stopped abruptly. Can raise blood pressure at higher doses.",
+    sideEffects:
+      "Commonly causes nausea, dry mouth, and sweating, especially when starting treatment or increasing the dose.",
   },
   {
     slug: "rosuvastatin",
@@ -970,6 +1067,8 @@ export const drugs: DrugEntry[] = [
       "Entering the market after atorvastatin and simvastatin were already established, rosuvastatin distinguished itself with greater LDL-lowering potency at lower doses.",
     hazards:
       "Can cause muscle pain and, rarely, a serious muscle-breakdown condition called rhabdomyolysis. Requires monitoring in patients with reduced kidney function, and dose limits differ by ethnicity due to blood-level differences.",
+    sideEffects:
+      "Commonly causes mild headache and digestive upset such as nausea or constipation.",
   },
   {
     slug: "cetirizine",
@@ -989,6 +1088,8 @@ export const drugs: DrugEntry[] = [
       "A metabolite of the older antihistamine hydroxyzine, cetirizine was designed to cross into the brain far less than first-generation antihistamines like diphenhydramine, cutting down drowsiness while keeping allergy relief.",
     hazards:
       "Can still cause mild drowsiness in some users despite being marketed as 'non-drowsy'. Rebound itching has been reported after stopping long-term daily use.",
+    sideEffects:
+      "Can also cause dry mouth and mild fatigue, generally less pronounced than with older, first-generation antihistamines.",
   },
   {
     slug: "olanzapine",
@@ -1008,6 +1109,8 @@ export const drugs: DrugEntry[] = [
       "Part of a wave of 'atypical' antipsychotics that followed clozapine, olanzapine became one of the best-selling psychiatric drugs of the 2000s for its broad effectiveness against both positive and negative schizophrenia symptoms.",
     hazards:
       "Strongly associated with weight gain and metabolic changes, including increased risk of type 2 diabetes. Carries a boxed warning for increased mortality risk in older adults with dementia-related psychosis.",
+    sideEffects:
+      "Commonly causes drowsiness, dizziness, and constipation, on top of the appetite and metabolic changes noted above.",
   },
   {
     slug: "valacyclovir",
@@ -1027,6 +1130,8 @@ export const drugs: DrugEntry[] = [
       "A prodrug form of acyclovir, valacyclovir was designed purely to improve on its predecessor's poor oral absorption — the body converts it to the exact same active drug, just at much higher blood levels per dose.",
     hazards:
       "Can cause kidney problems, particularly at high doses or in dehydrated patients. Rare cases of a blood-clotting disorder have been reported in immunocompromised patients.",
+    sideEffects:
+      "Commonly causes headache and nausea; otherwise generally well tolerated.",
   },
   {
     slug: "atenolol",
@@ -1046,6 +1151,8 @@ export const drugs: DrugEntry[] = [
       "Developed as a more heart-selective alternative to propranolol, atenolol's reduced action on the lungs' beta-2 receptors made it a safer option for patients with asthma.",
     hazards:
       "Should not be stopped abruptly, since sudden withdrawal can trigger rebound high blood pressure or chest pain. Can mask the warning signs of low blood sugar in people with diabetes.",
+    sideEffects:
+      "Commonly causes fatigue, cold hands and feet, and mild dizziness, especially early in treatment.",
   },
   {
     slug: "formoterol",
@@ -1065,6 +1172,8 @@ export const drugs: DrugEntry[] = [
       "Formoterol's fast onset alongside its long duration set it apart from earlier long-acting bronchodilators like salmeterol, which act more slowly.",
     hazards:
       "Carries the same boxed warning as other LABAs against use alone in asthma, since long-acting beta agonists used without an inhaled corticosteroid have been linked to increased risk of severe asthma episodes.",
+    sideEffects:
+      "Commonly causes headache, tremor, and a fast heartbeat, similar to other beta-2 agonists.",
   },
   {
     slug: "hydrocortisone",
@@ -1084,6 +1193,8 @@ export const drugs: DrugEntry[] = [
       "As the synthetic version of the body's own primary stress hormone, hydrocortisone's introduction gave doctors a way to replicate and control the immune-suppressing, anti-inflammatory effects the adrenal glands normally regulate naturally.",
     hazards:
       "Long-term systemic use can suppress the body's own cortisol production, weaken bones, and raise blood sugar. Topical overuse can thin the skin.",
+    sideEffects:
+      "Short-term oral or injected use commonly causes increased appetite and mild fluid retention; topical use can cause local stinging or irritation.",
   },
   {
     slug: "spironolactone",
@@ -1103,6 +1214,8 @@ export const drugs: DrugEntry[] = [
       "Unlike the diuretics that came before it, spironolactone works by directly blocking a hormone receptor rather than acting on a kidney transporter, and it remains one of the few diuretics that doesn't waste potassium.",
     hazards:
       "Can cause dangerously high potassium levels, especially when combined with potassium supplements or ACE inhibitors. Long-term use has been linked to breast tenderness and enlargement due to its hormonal activity.",
+    sideEffects:
+      "Commonly causes stomach upset, dizziness, and fatigue, especially when starting treatment.",
   },
   {
     slug: "pantoprazole",
@@ -1122,6 +1235,8 @@ export const drugs: DrugEntry[] = [
       "Entering the PPI market after omeprazole's patent success, pantoprazole offered a similar mechanism with a somewhat different interaction profile, giving doctors an alternative when other PPIs interacted with a patient's other medications.",
     hazards:
       "Long-term use is associated with reduced calcium and vitamin B12 absorption, and an increased risk of certain gut infections due to reduced stomach acidity.",
+    sideEffects:
+      "Commonly causes headache, diarrhea, and abdominal pain.",
   },
   {
     slug: "rivaroxaban",
@@ -1141,6 +1256,8 @@ export const drugs: DrugEntry[] = [
       "Part of a new generation of oral anticoagulants that followed warfarin, rivaroxaban doesn't require the routine blood monitoring warfarin does, since its effect on clotting is far more predictable dose to dose.",
     hazards:
       "Bleeding is the main risk, and for years there was no dedicated reversal agent, unlike warfarin's vitamin K. Should not be stopped abruptly without medical guidance due to rebound clotting risk.",
+    sideEffects:
+      "Minor bruising and nosebleeds are common even without a major bleeding event.",
   },
   {
     slug: "ramipril",
@@ -1160,6 +1277,8 @@ export const drugs: DrugEntry[] = [
       "Later trials found ramipril reduced cardiovascular events even in patients without high blood pressure, broadening ACE inhibitors' use into general cardiovascular risk reduction beyond blood pressure control alone.",
     hazards:
       "Can cause a persistent dry cough and, rarely, a dangerous swelling reaction called angioedema. Not safe during pregnancy due to risk of fetal kidney damage.",
+    sideEffects:
+      "Commonly causes dizziness and fatigue, especially with the first few doses.",
   },
   {
     slug: "hydromorphone",
@@ -1179,6 +1298,8 @@ export const drugs: DrugEntry[] = [
       "Developed as a more potent, faster-acting alternative to morphine, hydromorphone became a standard option for severe pain in hospital settings where rapid, controllable relief is needed.",
     hazards:
       "Its higher potency-per-milligram than morphine raises the risk of accidental overdose if doses are confused between the two. Carries the same dependence and respiratory-depression risks as other strong opioids.",
+    sideEffects:
+      "Commonly causes constipation, nausea, drowsiness, and itching — the typical day-to-day profile shared by opioids.",
   },
   {
     slug: "modafinil",
@@ -1198,6 +1319,8 @@ export const drugs: DrugEntry[] = [
       "Originally developed to treat narcolepsy, modafinil's comparatively mild side-effect profile next to amphetamine-type stimulants led to wider off-label use for shift-work sleep problems and occasional non-medical 'cognitive enhancement' use.",
     hazards:
       "Can cause insomnia, headache, and anxiety. Rare but serious skin reactions have been reported. Lower abuse potential than classic stimulants, but not risk-free with long-term use.",
+    sideEffects:
+      "Nausea, dry mouth, and mild nervousness are also commonly reported.",
   },
   {
     slug: "dabigatran",
@@ -1217,6 +1340,8 @@ export const drugs: DrugEntry[] = [
       "The first of the new oral anticoagulants to reach the U.S. market, dabigatran offered predictable dosing without warfarin's routine blood monitoring, and its reversal agent, approved years later, addressed one of the earliest DOACs' biggest early drawbacks.",
     hazards:
       "Bleeding is the primary risk, and effectiveness is highly sensitive to missed or doubled doses because of its short half-life. Requires dose adjustment in reduced kidney function, since it's cleared largely by the kidneys.",
+    sideEffects:
+      "Commonly causes stomach upset and heartburn-like discomfort, more often than with some other newer anticoagulants.",
   },
   {
     slug: "bupropion",
@@ -1236,6 +1361,8 @@ export const drugs: DrugEntry[] = [
       "Bupropion's stimulating, non-sedating profile and lack of typical SSRI sexual side effects made it a popular alternative or add-on antidepressant, and its separate brand name Zyban repurposed it as a smoking-cessation aid.",
     hazards:
       "Lowers the seizure threshold, so it's avoided in patients with a seizure history or eating disorders. Can worsen anxiety or insomnia in some patients despite easing depression in others.",
+    sideEffects:
+      "Commonly causes dry mouth, headache, and nausea; unlike many antidepressants it's less likely to cause sexual side effects or weight gain.",
   },
   {
     slug: "fexofenadine",
@@ -1255,6 +1382,8 @@ export const drugs: DrugEntry[] = [
       "Developed as a metabolite of the earlier antihistamine terfenadine after terfenadine itself was pulled from the market over rare heart-rhythm risks, fexofenadine kept the allergy relief without that danger.",
     hazards:
       "Considered one of the least sedating antihistamines, though fruit juices (notably grapefruit, orange, and apple) can reduce its absorption and effectiveness if taken together.",
+    sideEffects:
+      "Generally very well tolerated; headache and mild nausea are the most commonly reported side effects.",
   },
   {
     slug: "quetiapine",
@@ -1274,6 +1403,8 @@ export const drugs: DrugEntry[] = [
       "Quetiapine's sedating properties at low doses led to widespread off-label use for insomnia and anxiety well beyond its original approval for schizophrenia and bipolar disorder.",
     hazards:
       "Associated with weight gain, drowsiness, and metabolic changes including increased diabetes risk. Carries the same boxed warning as other antipsychotics against use in dementia-related psychosis in older adults.",
+    sideEffects:
+      "Dry mouth and dizziness are also common, particularly when starting treatment or increasing the dose.",
   },
   {
     slug: "tenofovir",
@@ -1293,6 +1424,8 @@ export const drugs: DrugEntry[] = [
       "A cornerstone of modern HIV treatment and prevention, tenofovir-based combination pills became central to both daily antiretroviral therapy and PrEP (pre-exposure prophylaxis) regimens that reduce HIV transmission risk.",
     hazards:
       "Long-term use has been linked to reduced kidney function and bone mineral density loss in some patients, requiring periodic monitoring.",
+    sideEffects:
+      "Commonly causes nausea, diarrhea, and headache, especially when starting treatment.",
   },
   {
     slug: "clonazepam",
@@ -1312,6 +1445,8 @@ export const drugs: DrugEntry[] = [
       "Approved initially as an anticonvulsant, clonazepam's long duration of action made it a common choice for panic disorder as well, distinguishing it from shorter-acting benzodiazepines like alprazolam.",
     hazards:
       "Shares the same dependence and withdrawal-seizure risks as other benzodiazepines, with a longer half-life that can lead to next-day grogginess and slower clearance from the body in older adults.",
+    sideEffects:
+      "Commonly causes drowsiness, dizziness, and mild difficulty with coordination or short-term memory.",
   },
   {
     slug: "carvedilol",
@@ -1331,6 +1466,8 @@ export const drugs: DrugEntry[] = [
       "Carvedilol was part of a shift in the 1990s toward using beta blockers to treat heart failure itself, after earlier medical opinion held that slowing an already-struggling heart would make things worse.",
     hazards:
       "Can cause dizziness or low blood pressure, especially with the first dose. Should not be stopped abruptly, since sudden withdrawal can trigger rebound chest pain or blood pressure spikes.",
+    sideEffects:
+      "Commonly causes fatigue and weight gain; some patients also notice diarrhea.",
   },
   {
     slug: "ipratropium",
@@ -1350,6 +1487,8 @@ export const drugs: DrugEntry[] = [
       "Ipratropium worked through an entirely different receptor system than beta-agonist bronchodilators like albuterol, giving doctors a way to combine two mechanisms for a stronger effect in COPD and severe asthma.",
     hazards:
       "Can cause dry mouth and, less commonly, blurred vision if it contacts the eyes from a poorly aimed inhaler or nebulizer mist. Generally has fewer heart-related side effects than beta-agonist bronchodilators.",
+    sideEffects:
+      "Can also cause a mild cough or throat irritation from the inhaled spray, and occasionally headache.",
   },
   {
     slug: "fluticasone",
@@ -1369,6 +1508,8 @@ export const drugs: DrugEntry[] = [
       "Fluticasone's high potency and low absorption into the bloodstream when inhaled made it a mainstay of daily asthma control and allergy treatment, where a systemic steroid's side effects would be an unacceptable tradeoff.",
     hazards:
       "Can cause oral thrush if the mouth isn't rinsed after inhaler use, and nasal irritation with spray forms. Long-term high-dose inhaled use still carries some risk of the systemic effects seen with oral steroids.",
+    sideEffects:
+      "Nasal forms commonly cause mild nosebleeds or dryness; inhaled forms can cause a hoarse voice.",
   },
   {
     slug: "chlorthalidone",
@@ -1388,6 +1529,8 @@ export const drugs: DrugEntry[] = [
       "Chlorthalidone was the diuretic used in several of the largest blood-pressure outcome trials ever run, giving it an unusually strong evidence base despite being prescribed less often today than the similar drug hydrochlorothiazide.",
     hazards:
       "Can lower blood potassium and sodium levels, particularly in older adults, and may raise blood sugar and uric acid levels with long-term use.",
+    sideEffects:
+      "Commonly causes increased urination and dizziness upon standing, especially when starting treatment.",
   },
   {
     slug: "lansoprazole",
@@ -1407,6 +1550,8 @@ export const drugs: DrugEntry[] = [
       "Following omeprazole as the second major PPI to reach the U.S. market, lansoprazole's 1995 approval intensified competition in a drug class that would go on to become some of the best-selling medications in history.",
     hazards:
       "Long-term use is linked to reduced calcium, magnesium, and vitamin B12 absorption, along with an increased risk of certain gut infections due to lowered stomach acidity.",
+    sideEffects:
+      "Commonly causes headache, diarrhea, and abdominal pain, similar to other proton pump inhibitors.",
   },
   {
     slug: "pravastatin",
@@ -1426,6 +1571,8 @@ export const drugs: DrugEntry[] = [
       "Pravastatin was notable for being processed by the liver through a different pathway than most other statins, giving it fewer drug interactions — a property that made it a common choice for patients on multiple medications.",
     hazards:
       "Can cause muscle pain and, rarely, the serious muscle-breakdown condition rhabdomyolysis, though generally considered to carry a somewhat lower interaction risk than statins that share metabolic pathways with more drugs.",
+    sideEffects:
+      "Commonly causes mild headache and digestive upset such as nausea or diarrhea.",
   },
   {
     slug: "captopril",
@@ -1445,6 +1592,8 @@ export const drugs: DrugEntry[] = [
       "Captopril was the first ACE inhibitor ever approved, and its development is often cited as a landmark case of rational, structure-based drug design rather than trial-and-error discovery — it directly inspired the entire ACE inhibitor class that followed.",
     hazards:
       "Can cause a persistent dry cough and, rarely, dangerous swelling called angioedema. Its shorter duration of action means it's typically taken multiple times a day, unlike later ACE inhibitors.",
+    sideEffects:
+      "Commonly causes dizziness and a temporary loss of taste, an effect more distinctive to captopril than to later ACE inhibitors.",
   },
   {
     slug: "pioglitazone",
@@ -1464,6 +1613,8 @@ export const drugs: DrugEntry[] = [
       "Pioglitazone's insulin-sensitizing approach offered a mechanism distinct from older diabetes drugs, though a related drug in its class, troglitazone, was withdrawn over liver toxicity, which kept scrutiny on the whole thiazolidinedione class.",
     hazards:
       "Associated with fluid retention, weight gain, and an increased risk of heart failure symptoms in susceptible patients. Long-term use has also been linked to a modestly increased bladder cancer risk in some studies.",
+    sideEffects:
+      "Commonly causes mild headache and upper respiratory symptoms like a stuffy nose, on top of the fluid-related effects noted above.",
   },
   {
     slug: "estradiol",
@@ -1483,6 +1634,8 @@ export const drugs: DrugEntry[] = [
       "As the primary and most potent naturally occurring estrogen, estradiol's isolation in the 1930s was part of the same wave of steroid hormone research that identified testosterone, and it remains the reference estrogen used in modern hormone therapy.",
     hazards:
       "Long-term systemic use has been linked to increased risk of blood clots and, in some studies, certain hormone-sensitive cancers, which is why hormone therapy is generally prescribed at the lowest effective dose for the shortest needed duration.",
+    sideEffects:
+      "Commonly causes breast tenderness, nausea, headache, and bloating, especially when starting treatment.",
   },
   {
     slug: "doxycycline",
@@ -1502,6 +1655,8 @@ export const drugs: DrugEntry[] = [
       "A semisynthetic tetracycline with better absorption and a longer half-life than its predecessors, doxycycline became a mainstay for once- or twice-daily dosing and remains a first-line treatment for tick-borne illnesses like Lyme disease.",
     hazards:
       "Causes photosensitivity (increased sunburn risk) and can permanently discolor developing teeth, so it's avoided in young children and pregnancy. Should be taken with a full glass of water while upright, since it can irritate the esophagus.",
+    sideEffects:
+      "Commonly causes nausea and stomach upset, particularly if taken without food or enough water.",
   },
   {
     slug: "cephalexin",
@@ -1521,6 +1676,8 @@ export const drugs: DrugEntry[] = [
       "One of the first oral cephalosporins, cephalexin gave doctors a penicillin-class alternative for skin and urinary infections that could be taken as a pill rather than an injection.",
     hazards:
       "Can cause allergic reactions, with some cross-reactivity risk in patients with a penicillin allergy. Common side effects include GI upset and diarrhea.",
+    sideEffects:
+      "Can also cause a mild headache or dizziness; less commonly, a temporary change in taste.",
   },
   {
     slug: "vancomycin",
@@ -1540,6 +1697,8 @@ export const drugs: DrugEntry[] = [
       "Isolated from a soil sample collected in Borneo, vancomycin became known as a 'drug of last resort' for serious infections resistant to other antibiotics, particularly MRSA (methicillin-resistant Staphylococcus aureus).",
     hazards:
       "Can cause kidney damage and hearing loss at high doses, so blood levels are closely monitored during treatment. Rapid IV infusion can trigger 'red man syndrome,' a histamine-release reaction causing flushing and low blood pressure.",
+    sideEffects:
+      "Commonly causes nausea and chills during infusion, along with mild irritation at the IV site.",
   },
   {
     slug: "metronidazole",
@@ -1559,6 +1718,8 @@ export const drugs: DrugEntry[] = [
       "Originally developed to treat a parasitic infection, metronidazole's activity against anaerobic bacteria was discovered along the way, and it became a standard treatment for a wide range of anaerobic and parasitic infections.",
     hazards:
       "Causes a severe reaction (flushing, vomiting, rapid heartbeat) when combined with alcohol, so drinking is avoided during treatment and for a few days after. Can cause a metallic taste and, rarely, nerve damage with prolonged use.",
+    sideEffects:
+      "Commonly causes nausea, loss of appetite, and stomach upset, particularly during the first days of treatment.",
   },
   {
     slug: "empagliflozin",
@@ -1578,6 +1739,8 @@ export const drugs: DrugEntry[] = [
       "Part of a drug class that traces back to a compound found in apple tree bark, which first suggested that blocking glucose reabsorption in the kidney could treat diabetes. Empagliflozin also proved to reduce heart failure hospitalizations — an unexpected benefit that reshaped how the class is used.",
     hazards:
       "Increases risk of genital yeast infections and urinary tract infections, since more glucose ends up in urine. Carries a rare but serious risk of a dangerous drop in blood pH (ketoacidosis) even with normal blood sugar.",
+    sideEffects:
+      "Commonly causes increased urination and mild thirst, since its mechanism increases the amount of sugar and fluid passed in urine.",
   },
   {
     slug: "glyburide",
@@ -1597,6 +1760,8 @@ export const drugs: DrugEntry[] = [
       "One of the most potent second-generation sulfonylureas, glyburide became a low-cost mainstay of type 2 diabetes treatment for decades before newer drug classes carrying less risk of dangerously low blood sugar became preferred first-line options.",
     hazards:
       "Highest risk of hypoglycemia (dangerously low blood sugar) among commonly used oral diabetes drugs, particularly in older adults or those with kidney problems. Can cause weight gain.",
+    sideEffects:
+      "Can also cause mild nausea and heartburn, particularly when starting treatment.",
   },
   {
     slug: "acarbose",
@@ -1616,6 +1781,8 @@ export const drugs: DrugEntry[] = [
       "Derived from a fermentation product of soil bacteria, acarbose works entirely within the gut rather than being absorbed into the bloodstream, making it one of the few diabetes drugs that acts locally rather than systemically.",
     hazards:
       "Causes prominent gas, bloating, and diarrhea, since undigested carbohydrates ferment in the colon — the main reason many patients discontinue it. Doesn't cause low blood sugar on its own, but if it occurs, must be treated with glucose rather than table sugar, since acarbose blocks the enzyme needed to break down sucrose.",
+    sideEffects:
+      "Occasionally causes mild abdominal discomfort beyond the gas and bloating noted above; rarely affects liver enzymes with long-term use.",
   },
   {
     slug: "canagliflozin",
@@ -1635,6 +1802,8 @@ export const drugs: DrugEntry[] = [
       "The first SGLT2 inhibitor approved in the US, canagliflozin opened up an entirely new drug class for type 2 diabetes that works in the kidney rather than the pancreas or liver.",
     hazards:
       "Carries a boxed warning for increased risk of leg and foot amputations, along with the class-wide risks of genital infections and ketoacidosis. Can also increase fracture risk with long-term use.",
+    sideEffects:
+      "Commonly causes increased urination and mild dehydration-related symptoms like thirst or light-headedness.",
   },
 ];
 

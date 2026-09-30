@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { drugs, getDrugBySlug } from "@/data/drugs";
-import { getIllnessesForCategory } from "@/data/illnesses";
+import { getConditionsForCategory } from "@/data/conditions";
 import MoleculeViewer from "./molecule-viewer";
 import ChemDataPanel from "./chem-data-panel";
 import SponsorSpot from "@/app/sponsor-spot";
@@ -13,9 +13,9 @@ export function generateStaticParams() {
 
 // A second, independent affiliate channel from the pharmacy-discount one on
 // /tools — Amazon Associates, pointed at study guides/textbooks for this
-// drug's class. A natural fit given the site's actual audience (pharmacy,
-// nursing, and pre-med students studying exactly this material). Uses an
-// Amazon search-results link rather than a specific product, since there's
+// drug's class — one part of the audience (see AGENTS.md's "What this is"),
+// not the whole positioning. Uses an Amazon search-results link rather than
+// a specific product, since there's
 // no reliable single "correct" textbook per drug class — same
 // degrade-gracefully pattern as every other monetization piece: renders
 // nothing until NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG is set. See
@@ -54,9 +54,9 @@ export default async function EntryPage({
   const { slug } = await params;
   const drug = getDrugBySlug(slug);
   if (!drug) notFound();
-  // Only some categories have a matching illness page so far (see
-  // data/illnesses.ts) — the card below only renders when one exists.
-  const relatedIllness = getIllnessesForCategory(drug.category)[0];
+  // Only some categories have a matching condition page so far (see
+  // data/conditions.ts) — the card below only renders when one exists.
+  const relatedCondition = getConditionsForCategory(drug.category)[0];
 
   return (
     <div className="wrap entry-page">
@@ -90,18 +90,23 @@ export default async function EntryPage({
           </section>
 
           <section className="entry-block">
+            <div className="eyebrow-line mono">Side effects</div>
+            <p>{drug.sideEffects}</p>
+          </section>
+
+          <section className="entry-block">
             <div className="eyebrow-line mono">Hazards and usage notes</div>
             <p>{drug.hazards}</p>
           </section>
         </div>
 
         <aside className="entry-side">
-          {relatedIllness && (
+          {relatedCondition && (
             <div className="entry-side-card">
               <div className="eyebrow-line mono">Related condition</div>
-              <p>See real prevalence data for {relatedIllness.name.toLowerCase()}.</p>
-              <Link href={`/illnesses/${relatedIllness.slug}`} className="btn-primary btn-link">
-                View {relatedIllness.name}
+              <p>See symptoms, treatment, and prevalence data for {relatedCondition.name.toLowerCase()}.</p>
+              <Link href={`/conditions/${relatedCondition.slug}`} className="btn-primary btn-link">
+                View {relatedCondition.name}
               </Link>
             </div>
           )}

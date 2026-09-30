@@ -10,7 +10,7 @@ import { drugs } from "@/data/drugs";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/entries", label: "Index" },
-  { href: "/illnesses", label: "Illnesses" },
+  { href: "/conditions", label: "Conditions" },
   { href: "/games", label: "Games" },
   { href: "/trends", label: "Trends" },
   { href: "/tools", label: "Tools" },

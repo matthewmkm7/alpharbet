@@ -9,11 +9,11 @@ const GAME_LINKS = [
 ];
 
 // Order matches how the founder wants the directory read: Index first, then
-// Illnesses, Trends, Tools, History — Games (below) comes last since it's its
-// own block.
+// Conditions, Trends, Tools, History — Games (below) comes last since it's
+// its own block.
 const SITE_CARDS = [
   { label: "BROWSE", title: "Index", body: "Every compound, A–Z.", href: "/entries" },
-  { label: "LEARN", title: "Illnesses", body: "What each drug class treats.", href: "/illnesses" },
+  { label: "LEARN", title: "Conditions", body: "Symptoms, treatment, and what drug class helps.", href: "/conditions" },
   { label: "DATA", title: "Trends", body: "Real price data, over time.", href: "/trends" },
   { label: "FIND", title: "Tools", body: "Pharmacies near you.", href: "/tools" },
   { label: "PAST", title: "History", body: "Where each drug came from.", href: "/history" },

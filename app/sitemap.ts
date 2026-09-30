@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { drugs } from "@/data/drugs";
-import { illnesses } from "@/data/illnesses";
+import { conditions } from "@/data/conditions";
 
 // Tells search engines every page that exists on the site so they can crawl
 // and index it. This matters for monetization because both AdSense approval
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/entries`, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/illnesses`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/conditions`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/history`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/games`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/games/solitaire`, changeFrequency: "monthly", priority: 0.6 },
@@ -35,11 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/entries/${drug.slug}/history`, changeFrequency: "yearly", priority: 0.5 },
   ]);
 
-  const illnessPages: MetadataRoute.Sitemap = illnesses.map((illness) => ({
-    url: `${SITE_URL}/illnesses/${illness.slug}`,
+  const conditionPages: MetadataRoute.Sitemap = conditions.map((condition) => ({
+    url: `${SITE_URL}/conditions/${condition.slug}`,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  return [...staticPages, ...entryPages, ...illnessPages];
+  return [...staticPages, ...entryPages, ...conditionPages];
 }

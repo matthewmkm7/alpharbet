@@ -45,8 +45,13 @@ limited token budget, so avoid speculative or unrequested scope.
    request (added no real information); the section is plain stats only for
    now
 5. Mechanism of action / how it works in the body (NOT step-by-step synthesis routes — see Hard rules)
-6. Historical/discovery context
-7. Hazards / dangers of usage (informational level only — see Hard rules)
+6. Side effects — the common effects experienced during NORMAL therapeutic use (e.g. "commonly
+   causes drowsiness, dry mouth"). Distinct from Hazards below: side effects covers day-to-day
+   tolerability; hazards covers allergy risk, drug interactions, contraindications, and
+   misuse/resistance risk. Keep it at the same informational level as hazards — no dosage,
+   overdose, or lethal-dose figures (see Hard rules). Field is `sideEffects` in data/drugs.ts.
+7. Historical/discovery context
+8. Hazards / dangers of usage (informational level only — see Hard rules)
 
 ## Games (final — only these two)
 - **Solitaire**: sort compounds into sequence by molar mass, drug class, or potency to clear the board. Mechanic may vary by drug class/topic area. Has a Medium/Hard difficulty toggle: Medium shows each card's name and drug class as always; Hard shows only the chemical formula, so you're judging weight from the chemistry itself rather than recognizing the drug by name.
@@ -103,9 +108,10 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     Frankfurter (api.frankfurter.app, ECB data), crypto (BTC/ETH) from CoinGecko — both free,
     no API key, called straight from the browser. Falls back to USD with a visible note if either
     is unreachable.
-12. Illnesses section — done, at /illnesses (data/illnesses.ts). Each illness lists real, cited
+12. Conditions section (originally called "Illnesses" — renamed in phase 17 below) — done, at
+    /conditions (data/conditions.ts). Each condition lists real, cited
     CDC prevalence stats and links to the drug classes that treat it, cross-linking back into
-    entries, Games, and Trends per the engagement loop. Starts with 6 illnesses covering 8 of the
+    entries, Games, and Trends per the engagement loop. Starts with 6 conditions covering 8 of the
     19 drug categories (same "start real, grow later" pattern as Trends' spotlightFacts) — add
     more the same way: WebSearch + WebFetch a primary CDC/WHO page, never invented numbers.
     IMPORTANT scope decision: "geographic data" here means real published aggregate figures
@@ -185,6 +191,29 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     not less, since more readers won't have professional judgment to fall back on. Do not read
     "no true limit" as license to loosen those rules; it's about who the content is framed for,
     not what the content is allowed to contain.
+
+17. Side effects field + Conditions expansion/rename — done.
+    - Every drug entry now has a `sideEffects` field (see Content Structure item 6 above) —
+      distinct from `hazards`: side effects covers the common, day-to-day tolerability profile of
+      normal use; hazards covers allergy risk, interactions, contraindications, and misuse risk.
+      All 84 entries were populated with real, drug-specific content (not generic placeholder
+      text) at the same informational level as hazards — no dosage/overdose figures.
+    - The "Illnesses" section was renamed to "Conditions" (founder's choice, from a short list of
+      options) and expanded with real `symptoms` (string list) and `treatment` (approach, not
+      dosing) fields per condition:
+      - data/illnesses.ts → data/conditions.ts; type `Illness` → `Condition`; `illnesses` →
+        `conditions`; `getIllnessBySlug`/`getIllnessesForCategory` →
+        `getConditionBySlug`/`getConditionsForCategory`.
+      - app/illnesses/ → app/conditions/; route is now /conditions and /conditions/[slug].
+      - CSS classes `.illness-drug-*` → `.condition-drug-*`; added `.condition-symptom-list`.
+      - All cross-links updated (nav in site-header.tsx, homepage card, entry-page "Related
+        condition" card, sitemap.ts).
+      - symptoms/treatment content is standard, well-established medical knowledge (same
+        no-citation-needed bar as drugs.ts's mechanism/history/hazards fields) — the
+        prevalence/geographic stats keep their existing real, cited-source bar unchanged.
+    If more conditions get added later, follow the same real-sourced-numbers pattern as before for
+    prevalence/geographic data, but symptoms/treatment can be written straight from established
+    medical knowledge like mechanism/history/hazards already are.
 
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.

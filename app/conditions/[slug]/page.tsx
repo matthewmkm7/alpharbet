@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { illnesses, getIllnessBySlug } from "@/data/illnesses";
+import { conditions, getConditionBySlug } from "@/data/conditions";
 import { drugs, categorySlug } from "@/data/drugs";
 
 export function generateStaticParams() {
-  return illnesses.map((i) => ({ slug: i.slug }));
+  return conditions.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
@@ -14,59 +14,73 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const illness = getIllnessBySlug(slug);
-  if (!illness) return {};
-  const description = `${illness.summary} ${illness.prevalence.stat}`.slice(0, 160);
+  const condition = getConditionBySlug(slug);
+  if (!condition) return {};
+  const description = `${condition.summary} ${condition.prevalence.stat}`.slice(0, 160);
   return {
-    title: illness.name,
+    title: condition.name,
     description,
-    openGraph: { title: `${illness.name} — Alpharbet`, description },
+    openGraph: { title: `${condition.name} — Alpharbet`, description },
   };
 }
 
-export default async function IllnessPage({
+export default async function ConditionPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const illness = getIllnessBySlug(slug);
-  if (!illness) notFound();
+  const condition = getConditionBySlug(slug);
+  if (!condition) notFound();
 
-  const treatments = drugs.filter((d) => illness.categories.includes(d.category));
+  const treatingDrugs = drugs.filter((d) => condition.categories.includes(d.category));
 
   return (
     <div className="wrap entry-page">
-      <Link href="/illnesses" className="back-link mono">
-        ← Back to Illnesses
+      <Link href="/conditions" className="back-link mono">
+        ← Back to Conditions
       </Link>
 
       <div className="entry-header">
-        <h1>{illness.name}</h1>
-        <div className="practical-name">{illness.summary}</div>
+        <h1>{condition.name}</h1>
+        <div className="practical-name">{condition.summary}</div>
       </div>
 
       <div className="entry-grid">
         <div className="entry-main">
           <section className="entry-block">
+            <div className="eyebrow-line mono">Symptoms</div>
+            <ul className="condition-symptom-list">
+              {condition.symptoms.map((symptom) => (
+                <li key={symptom}>{symptom}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="entry-block">
+            <div className="eyebrow-line mono">Treatment</div>
+            <p>{condition.treatment}</p>
+          </section>
+
+          <section className="entry-block">
             <div className="eyebrow-line mono">How common it is</div>
-            <p>{illness.prevalence.stat}</p>
+            <p>{condition.prevalence.stat}</p>
             <div className="entry-fact">
               Source:{" "}
-              <a href={illness.prevalence.source.url} target="_blank" rel="noreferrer">
-                {illness.prevalence.source.title}
+              <a href={condition.prevalence.source.url} target="_blank" rel="noreferrer">
+                {condition.prevalence.source.title}
               </a>
             </div>
           </section>
 
-          {illness.geographic && (
+          {condition.geographic && (
             <section className="entry-block">
               <div className="eyebrow-line mono">Where it varies</div>
-              <p>{illness.geographic.note}</p>
+              <p>{condition.geographic.note}</p>
               <div className="entry-fact">
                 Source:{" "}
-                <a href={illness.geographic.source.url} target="_blank" rel="noreferrer">
-                  {illness.geographic.source.title}
+                <a href={condition.geographic.source.url} target="_blank" rel="noreferrer">
+                  {condition.geographic.source.title}
                 </a>
               </div>
             </section>
@@ -74,9 +88,9 @@ export default async function IllnessPage({
 
           <section className="entry-block">
             <div className="eyebrow-line mono">Drugs used to treat it</div>
-            <div className="illness-drug-list">
-              {treatments.map((drug) => (
-                <Link href={`/entries/${drug.slug}`} className="illness-drug-card" key={drug.slug}>
+            <div className="condition-drug-list">
+              {treatingDrugs.map((drug) => (
+                <Link href={`/entries/${drug.slug}`} className="condition-drug-card" key={drug.slug}>
                   <span className={`category-badge cat-${categorySlug(drug.category)}`}>
                     {drug.category}
                   </span>
@@ -91,7 +105,7 @@ export default async function IllnessPage({
         <aside className="entry-side">
           <div className="entry-side-card">
             <div className="eyebrow-line mono">Test what you know</div>
-            <p>See how well you know the drugs used for {illness.name.toLowerCase()}.</p>
+            <p>See how well you know the drugs used for {condition.name.toLowerCase()}.</p>
             <Link href="/games/solitaire" className="btn-primary btn-link">
               Play Solitaire
             </Link>
