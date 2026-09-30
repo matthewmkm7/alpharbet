@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { drugs } from "@/data/drugs";
 import EntrySearch from "./entry-search";
+
+export const metadata: Metadata = {
+  title: "A–Z Drug Index",
+  description:
+    "Browse every drug covered on Alpharbet, A to Z — chemical structure, mechanism of action, history, and hazards for each one.",
+};
 
 // The full A–Z list used to live on the homepage — moved here so the
 // homepage can stay a short, scannable directory instead of a wall of links.

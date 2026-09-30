@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { illnesses, getIllnessBySlug } from "@/data/illnesses";
@@ -5,6 +6,22 @@ import { drugs, categorySlug } from "@/data/drugs";
 
 export function generateStaticParams() {
   return illnesses.map((i) => ({ slug: i.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const illness = getIllnessBySlug(slug);
+  if (!illness) return {};
+  const description = `${illness.summary} ${illness.prevalence.stat}`.slice(0, 160);
+  return {
+    title: illness.name,
+    description,
+    openGraph: { title: `${illness.name} — Alpharbet`, description },
+  };
 }
 
 export default async function IllnessPage({

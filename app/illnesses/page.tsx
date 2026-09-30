@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { illnesses } from "@/data/illnesses";
+
+export const metadata: Metadata = {
+  title: "Illnesses & Conditions",
+  description:
+    "Real, cited prevalence data on common illnesses and the drug classes used to treat them.",
+};
 
 export default function IllnessesHubPage() {
   return (

@@ -119,6 +119,23 @@ Build this cross-linking into each feature as it's built, not as an afterthought
     Both follow the same "degrade gracefully with no key" pattern already used for the Google
     Places/Maps keys — leaving either blank renders nothing, not a broken link or placeholder.
 
+14. SEO foundation + a second affiliate channel — done, and this one is NOT inert: it changes
+    what search engines see immediately (per-page titles/descriptions, a sitemap, robots.txt,
+    Open Graph tags), because none of the monetization in phase 13 can earn anything without
+    organic traffic finding these pages first.
+    - app/sitemap.ts / app/robots.ts — auto-generated from data/drugs.ts and data/illnesses.ts,
+      so every entry and illness page is listed without hand-maintaining a list.
+    - Every entry page, illness page, and hub page (Entries, Illnesses, Trends, Tools) now has
+      its own title and description via generateMetadata/export const metadata, instead of all
+      pages sharing the homepage's title — this is what shows up in a Google search result or a
+      shared link's preview.
+    - NEXT_PUBLIC_SITE_URL (see .env.local.example) — set this to the real domain as soon as one
+      exists; until then the sitemap/robots/link-previews use a placeholder domain.
+    - NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG — a second, independent affiliate channel from the
+      pharmacy-discount one in phase 13: a "search study resources" link on every entry page,
+      pointed at Amazon search results for textbooks/study guides on that drug's class. Same
+      degrade-gracefully pattern — inert until the founder has a real Associate tag.
+
 Future feature ideas belong in a new phase agreed with the founder first — this list is not a
 queue to keep adding to on your own.
 

@@ -4,8 +4,31 @@ import SiteHeader from "./site-header";
 import SiteFooter from "./site-footer";
 import MoleculeBackground from "./molecule-background";
 
+// Set once the site has a real domain (see .env.local.example) — search
+// engines and link previews (Slack, iMessage, Twitter/X) use this to turn a
+// relative path into a real, shareable URL. Falls back to a placeholder so
+// the build never breaks, but previews/sitemap won't be fully correct until
+// it's set to the real domain.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alpharbet.example.com";
+const SITE_TITLE = "Alpharbet — The A–Z of drugs, made to stick";
+const SITE_DESCRIPTION =
+  "An A–Z pharmacology reference for pharmacy, nursing, and pre-med students — interactive drug structures, mechanism-of-action breakdowns, and study games instead of flat flashcards.";
+
 export const metadata: Metadata = {
-  title: "Alpharbet — The A–Z of drugs, made to stick",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s · Alpharbet" },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: "Alpharbet",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 // Only loads if NEXT_PUBLIC_ADSENSE_CLIENT_ID is set in Vercel — see
